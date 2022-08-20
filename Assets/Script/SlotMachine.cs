@@ -5,4 +5,9 @@ using UnityEngine.UI;
 
 public class SlotMachine : MonoBehaviour
 {
+    
+    private void Start()
+    {
+        
+    }
 }

@@ -14,6 +14,7 @@ public class CalculateMoney : MonoBehaviour
                 oddsNum += judgeArray.JudgeThree(item);
             }
         }
+        oddsNum += judgeArray.CheckSeven(boardArr);
         return oddsNum;
     }
     private int[,] GetJudgeLine(int[] boardArr)

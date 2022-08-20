@@ -35,10 +35,6 @@ public class JudgeArray
         {
             return OddsDict.dictOverall[Odds.anySeven];
         }
-        else if (anySeven < 9 && anySeven > 1)
-        {
-            return CheckSeven(a);
-        }
         else if (anyBar == 9)
         {
             return OddsDict.dictOverall[Odds.anyBar];
@@ -59,11 +55,11 @@ public class JudgeArray
         int blueSeven = 0;
         for (int i = 0; i < a.Length; i++)
         {
-            if (a[i] == (int)Odds.gura)
+            if (a[i] == (int)Character.gura)
             {
                 redSeven++;
             }
-            else if (a[i] == (int)Odds.ame)
+            else if (a[i] == (int)Character.ame)
             {
                 blueSeven++;
             }
