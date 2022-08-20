@@ -1,6 +1,5 @@
 public class JudgeArray
 {
-    public delegate int check(int[] test);
     public int CheckAllTheSame(params int[] a)
     {
         int character;
@@ -99,36 +98,18 @@ public class JudgeArray
         {
             return OddsDict.dicNormal[(Odds)a[0]];
         }
-
-        if (anySeven == 3)
+        else if (anySeven == 3)
         {
-            if (a[0] != a[1])
-            {
-                return OddsDict.dicNormal[Odds.anySeven];
-            }
+            return OddsDict.dicNormal[Odds.anySeven];
         }
         else if (anyBar == 3)
         {
-            if (a[0] != a[1])
-            {
-                return OddsDict.dicNormal[Odds.anyBar];
-            }
+            return OddsDict.dicNormal[Odds.anyBar];
         }
-        switch (anyFruit)
+        else if (a[0] == (int)Odds.hololive)
         {
-            case 3:
-                return OddsDict.dicNormal[Odds.hololive];
-            case 2:
-                if (a[0] == a[1])
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            default:
-                break;
+            if (a[0] == a[1]) return 5;
+            else return 2;
         }
         return 0;
     }
