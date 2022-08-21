@@ -8,7 +8,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] Image[] board = new Image[9];
     [SerializeField] int[] boardNum = new int[9];
     [Range(0, 9)][SerializeField] int minRandomNum = 0;
-    [Range(0, 9)][SerializeField] int maxRandomNum = 9;
+    [Range(0, 10)][SerializeField] int maxRandomNum = 10;
     [SerializeField] Button rotateBtn;
 
     CalculateMoney calculateMoney = new CalculateMoney();

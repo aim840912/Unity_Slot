@@ -15,7 +15,7 @@ public class JudgeArray
         }
         if (num == 9)
         {
-            return OddsDict.dicNormal[(Odds)a[0]];
+            return OddsDict.dictOverall[(Odds)a[0]];
         }
         else
         {
@@ -65,7 +65,6 @@ public class JudgeArray
                 blueSeven++;
             }
         }
-        Debug.Log($"redSeven={redSeven},blueSeven={blueSeven}");
         if (redSeven > 0 && blueSeven > 0)
         {
             return OddsDict.dictSecpial[Odds.anySeven][redSeven + blueSeven];
