@@ -1,3 +1,4 @@
+using UnityEngine;
 public class JudgeArray
 {
     public int CheckAllTheSame(params int[] a)
@@ -64,18 +65,18 @@ public class JudgeArray
                 blueSeven++;
             }
         }
+        Debug.Log($"redSeven={redSeven},blueSeven={blueSeven}");
         if (redSeven > 0 && blueSeven > 0)
         {
             return OddsDict.dictSecpial[Odds.anySeven][redSeven + blueSeven];
         }
-        else if (redSeven == 0 && blueSeven > 0)
+        else if (redSeven == 0 && blueSeven > 1)
         {
             return OddsDict.dictSecpial[Odds.ame][blueSeven];
         }
-        else if (redSeven > 0 && blueSeven == 0)
+        else if (redSeven > 1 && blueSeven == 0)
         {
             return OddsDict.dictSecpial[Odds.gura][redSeven];
-
         }
         return 0;
     }

@@ -1,6 +1,6 @@
 public enum Odds
 {
-    gura = 1, //藍色7
+    gura = 0, //藍色7
     ame, //紅色7
     ina, //綠色bar
     kronii, //紅色bar
