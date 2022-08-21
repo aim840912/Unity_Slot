@@ -97,6 +97,7 @@ public class JudgeArray
         }
         else if (anySeven == 3)
         {
+            Debug.Log($"anySeven={anySeven}");
             return OddsDict.dicNormal[Odds.anySeven];
         }
         else if (anyBar == 3)
