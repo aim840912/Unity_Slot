@@ -1,11 +1,4 @@
-# Pong
+# Slot 3X3
 
 
-## Learn to use
-
-```csharp
-
-using System.Runtime.Serialization.Formatters.Binary;
-
-```
 
