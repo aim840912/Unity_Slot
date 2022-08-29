@@ -1,11 +1,11 @@
 using UnityEngine;
+
 public class JudgeArray
 {
     public int CheckAllTheSame(params int[] a)
     {
-        int character;
         var num = 0;
-        character = a[0];
+        int character = a[0];
         for (int i = 0; i < a.Length; i++)
         {
             if (a[i] == a[0])
@@ -17,11 +17,9 @@ public class JudgeArray
         {
             return OddsDict.dictOverall[(Odds)a[0]];
         }
-        else
-        {
-            return CheckBoard(a);
-        }
+        return CheckBoard(a);
     }
+
     public int CheckBoard(params int[] a)
     {
         int anySeven = 0;
@@ -32,6 +30,7 @@ public class JudgeArray
         {
             CheckEachCount(a[i], ref anySeven, ref anyBar, ref anyFruit);
         }
+
         if (anySeven == 9)
         {
             return OddsDict.dictOverall[Odds.anySeven];
