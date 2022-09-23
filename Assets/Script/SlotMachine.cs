@@ -43,6 +43,7 @@ public class SlotMachine : MonoBehaviour
         rotateBtn.interactable = false;
         yield return new WaitForSeconds(0.5f);
         rotateBtn.interactable = true;
-        int q = calculateMoney.GetOddsTotal(boardNum);
+        int oddsTotal = calculateMoney.GetOddsTotal(boardNum);
+        Debug.Log(oddsTotal);
     }
 }

@@ -19,7 +19,6 @@ public class CalculateMoney
             }
             oddsNum += judgeArray.CheckSeven(boardArr);
         }
-        Debug.Log($"{oddsNum}");
         return oddsNum;
     }
 

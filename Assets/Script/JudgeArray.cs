@@ -46,19 +46,9 @@ public class JudgeArray
 
     public int CheckSeven(params int[] a)
     {
-        int redSeven = 0;
-        int blueSeven = 0;
-        for (int i = 0; i < a.Length; i++)
-        {
-            if (a[i] == (int)Character.gura)
-            {
-                redSeven++;
-            }
-            else if (a[i] == (int)Character.ame)
-            {
-                blueSeven++;
-            }
-        }
+        int redSeven = a.Count(x => x == (int)Character.gura);
+        int blueSeven = a.Count(x => x == (int)Character.ame);
+
         if (redSeven > 0 && blueSeven > 0)
         {
             return OddsDict.dictSpecial[Odds.anySeven][redSeven + blueSeven];
