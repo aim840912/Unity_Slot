@@ -33,7 +33,7 @@ public class OddsDict
         { Odds.hololive, 40 },
         { Odds.anyFruit, 15 }
     };
-    public static Dictionary<Odds, Dictionary<int, int>> dictSecpial = new Dictionary<
+    public static Dictionary<Odds, Dictionary<int, int>> dictSpecial = new Dictionary<
         Odds,
         Dictionary<int, int>
     >()

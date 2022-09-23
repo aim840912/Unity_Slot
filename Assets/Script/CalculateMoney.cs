@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class CalculateMoney : MonoBehaviour
+public class CalculateMoney
 {
     [SerializeField] int oddsNum;
     JudgeArray judgeArray = new JudgeArray();
+
     public int GetOddsTotal(int[] boardArr)
     {
         oddsNum = 0;
@@ -21,6 +22,7 @@ public class CalculateMoney : MonoBehaviour
         Debug.Log($"{oddsNum}");
         return oddsNum;
     }
+
     private int[][] GetJudgeLine(int[] boardArr)
     {
         int[][] eachLine =  {

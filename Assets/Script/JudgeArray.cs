@@ -1,22 +1,17 @@
 using UnityEngine;
+using System.Linq;
 
 public class JudgeArray
 {
     public int CheckAllTheSame(params int[] a)
     {
-        var num = 0;
-        int character = a[0];
-        for (int i = 0; i < a.Length; i++)
-        {
-            if (a[i] == a[0])
-            {
-                num += 1;
-            }
-        }
-        if (num == 9)
+        int characterCount = a.Count(x => x == a[0]);
+
+        if (characterCount == 9)
         {
             return OddsDict.dictOverall[(Odds)a[0]];
         }
+
         return CheckBoard(a);
     }
 
@@ -66,15 +61,15 @@ public class JudgeArray
         }
         if (redSeven > 0 && blueSeven > 0)
         {
-            return OddsDict.dictSecpial[Odds.anySeven][redSeven + blueSeven];
+            return OddsDict.dictSpecial[Odds.anySeven][redSeven + blueSeven];
         }
         else if (redSeven == 0 && blueSeven > 1)
         {
-            return OddsDict.dictSecpial[Odds.ame][blueSeven];
+            return OddsDict.dictSpecial[Odds.ame][blueSeven];
         }
         else if (redSeven > 1 && blueSeven == 0)
         {
-            return OddsDict.dictSecpial[Odds.gura][redSeven];
+            return OddsDict.dictSpecial[Odds.gura][redSeven];
         }
         return 0;
     }
@@ -110,7 +105,7 @@ public class JudgeArray
         return 0;
     }
 
-    void CheckEachCount(int a, ref int anySeven, ref int anybar, ref int anyFruit)
+    void CheckEachCount(int a, ref int anySeven, ref int anyBar, ref int anyFruit)
     {
         switch (a)
         {
@@ -121,7 +116,7 @@ public class JudgeArray
             case (int)Character.ina:
             case (int)Character.kronii:
             case (int)Character.mumei:
-                anybar++;
+                anyBar++;
                 break;
             case (int)Character.sana:
                 break;
