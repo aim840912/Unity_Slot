@@ -17,6 +17,10 @@ public class Spin : MonoBehaviour
     {
         string path = "Art";
         spriteSource = Resources.LoadAll<Sprite>(path);
+        foreach (var T in spriteSource)
+        {
+            Debug.Log(T);
+        }
     }
 
     void Update()

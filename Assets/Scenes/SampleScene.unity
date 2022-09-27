@@ -362,7 +362,7 @@ MonoBehaviour:
   - {fileID: 1765156110}
   boardNum: 000000000000000000000000000000000000000000000000000000000000000000000000
   minRandomNum: 0
-  maxRandomNum: 1
+  maxRandomNum: 10
   rotateBtn: {fileID: 259496620}
 --- !u!4 &135759892
 Transform:
