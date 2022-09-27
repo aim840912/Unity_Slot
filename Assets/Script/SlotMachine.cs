@@ -14,27 +14,22 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] Button rotateBtn;
 
     CalculateMoney calculateMoney = new CalculateMoney();
+    GenerateBoard generateBoard = new GenerateBoard();
 
-    public void Spin()
-    {
-        StartCoroutine(SpinAndStopAndCal());
-    }
 
     void BoardRandomNumber()
     {
-        for (var i = 0; i < boardNum.Length; i++)
-        {
-            boardNum[i] = Random.Range(minRandomNum, maxRandomNum);
-        }
-        ShowBoardNum();
-    }
+        boardNum = generateBoard.GenerateNum(minRandomNum, maxRandomNum);
 
-    void ShowBoardNum()
-    {
         for (var i = 0; i < board.Length; i++)
         {
             board[i].GetComponentInChildren<TextMeshProUGUI>().text = boardNum[i].ToString();
         }
+    }
+
+    public void Spin()
+    {
+        StartCoroutine(SpinAndStopAndCal());
     }
 
     IEnumerator SpinAndStopAndCal()
