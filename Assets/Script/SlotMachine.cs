@@ -15,6 +15,7 @@ public class SlotMachine : MonoBehaviour
     CalculateMoney calculateMoney = new CalculateMoney();
     GenerateBoard generateBoard = new GenerateBoard();
 
+
     void GeneralBoard()
     {
         boardNum = generateBoard.GenerateNum(minRandomNum, maxRandomNum);

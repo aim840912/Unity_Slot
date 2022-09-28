@@ -16,7 +16,7 @@ public class GenerateBoard
         return boardNum;
     }
 
-    // Note: 機率 尚未完成
+    /* Note: 機率 尚未完成*/
     // void CountProbability()
     // {
     //     for (int i = 0; i < OddsDict.dicNormal.Count; i++)
