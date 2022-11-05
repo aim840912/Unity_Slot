@@ -12,8 +12,11 @@ public class SlotMachine : MonoBehaviour
 
     [SerializeField] Button rotateBtn;
 
-    CalculateMoney calculateMoney = new CalculateMoney();
+    public delegate void returnMoney();
+
     GenerateBoard generateBoard = new GenerateBoard();
+    CalculateMoney calculateMoney = new CalculateMoney();
+
 
 
     void GeneralBoard()
@@ -35,9 +38,10 @@ public class SlotMachine : MonoBehaviour
     {
         GeneralBoard();
         rotateBtn.interactable = false;
+        int oddsTotal = calculateMoney.GetOddsTotal(boardNum);
+
+        Debug.Log(oddsTotal);
         yield return new WaitForSeconds(0.5f);
         rotateBtn.interactable = true;
-        int oddsTotal = calculateMoney.GetOddsTotal(boardNum);
-        Debug.Log(oddsTotal);
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GenerateBoard
@@ -15,17 +13,4 @@ public class GenerateBoard
 
         return boardNum;
     }
-
-    /* Note: 機率 尚未完成*/
-    // void CountProbability()
-    // {
-    //     for (int i = 0; i < OddsDict.dicNormal.Count; i++)
-    //     {
-    //         List<int> listValue = OddsDict.dicNormal.Values.ToList();
-    //         foreach (int item in listValue)
-    //         {
-    //             sum += item;
-    //         }
-    //     }
-    // }
 }

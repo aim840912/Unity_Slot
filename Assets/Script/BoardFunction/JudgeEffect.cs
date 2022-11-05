@@ -1,24 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CalculateMoney
+public class JudgeEffect : MonoBehaviour
 {
-    [SerializeField] int oddsNum;
-    JudgeArray judgeArray = new JudgeArray();
+    [SerializeField] bool[] effectBool;
+    [SerializeField] GameObject[] effectObj;
 
-    public int GetOddsTotal(int[] boardArr)
+    public void GeneralEffect(int[] boardArr)
     {
-        oddsNum = 0;
-        oddsNum = judgeArray.CheckAllTheSame(boardArr);
-
-        if (oddsNum == 0)
+        for (var i = 0; i < GetJudgeLine(boardArr).Length; i++)
         {
-            foreach (var item in GetJudgeLine(boardArr))
-            {
-                oddsNum += judgeArray.JudgeThree(item);
-            }
-            oddsNum += judgeArray.CheckSeven(boardArr);
+            effectBool[i] = JudgeRole(GetJudgeLine(boardArr)[i]);
         }
-        return oddsNum;
+    }
+
+    private bool JudgeRole(params int[] a)
+    {
+        if (a[0] == a[1] && a[0] == a[2])
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private int[][] GetJudgeLine(int[] boardArr)
