@@ -1,23 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JudgeEffect : MonoBehaviour
 {
-    [SerializeField] bool[] effectBool;
-    [SerializeField] GameObject[] effectObj;
+    [SerializeField] int[] effectInt = new int[3];
 
-    public void GeneralEffect(int[] boardArr)
+    JudgeArray judgeArray = new JudgeArray();
+
+    private void Update()
     {
-        for (var i = 0; i < GetJudgeLine(boardArr).Length; i++)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            effectBool[i] = JudgeRole(GetJudgeLine(boardArr)[i]);
+            this.GetComponent<Image>().enabled = JudgeRole(
+           GameManager.Instance.boardNum[effectInt[0]],
+           GameManager.Instance.boardNum[effectInt[1]],
+           GameManager.Instance.boardNum[effectInt[2]]);
+            Debug.Log(GameManager.Instance.boardNum[effectInt[0]]);
+            Debug.Log(GameManager.Instance.boardNum[effectInt[1]]);
+            Debug.Log(GameManager.Instance.boardNum[effectInt[2]]);
         }
+
     }
 
     private bool JudgeRole(params int[] a)
     {
-        if (a[0] == a[1] && a[0] == a[2])
+        if (a[0] == 9)
+        {
+            return true;
+        }
+        else if (a[0] == a[1] && a[0] == a[2])
         {
             return true;
         }
@@ -25,21 +38,5 @@ public class JudgeEffect : MonoBehaviour
         {
             return false;
         }
-    }
-
-    private int[][] GetJudgeLine(int[] boardArr)
-    {
-        int[][] eachLine =  {
-         new int[] { boardArr[0], boardArr[1], boardArr[2] },
-         new int[] { boardArr[3], boardArr[4], boardArr[5] },
-         new int[] { boardArr[6], boardArr[7], boardArr[8] },
-         new int[] { boardArr[0], boardArr[3], boardArr[6] },
-         new int[] { boardArr[1], boardArr[4], boardArr[7] },
-         new int[] { boardArr[2], boardArr[5], boardArr[8] },
-         new int[] { boardArr[0], boardArr[4], boardArr[8] },
-         new int[] { boardArr[6], boardArr[4], boardArr[2] },
-         };
-
-        return eachLine;
     }
 }

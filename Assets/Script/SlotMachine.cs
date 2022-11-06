@@ -7,8 +7,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] Image[] board = new Image[9];
     [SerializeField] int[] boardNum = new int[9];
 
-    [Range(0, 9)][SerializeField] int minRandomNum = 0;
-    [Range(0, 10)][SerializeField] int maxRandomNum = 10;
+
 
     [SerializeField] Button rotateBtn;
 
@@ -21,7 +20,7 @@ public class SlotMachine : MonoBehaviour
 
     void GeneralBoard()
     {
-        boardNum = generateBoard.GenerateNum(minRandomNum, maxRandomNum);
+        boardNum = GameManager.Instance.GeneralBoard();
 
         for (var i = 0; i < board.Length; i++)
         {
@@ -37,10 +36,12 @@ public class SlotMachine : MonoBehaviour
     IEnumerator SpinAndStopAndCal()
     {
         GeneralBoard();
+
         rotateBtn.interactable = false;
         int oddsTotal = calculateMoney.GetOddsTotal(boardNum);
 
         Debug.Log(oddsTotal);
+
         yield return new WaitForSeconds(0.5f);
         rotateBtn.interactable = true;
     }

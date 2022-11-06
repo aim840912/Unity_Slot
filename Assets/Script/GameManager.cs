@@ -3,31 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
+
 {
-    public static GameManager instance;
+    public static GameManager Instance { get; set; }
 
-    public bool isRolling = false;
+    [SerializeField] public int[] boardNum = new int[9];
 
-    void Awake()
+    [Range(0, 9)][SerializeField] int minRandomNum = 0;
+    [Range(0, 10)][SerializeField] int maxRandomNum = 10;
+
+    GenerateBoard generateBoard = new GenerateBoard();
+
+    private void Awake()
     {
-        MakeSingleton();
-    }
-
-    void MakeSingleton()
-    {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
         }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        Instance = this;
     }
 
-    public bool switchRolling()
+    public int[] GeneralBoard()
     {
-        return !isRolling;
+        boardNum = generateBoard.GenerateNum(minRandomNum, maxRandomNum);
+        return boardNum;
     }
+
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space))
+    //     {
+    //         foreach (var item in boardNum)
+    //         {
+    //             Debug.Log(item);
+    //         }
+    //     }
+    // }
 }
