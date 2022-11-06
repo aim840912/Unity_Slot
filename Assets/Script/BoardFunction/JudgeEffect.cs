@@ -17,20 +17,31 @@ public class JudgeEffect : MonoBehaviour
            GameManager.Instance.boardNum[effectInt[0]],
            GameManager.Instance.boardNum[effectInt[1]],
            GameManager.Instance.boardNum[effectInt[2]]);
-            Debug.Log(GameManager.Instance.boardNum[effectInt[0]]);
-            Debug.Log(GameManager.Instance.boardNum[effectInt[1]]);
-            Debug.Log(GameManager.Instance.boardNum[effectInt[2]]);
         }
 
     }
 
     private bool JudgeRole(params int[] a)
     {
+
+        int anySeven = 0;
+        int anyBar = 0;
+        int anyFruit = 0;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            judgeArray.CheckEachCount(a[i], ref anySeven, ref anyBar, ref anyFruit);
+        }
+
         if (a[0] == 9)
         {
             return true;
         }
         else if (a[0] == a[1] && a[0] == a[2])
+        {
+            return true;
+        }
+        else if (anyBar == 3 || anySeven == 3)
         {
             return true;
         }

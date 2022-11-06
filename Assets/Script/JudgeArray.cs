@@ -95,7 +95,7 @@ public class JudgeArray
         return 0;
     }
 
-    void CheckEachCount(int a, ref int anySeven, ref int anyBar, ref int anyFruit)
+    public void CheckEachCount(int a, ref int anySeven, ref int anyBar, ref int anyFruit)
     {
         switch (a)
         {
