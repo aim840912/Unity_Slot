@@ -9,14 +9,25 @@ public class JudgeEffect : MonoBehaviour
 
     JudgeArray judgeArray = new JudgeArray();
 
+    bool showLine = false;
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (GameManager.Instance.spinBool == false)
         {
-            this.GetComponent<Image>().enabled = JudgeRole(
+            if (showLine == true)
+            {
+                this.GetComponent<Image>().enabled = JudgeRole(
            GameManager.Instance.boardNum[effectInt[0]],
            GameManager.Instance.boardNum[effectInt[1]],
            GameManager.Instance.boardNum[effectInt[2]]);
+                showLine = false;
+            }
+        }
+        else
+        {
+            this.GetComponent<Image>().enabled = false;
+            showLine = true;
         }
 
     }

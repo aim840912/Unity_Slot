@@ -7,8 +7,6 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] Image[] board = new Image[9];
     [SerializeField] int[] boardNum = new int[9];
 
-
-
     [SerializeField] Button rotateBtn;
 
     public delegate void returnMoney();
@@ -38,8 +36,10 @@ public class SlotMachine : MonoBehaviour
         GeneralBoard();
 
         rotateBtn.interactable = false;
+        GameManager.Instance.spinBool = true;
+        yield return new WaitForSeconds(0.5f);
         int oddsTotal = calculateMoney.GetOddsTotal(boardNum);
-
+        GameManager.Instance.spinBool = false;
         Debug.Log(oddsTotal);
 
         yield return new WaitForSeconds(0.5f);
