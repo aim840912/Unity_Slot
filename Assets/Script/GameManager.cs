@@ -9,13 +9,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public int[] boardNum = new int[9];
 
-    [Range(0, 9)][SerializeField] int minRandomNum = 0;
-    [Range(0, 10)][SerializeField] int maxRandomNum = 10;
 
 
     [SerializeField] public bool spinBool;
 
-    GenerateBoard generateBoard = new GenerateBoard();
 
     private void Awake()
     {
@@ -31,9 +28,9 @@ public class GameManager : MonoBehaviour
         spinBool = false;
     }
 
-    public int[] GeneralBoard()
+    public int[] GeneralBoardNum()
     {
-        boardNum = generateBoard.GenerateNum(minRandomNum, maxRandomNum);
+        boardNum = SimulationServer.Instance.GenerateNum();
         return boardNum;
     }
 }

@@ -9,16 +9,11 @@ public class SlotMachine : MonoBehaviour
 
     [SerializeField] Button rotateBtn;
 
-    public delegate void returnMoney();
-
-    GenerateBoard generateBoard = new GenerateBoard();
     CalculateMoney calculateMoney = new CalculateMoney();
-
-
 
     void GeneralBoard()
     {
-        boardNum = GameManager.Instance.GeneralBoard();
+        boardNum = GameManager.Instance.GeneralBoardNum();
 
         for (var i = 0; i < board.Length; i++)
         {
