@@ -23,6 +23,10 @@ public class SimulationServer : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        GetNum();
+    }
 
     public int[] GenerateNum() // 版面產生隨機數字，機率可在這更改
     {
@@ -32,6 +36,11 @@ public class SimulationServer : MonoBehaviour
         }
 
         return boardNum;
+    }
+
+    public int[] GetNum()
+    {
+        return GenerateNum();
     }
 
     // 計算總倍率
