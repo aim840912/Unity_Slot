@@ -24,9 +24,4 @@ public class GameManager : MonoBehaviour
         spinBool = false;
     }
 
-    public int[] GeneralBoardNum()
-    {
-        boardNum = SimulationServer.Instance.GenerateNum();
-        return boardNum;
-    }
 }

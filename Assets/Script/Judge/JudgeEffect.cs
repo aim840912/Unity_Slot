@@ -18,9 +18,9 @@ public class JudgeEffect : MonoBehaviour
             if (showLine == true)
             {
                 this.GetComponent<Image>().enabled = JudgeRole(
-           GameManager.Instance.boardNum[effectInt[0]],
-           GameManager.Instance.boardNum[effectInt[1]],
-           GameManager.Instance.boardNum[effectInt[2]]);
+           SimulationServer.Instance.boardNum[effectInt[0]],
+           SimulationServer.Instance.boardNum[effectInt[1]],
+           SimulationServer.Instance.boardNum[effectInt[2]]);
                 showLine = false;
             }
         }

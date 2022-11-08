@@ -2985,7 +2985,7 @@ GameObject:
   - component: {fileID: 1992884422}
   - component: {fileID: 1992884421}
   m_Layer: 0
-  m_Name: Server
+  m_Name: SimulationServer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
