@@ -33,11 +33,7 @@ public class SlotMachine : MonoBehaviour
 
         GeneralBoard();
 
-
-
         rotateBtn.interactable = false;
-        GameManager.Instance.spinBool = true;
-
 
         yield return new WaitForSeconds(0.5f);
 
@@ -47,7 +43,7 @@ public class SlotMachine : MonoBehaviour
         }
 
         int oddsTotal = calculateMoney.GetOddsTotal(boardNum);
-        GameManager.Instance.spinBool = false;
+
         Debug.Log(oddsTotal);
 
         yield return new WaitForSeconds(0.5f);
