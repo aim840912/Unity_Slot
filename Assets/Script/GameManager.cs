@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; set; }
 
-    [SerializeField] public int[] boardNum = new int[9];
-
     [SerializeField] public bool spinBool;
 
     private void Awake()

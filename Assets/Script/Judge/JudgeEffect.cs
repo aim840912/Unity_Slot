@@ -3,38 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JudgeEffect : MonoBehaviour
+public class JudgeEffect : MonoBehaviour, IEffect
 {
     [SerializeField] int[] effectInt = new int[3];
 
     JudgeArray judgeArray = new JudgeArray();
 
-    bool showLine = false;
+    bool showLine = true;
 
-    private void Update()
+    public void AfterSpin()
     {
-        if (GameManager.Instance.spinBool == false)
-        {
-            if (showLine == true)
-            {
-                this.GetComponent<Image>().enabled = JudgeRole(
-           SimulationServer.Instance.boardNum[effectInt[0]],
-           SimulationServer.Instance.boardNum[effectInt[1]],
-           SimulationServer.Instance.boardNum[effectInt[2]]);
-                showLine = false;
-            }
-        }
-        else
-        {
-            this.GetComponent<Image>().enabled = false;
-            showLine = true;
-        }
+        this.GetComponent<Image>().enabled = JudgeRole(
+    SimulationServer.Instance.boardNum[effectInt[0]],
+    SimulationServer.Instance.boardNum[effectInt[1]],
+    SimulationServer.Instance.boardNum[effectInt[2]]);
+    }
 
+    public void BeforeSpin()
+    {
+        this.GetComponent<Image>().enabled = false;
     }
 
     private bool JudgeRole(params int[] a)
     {
-
         int anySeven = 0;
         int anyBar = 0;
         int anyFruit = 0;
