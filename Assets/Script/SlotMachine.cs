@@ -42,7 +42,7 @@ public class SlotMachine : MonoBehaviour
             item.AfterSpin();
         }
 
-        int oddsTotal = calculateMoney.GetOddsTotal(boardNum);
+        int oddsTotal = SimulationServer.Instance.CalculateOdds(boardNum);
 
         Debug.Log(oddsTotal);
 

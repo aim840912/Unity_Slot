@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 模擬後端
 public class SimulationServer : MonoBehaviour
 {
     public static SimulationServer Instance { get; set; }
     public int[] boardNum = new int[9];
     int minRandomNum = 0;
     int maxRandomNum = 10;
-    int money = 0;
 
     private void Awake()
     {
@@ -25,20 +25,13 @@ public class SimulationServer : MonoBehaviour
         {
             boardNum[i] = Random.Range(minRandomNum, maxRandomNum);
         }
-
         return boardNum;
     }
 
     CalculateMoney calculateMoney = new CalculateMoney();
 
-    int CalculateOdds()
+    public int CalculateOdds(int[] boardArr)
     {
-        return calculateMoney.GetOddsTotal(boardNum);
-    }
-
-    int CalculateMoney()
-    {
-        money += CalculateOdds();
-        return money;
+        return calculateMoney.GetOddsTotal(boardArr);
     }
 }
