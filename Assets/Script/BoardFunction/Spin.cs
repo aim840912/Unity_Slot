@@ -9,14 +9,31 @@ public class Spin : MonoBehaviour
 
     // [SerializeField] int rollingSpeed = 250;
 
+    Animator anim;
+
+    [SerializeField] bool SpinBool = false;
+
     void Awake()
     {
         string path = "Art";
         spriteSource = Resources.LoadAll<Sprite>(path);
-        // foreach (var T in spriteSource)
-        // {
-        //     Debug.Log(T);
-        // }
+    }
+
+    private void Start()
+    {
+        anim = gameObject.GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpinBool = !SpinBool;
+        }
+
+
+        anim.SetBool("Rolling", !SpinBool);
+
     }
 
     // void SpinProcess()
@@ -60,13 +77,18 @@ public class Spin : MonoBehaviour
     //     }
     // }
 
-    void SpinTest()
+    void SpinProcess()
     {
         RectTransform[] temp = this.GetComponentsInChildren<RectTransform>();
         foreach (var item in temp)
         {
             ChangeSprite(item);
         }
+    }
+
+    void SpinOver()
+    {
+
     }
 
     Sprite ChangeSprite(Transform a)
