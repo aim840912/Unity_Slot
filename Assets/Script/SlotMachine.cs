@@ -11,10 +11,11 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] GameObject EffectObj;
     [SerializeField] GameObject SpinObj;
     Spin[] spinGroup;
-
+    IEffect[] temp;
     void Start()
     {
         spinGroup = SpinObj.GetComponentsInChildren<Spin>();
+        temp = EffectObj.GetComponentsInChildren<IEffect>();
     }
     // void GeneralBoard()
     // {
@@ -24,66 +25,54 @@ public class SlotMachine : MonoBehaviour
     //     }
     // }
 
-    void Spinning()
+    public void Spinning()
     {
-        rotateBtn.enabled = false;
-        stopBtn.enabled = true;
+        rotateBtn.gameObject.SetActive(false);
+        stopBtn.gameObject.SetActive(true);
         foreach (var item in spinGroup)
         {
             item.GetComponent<Animator>().SetBool("Rolling", true);
         }
+        foreach (var item in temp)
+        {
+            item.BeforeSpin();
+        }
     }
 
-    void SpinOver()
+    public void SpinOver()
     {
-        rotateBtn.enabled = true;
-        stopBtn.enabled = false;
+        StartCoroutine(GetServerNum());
+        foreach (var item in temp)
+        {
+            item.AfterSpin();
+        }
+        rotateBtn.gameObject.SetActive(true);
+        stopBtn.gameObject.SetActive(false);
         foreach (var item in spinGroup)
         {
             item.GetComponent<Animator>().SetBool("Rolling", false);
         }
-
         for (var i = 0; i < spinGroup.Length; i++)
         {
             spinGroup[i].GetComponentInChildren<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
         }
+
 
     }
 
     IEnumerator GetServerNum()
     {
 
-        IEffect[] temp = EffectObj.GetComponentsInChildren<IEffect>();
-
-        foreach (var item in temp)
-        {
-            item.BeforeSpin();
-        }
-
         SimulationServer.Instance.GenerateNum();
         boardNum = SimulationServer.Instance.boardNum;
 
-        // GeneralBoard();
-
-        rotateBtn.interactable = false;
-
         yield return new WaitForSeconds(0.5f);
-
-        foreach (var item in temp)
-        {
-            item.AfterSpin();
-        }
 
         int oddsTotal = SimulationServer.Instance.CalculateOdds(boardNum);
 
         Debug.Log(oddsTotal);
 
         yield return new WaitForSeconds(0.5f);
-        rotateBtn.interactable = true;
-    }
 
-    public void Spin()
-    {
-        StartCoroutine(GetServerNum());
     }
 }
