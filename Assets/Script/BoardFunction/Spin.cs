@@ -11,8 +11,6 @@ public class Spin : MonoBehaviour
 
     Animator anim;
 
-    [SerializeField] bool SpinBool = false;
-
     void Awake()
     {
         string path = "Art";
@@ -24,18 +22,6 @@ public class Spin : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpinBool = !SpinBool;
-        }
-
-
-        anim.SetBool("Rolling", !SpinBool);
-
-    }
-
     void SpinProcess()
     {
         RectTransform[] temp = this.GetComponentsInChildren<RectTransform>();
@@ -43,11 +29,6 @@ public class Spin : MonoBehaviour
         {
             ChangeSprite(item);
         }
-    }
-
-    void SpinOver()
-    {
-
     }
 
     Sprite ChangeSprite(Transform a)

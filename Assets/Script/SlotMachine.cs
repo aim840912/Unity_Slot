@@ -7,19 +7,52 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] Image[] board = new Image[9];
     [SerializeField] int[] boardNum = new int[9];
     [SerializeField] Button rotateBtn;
-    CalculateMoney calculateMoney = new CalculateMoney();
+    [SerializeField] Button stopBtn;
     [SerializeField] GameObject EffectObj;
-    void GeneralBoard()
-    {
+    [SerializeField] GameObject SpinObj;
+    Spin[] spinGroup;
 
-        for (var i = 0; i < board.Length; i++)
+    void Start()
+    {
+        spinGroup = SpinObj.GetComponentsInChildren<Spin>();
+    }
+    // void GeneralBoard()
+    // {
+    //     for (var i = 0; i < board.Length; i++)
+    //     {
+    //         board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
+    //     }
+    // }
+
+    void Spinning()
+    {
+        rotateBtn.enabled = false;
+        stopBtn.enabled = true;
+        foreach (var item in spinGroup)
         {
-            board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
+            item.GetComponent<Animator>().SetBool("Rolling", true);
         }
+    }
+
+    void SpinOver()
+    {
+        rotateBtn.enabled = true;
+        stopBtn.enabled = false;
+        foreach (var item in spinGroup)
+        {
+            item.GetComponent<Animator>().SetBool("Rolling", false);
+        }
+
+        for (var i = 0; i < spinGroup.Length; i++)
+        {
+            spinGroup[i].GetComponentInChildren<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
+        }
+
     }
 
     IEnumerator GetServerNum()
     {
+
         IEffect[] temp = EffectObj.GetComponentsInChildren<IEffect>();
 
         foreach (var item in temp)
@@ -27,11 +60,10 @@ public class SlotMachine : MonoBehaviour
             item.BeforeSpin();
         }
 
-
         SimulationServer.Instance.GenerateNum();
         boardNum = SimulationServer.Instance.boardNum;
 
-        GeneralBoard();
+        // GeneralBoard();
 
         rotateBtn.interactable = false;
 
