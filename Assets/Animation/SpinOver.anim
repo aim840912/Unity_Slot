@@ -632,7 +632,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.5
-    functionName: 
+    functionName: SpinOver
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

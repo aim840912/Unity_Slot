@@ -46,8 +46,8 @@ public class JudgeArray
 
     public int CheckSeven(params int[] a)
     {
-        int redSeven = a.Count(x => x == (int)Character.gura);
-        int blueSeven = a.Count(x => x == (int)Character.ame);
+        int redSeven = a.Count(x => x == (int)Odds.gura);
+        int blueSeven = a.Count(x => x == (int)Odds.ame);
 
         if (redSeven > 0 && blueSeven > 0)
         {
@@ -99,16 +99,16 @@ public class JudgeArray
     {
         switch (a)
         {
-            case (int)Character.gura:
-            case (int)Character.ame:
+            case (int)Odds.gura:
+            case (int)Odds.ame:
                 anySeven++;
                 break;
-            case (int)Character.ina:
-            case (int)Character.kronii:
-            case (int)Character.mumei:
+            case (int)Odds.ina:
+            case (int)Odds.kronii:
+            case (int)Odds.mumei:
                 anyBar++;
                 break;
-            case (int)Character.sana:
+            case (int)Odds.sana:
                 break;
             default:
                 anyFruit++;
