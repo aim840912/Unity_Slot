@@ -42,37 +42,39 @@ public class SlotMachine : MonoBehaviour
     public void SpinOver()
     {
         StartCoroutine(GetServerNum());
+        StartCoroutine(SpinOverOrder());
+    }
+
+    IEnumerator SpinOverOrder()
+    {
+
+        for (var i = 0; i < board.Length; i++)
+        {
+            board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
+        }
+        foreach (var item in spinGroup)
+        {
+            item.GetComponent<Animator>().SetBool("Rolling", false);
+        }
+        yield return new WaitForSeconds(2);
+
         foreach (var item in temp)
         {
             item.AfterSpin();
         }
         rotateBtn.gameObject.SetActive(true);
         stopBtn.gameObject.SetActive(false);
-        foreach (var item in spinGroup)
-        {
-            item.GetComponent<Animator>().SetBool("Rolling", false);
-        }
-        for (var i = 0; i < spinGroup.Length; i++)
-        {
-            spinGroup[i].GetComponentInChildren<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
-        }
 
 
     }
 
     IEnumerator GetServerNum()
     {
-
         SimulationServer.Instance.GenerateNum();
         boardNum = SimulationServer.Instance.boardNum;
 
-        yield return new WaitForSeconds(0.5f);
-
+        yield return new WaitForSeconds(0.1f);
         int oddsTotal = SimulationServer.Instance.CalculateOdds(boardNum);
-
         Debug.Log(oddsTotal);
-
-        yield return new WaitForSeconds(0.5f);
-
     }
 }
