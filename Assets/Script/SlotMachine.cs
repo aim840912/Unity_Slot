@@ -1,21 +1,24 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SlotMachine : MonoBehaviour
 {
     public static SlotMachine Instance { get; set; }
-
     [SerializeField] Image[] board = new Image[9];
     [SerializeField] int[] boardNum = new int[9];
     [SerializeField] GameObject effectObj;
     [SerializeField] GameObject spinObj;
     [SerializeField] GameObject spinBtn;
     [SerializeField] GameObject stopBtn;
+    [SerializeField] TMP_InputField inputField;
+    [SerializeField] TMP_Text moneyText;
+    [SerializeField] TMP_Text winText;
+
+
     Spin[] spinGroup;
     IEffect[] temp;
-
-    public bool isSpin = false;
 
     private void Awake()
     {
@@ -67,6 +70,7 @@ public class SlotMachine : MonoBehaviour
         boardNum = SimulationServer.Instance.boardNum;
 
         int oddsTotal = SimulationServer.Instance.CalculateOdds(boardNum);
+
         Debug.Log(oddsTotal);
 
         for (var i = 0; i < board.Length; i++)
@@ -78,7 +82,11 @@ public class SlotMachine : MonoBehaviour
         {
             item.AfterSpin();
         }
+        winText.text = (GetInputValue() / 8 * oddsTotal).ToString();
     }
 
-
+    int GetInputValue()
+    {
+        return int.Parse(inputField.text);
+    }
 }
