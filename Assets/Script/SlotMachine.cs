@@ -4,77 +4,81 @@ using UnityEngine.UI;
 
 public class SlotMachine : MonoBehaviour
 {
+    public static SlotMachine Instance { get; set; }
+
     [SerializeField] Image[] board = new Image[9];
     [SerializeField] int[] boardNum = new int[9];
-    [SerializeField] Button rotateBtn;
-    [SerializeField] Button stopBtn;
-    [SerializeField] GameObject EffectObj;
-    [SerializeField] GameObject SpinObj;
+    [SerializeField] GameObject effectObj;
+    [SerializeField] GameObject spinObj;
+    [SerializeField] GameObject spinBtn;
+    [SerializeField] GameObject stopBtn;
     Spin[] spinGroup;
     IEffect[] temp;
+
+    public bool isSpin = false;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
+    }
+
     void Start()
     {
-        spinGroup = SpinObj.GetComponentsInChildren<Spin>();
-        temp = EffectObj.GetComponentsInChildren<IEffect>();
+        spinGroup = spinObj.GetComponentsInChildren<Spin>();
+        temp = effectObj.GetComponentsInChildren<IEffect>();
     }
-    // void GeneralBoard()
-    // {
-    //     for (var i = 0; i < board.Length; i++)
-    //     {
-    //         board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
-    //     }
-    // }
 
-    public void Spinning()
+
+    public void StartSpin()
     {
-        rotateBtn.gameObject.SetActive(false);
-        stopBtn.gameObject.SetActive(true);
-        foreach (var item in spinGroup)
-        {
-            item.GetComponent<Animator>().SetBool("Rolling", true);
-        }
         foreach (var item in temp)
         {
             item.BeforeSpin();
         }
+
+        spinBtn.SetActive(false);
+        stopBtn.SetActive(true);
+        foreach (var item in spinGroup)
+        {
+            item.GetComponent<Animator>().SetBool("Rolling", true);
+        }
     }
 
-    public void SpinOver()
+    public void StopSpin()
     {
+        spinBtn.SetActive(true);
+        stopBtn.SetActive(false);
+        foreach (var item in spinGroup)
+        {
+            item.GetComponent<Animator>().SetBool("Rolling", false);
+        }
         StartCoroutine(GetServerNum());
-        StartCoroutine(SpinOverOrder());
     }
 
-    IEnumerator SpinOverOrder()
+    IEnumerator GetServerNum()
     {
+        yield return new WaitForSeconds(0.5f);
+
+        SimulationServer.Instance.GenerateNum();
+        boardNum = SimulationServer.Instance.boardNum;
+
+        int oddsTotal = SimulationServer.Instance.CalculateOdds(boardNum);
+        Debug.Log(oddsTotal);
 
         for (var i = 0; i < board.Length; i++)
         {
             board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
         }
-        foreach (var item in spinGroup)
-        {
-            item.GetComponent<Animator>().SetBool("Rolling", false);
-        }
-        yield return new WaitForSeconds(2);
-
+        yield return new WaitForSeconds(2.5f);
         foreach (var item in temp)
         {
             item.AfterSpin();
         }
-        rotateBtn.gameObject.SetActive(true);
-        stopBtn.gameObject.SetActive(false);
-
-
     }
 
-    IEnumerator GetServerNum()
-    {
-        SimulationServer.Instance.GenerateNum();
-        boardNum = SimulationServer.Instance.boardNum;
 
-        yield return new WaitForSeconds(0.1f);
-        int oddsTotal = SimulationServer.Instance.CalculateOdds(boardNum);
-        Debug.Log(oddsTotal);
-    }
 }

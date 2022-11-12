@@ -7,8 +7,6 @@ public class Spin : MonoBehaviour
 {
     [SerializeField] Sprite[] spriteSource = new Sprite[10];
 
-    // [SerializeField] int rollingSpeed = 250;
-
     Animator anim;
 
     void Awake()
@@ -24,16 +22,17 @@ public class Spin : MonoBehaviour
 
     void SpinProcess()
     {
+
         RectTransform[] temp = this.GetComponentsInChildren<RectTransform>();
         foreach (var item in temp)
         {
             ChangeSprite(item);
         }
+
     }
 
     Sprite ChangeSprite(Transform a)
     {
-
         int imageIndex = Random.Range(0, spriteSource.Length);
         a.GetComponent<Image>().sprite = spriteSource[imageIndex];
 

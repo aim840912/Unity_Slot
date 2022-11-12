@@ -51,5 +51,6 @@
     "temp/": true,
     "Temp/": true
   },
-  "cSpell.words": ["gura", "hololive", "irys", "kronii", "mumei", "Raycast"]
+  "cSpell.words": ["gura", "hololive", "irys", "kronii", "mumei", "Raycast"],
+  "commentTranslate.targetLanguage": "zh-TW"
 }
