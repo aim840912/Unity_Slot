@@ -10,6 +10,8 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] int[] boardNum = new int[9];
     [SerializeField] GameObject effectObj;
     [SerializeField] GameObject spinObj;
+
+    [Header("UI")]
     [SerializeField] GameObject spinBtn;
     [SerializeField] GameObject stopBtn;
     [SerializeField] TMP_InputField inputField;
@@ -45,6 +47,7 @@ public class SlotMachine : MonoBehaviour
 
         spinBtn.SetActive(false);
         stopBtn.SetActive(true);
+
         foreach (var item in spinGroup)
         {
             item.GetComponent<Animator>().SetBool("Rolling", true);
