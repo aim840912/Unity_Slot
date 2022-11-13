@@ -74,6 +74,8 @@ public class SlotMachine : MonoBehaviour
 
         int oddsTotal = SimulationServer.Instance.CalculateOdds(boardNum);
 
+        int finalWinMoney = SimulationServer.Instance.CalculateFinalMoney(boardNum, GetInputValue());
+
         Debug.Log(oddsTotal);
 
         for (var i = 0; i < board.Length; i++)
@@ -85,11 +87,19 @@ public class SlotMachine : MonoBehaviour
         {
             item.AfterSpin();
         }
-        winText.text = (GetInputValue() / 8 * oddsTotal).ToString();
+        winText.text = finalWinMoney.ToString();
     }
 
     int GetInputValue()
     {
-        return int.Parse(inputField.text);
+        if (inputField.text == "")
+        {
+            return 0;
+        }
+        else
+        {
+            return int.Parse(inputField.text);
+        }
+
     }
 }

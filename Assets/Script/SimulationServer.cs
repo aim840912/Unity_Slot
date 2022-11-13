@@ -34,4 +34,9 @@ public class SimulationServer : MonoBehaviour
     {
         return calculateMoney.GetOddsTotal(boardArr);
     }
+
+    public int CalculateFinalMoney(int[] boardArr, int betMoney)
+    {
+        return calculateMoney.GetOddsTotal(boardArr) * (betMoney / 8);
+    }
 }
