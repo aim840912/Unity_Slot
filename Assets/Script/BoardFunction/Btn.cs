@@ -3,17 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class Btn : MonoBehaviour
 {
-
-    void BtnState()
+    [SerializeField] private Button button;
+    private void Reset()
     {
-        this.GetComponent<Button>().interactable = true;
+        button = this.GetComponent<Button>();
     }
 
-    void OnEnable()
+    private Coroutine coroutine;
+
+    public void SetupButton()
     {
-        this.GetComponent<Button>().interactable = false;
-        this.Invoke("BtnState", 3f);
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = StartCoroutine(DelayInteractableButton());
+    }
+
+    private IEnumerator DelayInteractableButton()
+    {
+        button.interactable = false;
+        yield return new WaitForSeconds(3);
+        button.interactable = true;
+        coroutine = null;
     }
 }

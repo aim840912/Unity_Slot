@@ -12,12 +12,12 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] GameObject spinObj;
 
     [Header("UI")]
-    [SerializeField] GameObject spinBtn;
-    [SerializeField] GameObject stopBtn;
+    [SerializeField] Btn setupBtn;
     [SerializeField] TMP_InputField inputField;
     [SerializeField] TMP_Text moneyText;
     [SerializeField] TMP_Text winText;
 
+    bool isSpin = false;
 
     Spin[] spinGroup;
     IEffect[] temp;
@@ -37,6 +37,20 @@ public class SlotMachine : MonoBehaviour
         temp = effectObj.GetComponentsInChildren<IEffect>();
     }
 
+    public void SetupBtn()
+    {
+        isSpin = !isSpin;
+        setupBtn.SetupButton();
+
+        if (isSpin)
+        {
+            StartSpin();
+        }
+        else
+        {
+            StopSpin();
+        }
+    }
 
     public void StartSpin()
     {
@@ -44,9 +58,6 @@ public class SlotMachine : MonoBehaviour
         {
             item.BeforeSpin();
         }
-
-        spinBtn.SetActive(false);
-        stopBtn.SetActive(true);
 
         foreach (var item in spinGroup)
         {
@@ -56,8 +67,6 @@ public class SlotMachine : MonoBehaviour
 
     public void StopSpin()
     {
-        spinBtn.SetActive(true);
-        stopBtn.SetActive(false);
         foreach (var item in spinGroup)
         {
             item.GetComponent<Animator>().SetBool("Rolling", false);
