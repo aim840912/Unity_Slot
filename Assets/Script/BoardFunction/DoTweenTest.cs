@@ -27,8 +27,17 @@ public class DoTweenTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Queue();
+            SpinDown().OnComplete(Queue);
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            DOTween.Clear();
+        }
+    }
+
+    Tween SpinToZero()
+    {
+        return this.transform.DOLocalMoveY(0, speed, true).SetEase(Ease.Linear);
     }
     Tween SpinDown()
     {
@@ -39,18 +48,19 @@ public class DoTweenTest : MonoBehaviour
     Tween SpinToOrigin()
     {
         // Tweener tweener = this.transform.DOLocalMoveY(this.transform.localPosition.y - 100, speed, false);
-        return this.transform.DOLocalMoveY(110, 0, true).SetEase(Ease.Linear);
+        Debug.Log("origin");
+        return this.transform.DOLocalMoveY(100, 0, true).SetEase(Ease.Linear);
     }
 
     void Queue()
     {
-
         sequence = DOTween.Sequence();
         // Tween firstTween = SpinDown();
         sequence
         .Append(SpinToOrigin())
         .Append(SpinDown())
         .AppendCallback(ChangeSprite);
+
 
         sequence.SetLoops(-1, LoopType.Restart);
     }
@@ -60,6 +70,4 @@ public class DoTweenTest : MonoBehaviour
         int imageIndex = Random.Range(0, spriteSource.Length);
         spinImage.sprite = spriteSource[imageIndex];
     }
-
-
 }
