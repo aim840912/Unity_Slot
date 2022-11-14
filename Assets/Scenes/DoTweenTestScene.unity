@@ -602,7 +602,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinImage: {fileID: 1506816969}
+  spriteSource:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spinImage: {fileID: 1506816970}
   endPoint: -100
   speed: 1
 --- !u!1 &2011874840
@@ -694,6 +705,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinImage: {fileID: 2011874841}
+  spriteSource:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spinImage: {fileID: 0}
   endPoint: -100
   speed: 1
