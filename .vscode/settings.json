@@ -51,6 +51,15 @@
     "temp/": true,
     "Temp/": true
   },
-  "cSpell.words": ["gura", "hololive", "irys", "kronii", "mumei", "Raycast"],
+  "cSpell.words": [
+    "gura",
+    "hololive",
+    "irys",
+    "kronii",
+    "mumei",
+    "Raycast",
+    "Tweener",
+    "Yoyo"
+  ],
   "commentTranslate.targetLanguage": "zh-TW"
 }

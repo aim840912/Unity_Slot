@@ -5,7 +5,7 @@ using TMPro;
 
 public class SlotMachine : MonoBehaviour
 {
-    public static SlotMachine Instance { get; set; }
+
     [SerializeField] Image[] board = new Image[9];
     [SerializeField] int[] boardNum = new int[9];
     [SerializeField] GameObject effectObj;
@@ -21,15 +21,6 @@ public class SlotMachine : MonoBehaviour
 
     Spin[] spinGroup;
     IEffect[] temp;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        Instance = this;
-    }
 
     void Start()
     {
@@ -77,7 +68,7 @@ public class SlotMachine : MonoBehaviour
     IEnumerator GetServerNum()
     {
         yield return new WaitForSeconds(0.5f);
-
+        // boardNum
         SimulationServer.Instance.GenerateNum();
         boardNum = SimulationServer.Instance.boardNum;
 

@@ -7,7 +7,6 @@ public class SimulationServer : MonoBehaviour
 {
     public static SimulationServer Instance { get; set; }
     public int[] boardNum = new int[9];
-    int minRandomNum = 0;
     int maxRandomNum = 10;
 
     private void Awake()
@@ -23,7 +22,7 @@ public class SimulationServer : MonoBehaviour
     {
         for (var i = 0; i < boardNum.Length; i++)
         {
-            boardNum[i] = Random.Range(minRandomNum, maxRandomNum);
+            boardNum[i] = Random.Range(0, maxRandomNum);
         }
         return boardNum;
     }
