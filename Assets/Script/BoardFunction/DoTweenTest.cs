@@ -9,10 +9,22 @@ public class DoTweenTest : MonoBehaviour
     [SerializeField] Sprite[] spriteSource = new Sprite[10];
 
     public Image spinImage;
+
+    public RectTransform[] items;
+    public RectTransform item;
+
+
     public float endPoint;
     public float speed;
+    public enum SpinType
+    {
+        motionless,
+        Spinning,
+        Ending,
 
-    Sequence sequence;
+    }
+
+    private SpinType spinType = SpinType.motionless;
     void Awake()
     {
         string path = "Art";
@@ -23,51 +35,63 @@ public class DoTweenTest : MonoBehaviour
         DOTween.Init();
     }
 
-    void Update()
+    public void SetupButton()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (spinType == SpinType.motionless)
         {
-            SpinDown().OnComplete(Queue);
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            DOTween.Clear();
-        }
-    }
+            spinType = SpinType.Spinning;
+            SpinDown().OnComplete(SpinLoop);
 
-    Tween SpinToZero()
-    {
-        return this.transform.DOLocalMoveY(0, speed, true).SetEase(Ease.Linear);
+        }
+        else if (spinType == SpinType.Spinning)
+        {
+            spinType = SpinType.motionless;
+            DOTween.Clear();
+            SpinDown().OnComplete(SpinToStop);
+        }
+
     }
     Tween SpinDown()
     {
-        // Tweener tweener = this.transform.DOLocalMoveY(this.transform.localPosition.y - 100, speed, false);
-        Debug.Log("down");
-        return this.transform.DOLocalMoveY(endPoint, speed, true).SetEase(Ease.Linear);
+
+        return item.transform.DOLocalMoveY(endPoint, speed, true).SetEase(Ease.Linear);
     }
     Tween SpinToOrigin()
     {
-        // Tweener tweener = this.transform.DOLocalMoveY(this.transform.localPosition.y - 100, speed, false);
-        Debug.Log("origin");
-        return this.transform.DOLocalMoveY(100, 0, true).SetEase(Ease.Linear);
+        return item.transform.DOLocalMoveY(100, 0, true).SetEase(Ease.Linear);
     }
 
-    void Queue()
+    void SpinLoop()
     {
-        sequence = DOTween.Sequence();
+        Sequence LoopSpinSequence;
+
+        LoopSpinSequence = DOTween.Sequence();
         // Tween firstTween = SpinDown();
-        sequence
+        LoopSpinSequence
         .Append(SpinToOrigin())
         .Append(SpinDown())
         .AppendCallback(ChangeSprite);
 
 
-        sequence.SetLoops(-1, LoopType.Restart);
+        LoopSpinSequence.SetLoops(-1, LoopType.Restart);
+    }
+
+    void SpinToStop()
+    {
+        Sequence LoopToStopSequence;
+
+        LoopToStopSequence = DOTween.Sequence();
+        // Tween firstTween = SpinDown();
+        LoopToStopSequence
+        .Append(SpinDown())
+        .Append(SpinToOrigin())
+        .Append(item.transform.DOLocalMoveY(0, speed, true));
+
     }
 
     void ChangeSprite()
     {
         int imageIndex = Random.Range(0, spriteSource.Length);
-        spinImage.sprite = spriteSource[imageIndex];
+        spinImage.overrideSprite = spriteSource[imageIndex];
     }
 }
