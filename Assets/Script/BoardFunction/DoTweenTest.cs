@@ -90,6 +90,6 @@ public class DoTweenTest : MonoBehaviour
     void RandomChangeSprite()
     {
         int imageIndex = Random.Range(0, spriteSource.Length);
-        spinImage.overrideSprite = spriteSource[imageIndex];
+        spinImage.sprite = spriteSource[imageIndex];
     }
 }
