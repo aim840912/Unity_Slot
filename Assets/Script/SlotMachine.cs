@@ -7,14 +7,13 @@ public class SlotMachine : MonoBehaviour
 {
 
     [SerializeField] Image[] board = new Image[9];
-    [SerializeField] int[] boardNum = new int[9];
+    [SerializeField] public int[] boardNum = new int[9];
     [SerializeField] GameObject effectObj;
     [SerializeField] GameObject spinObj;
 
     [Header("UI")]
     [SerializeField] Btn setupBtn;
     [SerializeField] TMP_InputField inputField;
-    [SerializeField] TMP_Text moneyText;
     [SerializeField] TMP_Text winText;
 
     bool isSpin = false;
@@ -68,13 +67,12 @@ public class SlotMachine : MonoBehaviour
     IEnumerator GetServerNum()
     {
         yield return new WaitForSeconds(0.5f);
-        // boardNum
-        SimulationServer.Instance.GenerateNum();
-        boardNum = SimulationServer.Instance.boardNum;
 
-        int oddsTotal = SimulationServer.Instance.CalculateOdds(boardNum);
+        IServer server = new SimulationServer();
+        boardNum = server.GenerateNum();
 
-        int finalWinMoney = SimulationServer.Instance.CalculateFinalMoney(boardNum, GetInputValue());
+        int oddsTotal = server.CalculateOdds(boardNum);
+        int finalWinMoney = server.CalculateFinalMoney(boardNum, GetInputValue());
 
         Debug.Log(oddsTotal);
 

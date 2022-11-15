@@ -3,20 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 模擬後端
-public class SimulationServer : MonoBehaviour
+public class SimulationServer : IServer
 {
-    public static SimulationServer Instance { get; set; }
     public int[] boardNum = new int[9];
     int maxRandomNum = 10;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        Instance = this;
-    }
 
     public int[] GenerateNum() // 模擬伺服器產生數字
     {

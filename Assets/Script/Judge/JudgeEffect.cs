@@ -9,12 +9,13 @@ public class JudgeEffect : MonoBehaviour, IEffect
 
     JudgeArray judgeArray = new JudgeArray();
 
+    public SlotMachine slotMachine;
     public void AfterSpin()
     {
         this.GetComponent<Image>().enabled = JudgeRole(
-    SimulationServer.Instance.boardNum[effectInt[0]],
-    SimulationServer.Instance.boardNum[effectInt[1]],
-    SimulationServer.Instance.boardNum[effectInt[2]]);
+    slotMachine.boardNum[effectInt[0]],
+    slotMachine.boardNum[effectInt[1]],
+    slotMachine.boardNum[effectInt[2]]);
     }
 
     public void BeforeSpin()
