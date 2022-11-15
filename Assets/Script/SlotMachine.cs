@@ -61,10 +61,10 @@ public class SlotMachine : MonoBehaviour
         {
             item.GetComponent<Animator>().SetBool("Rolling", false);
         }
-        StartCoroutine(GetServerNum());
+        StartCoroutine(SlotProcessCoro());
     }
 
-    IEnumerator GetServerNum()
+    IEnumerator SlotProcessCoro()
     {
         yield return new WaitForSeconds(0.5f);
 
@@ -85,8 +85,8 @@ public class SlotMachine : MonoBehaviour
         {
             item.AfterSpin();
         }
-        winText.text = finalWinMoney.ToString();
     }
+
 
     int GetInputValue()
     {

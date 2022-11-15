@@ -9,10 +9,7 @@ public class DoTweenTest : MonoBehaviour
     [SerializeField] Sprite[] spriteSource = new Sprite[10];
 
     public Image spinImage;
-
-    public RectTransform[] items;
     public RectTransform item;
-
 
     public float endPoint;
     public float speed;
@@ -21,18 +18,13 @@ public class DoTweenTest : MonoBehaviour
         motionless,
         Spinning,
         Ending,
-
     }
-
     private SpinType spinType = SpinType.motionless;
+
     void Awake()
     {
         string path = "Art";
         spriteSource = Resources.LoadAll<Sprite>(path);
-    }
-    void Start()
-    {
-        DOTween.Init();
     }
 
     public void SetupButton()
@@ -41,7 +33,6 @@ public class DoTweenTest : MonoBehaviour
         {
             spinType = SpinType.Spinning;
             SpinDown().OnComplete(SpinLoop);
-
         }
         else if (spinType == SpinType.Spinning)
         {
@@ -53,7 +44,6 @@ public class DoTweenTest : MonoBehaviour
     }
     Tween SpinDown()
     {
-
         return item.transform.DOLocalMoveY(endPoint, speed, true).SetEase(Ease.Linear);
     }
     Tween SpinToOrigin()
@@ -66,12 +56,10 @@ public class DoTweenTest : MonoBehaviour
         Sequence LoopSpinSequence;
 
         LoopSpinSequence = DOTween.Sequence();
-        // Tween firstTween = SpinDown();
         LoopSpinSequence
         .Append(SpinToOrigin())
         .Append(SpinDown())
-        .AppendCallback(ChangeSprite);
-
+        .AppendCallback(RandomChangeSprite);
 
         LoopSpinSequence.SetLoops(-1, LoopType.Restart);
     }
@@ -81,15 +69,13 @@ public class DoTweenTest : MonoBehaviour
         Sequence LoopToStopSequence;
 
         LoopToStopSequence = DOTween.Sequence();
-        // Tween firstTween = SpinDown();
         LoopToStopSequence
         .Append(SpinDown())
         .Append(SpinToOrigin())
         .Append(item.transform.DOLocalMoveY(0, speed, true));
-
     }
 
-    void ChangeSprite()
+    void RandomChangeSprite()
     {
         int imageIndex = Random.Range(0, spriteSource.Length);
         spinImage.overrideSprite = spriteSource[imageIndex];

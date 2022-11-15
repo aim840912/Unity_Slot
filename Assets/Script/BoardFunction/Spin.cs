@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class Spin : MonoBehaviour
 {
     [SerializeField] Sprite[] spriteSource = new Sprite[10];
-
     Animator anim;
 
     void Awake()
@@ -21,13 +20,11 @@ public class Spin : MonoBehaviour
 
     void SpinProcess()
     {
-
         RectTransform[] temp = this.GetComponentsInChildren<RectTransform>();
         foreach (var item in temp)
         {
             ChangeSprite(item);
         }
-
     }
 
     Sprite ChangeSprite(Transform a)
