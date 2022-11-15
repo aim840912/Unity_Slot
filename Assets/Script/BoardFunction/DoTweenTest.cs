@@ -20,25 +20,42 @@ public class DoTweenTest : MonoBehaviour
         Ending,
     }
     private SpinType spinType = SpinType.motionless;
-
+    Sequence SpinSequence;
     void Awake()
     {
         string path = "Art";
         spriteSource = Resources.LoadAll<Sprite>(path);
     }
 
-    public void SetupButton()
+    private void Start()
     {
-        if (spinType == SpinType.motionless)
+
+    }
+    private void Update()
+    {
+        Debug.Log(spinType);
+    }
+
+    public void SpinTypeSwitch(SpinType type)
+    {
+        if (SpinSequence != null)
         {
-            spinType = SpinType.Spinning;
-            SpinDown().OnComplete(SpinLoop);
+            SpinSequence.Kill();
         }
-        else if (spinType == SpinType.Spinning)
+
+        switch (spinType)
         {
-            spinType = SpinType.motionless;
-            DOTween.Clear();
-            SpinDown().OnComplete(SpinToStop);
+            case SpinType.motionless:
+                spinType = SpinType.Spinning;
+                SpinDown().OnComplete(SpinLoop);
+                break;
+            case SpinType.Spinning:
+                spinType = SpinType.motionless;
+
+                SpinDown().OnComplete(SpinToStop);
+                break;
+            default:
+                break;
         }
 
     }
@@ -53,24 +70,19 @@ public class DoTweenTest : MonoBehaviour
 
     void SpinLoop()
     {
-        Sequence LoopSpinSequence;
-
-        LoopSpinSequence = DOTween.Sequence();
-        LoopSpinSequence
+        SpinSequence = DOTween.Sequence();
+        SpinSequence
         .Append(SpinToOrigin())
         .Append(SpinDown())
         .AppendCallback(RandomChangeSprite);
 
-        LoopSpinSequence.SetLoops(-1, LoopType.Restart);
+        SpinSequence.SetLoops(-1, LoopType.Restart);
     }
 
     void SpinToStop()
     {
-        Sequence LoopToStopSequence;
-
-        LoopToStopSequence = DOTween.Sequence();
-        LoopToStopSequence
-        .Append(SpinDown())
+        SpinSequence = DOTween.Sequence();
+        SpinSequence
         .Append(SpinToOrigin())
         .Append(item.transform.DOLocalMoveY(0, speed, true));
     }

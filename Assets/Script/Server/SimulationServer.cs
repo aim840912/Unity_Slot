@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-// 模擬後端
 public class SimulationServer : IServer
 {
     public int[] boardNum = new int[9];

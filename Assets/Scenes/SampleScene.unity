@@ -1601,8 +1601,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 259496623}
   - {fileID: 1713306855}
+  - {fileID: 259496623}
   - {fileID: 2063208998}
   - {fileID: 1720678203}
   - {fileID: 1252739855}
@@ -6156,12 +6156,12 @@ GameObject:
   - component: {fileID: 1713306857}
   - component: {fileID: 1713306856}
   m_Layer: 5
-  m_Name: Odds List
+  m_Name: Odds Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1713306855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6179,7 +6179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -696, y: 6}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 700.2607, y: 326.7883}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713306856
