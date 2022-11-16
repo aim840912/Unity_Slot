@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 020000000500000008000000
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 606385563}
 --- !u!114 &279298333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,12 +635,12 @@ RectTransform:
   m_Children:
   - {fileID: 1850532559}
   - {fileID: 1016390010}
+  - {fileID: 1460027932}
   - {fileID: 383900230}
   - {fileID: 1934596510}
   - {fileID: 840491376}
   - {fileID: 864793684}
   - {fileID: 2125996125}
-  - {fileID: 1460027932}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -760,8 +760,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 1104062345}
   item: {fileID: 1104062344}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &524014256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,6 +869,7 @@ MonoBehaviour:
   boardNum: 000000000000000000000000000000000000000000000000000000000000000000000000
   spinObj: {fileID: 1460027931}
   setupBtn: {fileID: 1016390011}
+  effectObj: {fileID: 383900229}
 --- !u!1 &640371453
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 030000000400000005000000
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 606385563}
 --- !u!114 &640371456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 060000000700000008000000
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 606385563}
 --- !u!114 &698854696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,8 +1465,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 666817768}
   item: {fileID: 666817767}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &880243265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2121,8 +2120,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 1364742217}
   item: {fileID: 1364742216}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &1137604007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2241,8 +2239,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 2014245388}
   item: {fileID: 2014245387}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &1279823894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3154,7 +3151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 060000000400000002000000
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 606385563}
 --- !u!114 &1734174214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3336,8 +3333,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 1740165771}
   item: {fileID: 1740165770}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &1747575513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3688,8 +3684,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 953231261}
   item: {fileID: 953231260}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &1771691398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3793,7 +3788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 010000000400000007000000
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 606385563}
 --- !u!114 &1814364868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3975,8 +3970,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 1368624575}
   item: {fileID: 1368624574}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &1881026975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4095,8 +4089,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 1080087771}
   item: {fileID: 1080087770}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &1899810484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4391,8 +4384,7 @@ MonoBehaviour:
   - {fileID: 0}
   spinImage: {fileID: 903704279}
   item: {fileID: 903704278}
-  endPoint: -110
-  speed: 0.2
+  endPoint: -100
 --- !u!114 &1935516334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4496,7 +4488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 000000000100000002000000
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 606385563}
 --- !u!114 &1948146579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4663,7 +4655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 000000000300000006000000
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 606385563}
 --- !u!114 &2021607025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4965,7 +4957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 000000000400000008000000
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 606385563}
 --- !u!114 &2138419789
 MonoBehaviour:
   m_ObjectHideFlags: 0
