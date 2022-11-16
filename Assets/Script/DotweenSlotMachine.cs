@@ -17,9 +17,11 @@ public class DotweenSlotMachine : MonoBehaviour
 
     DoTweenTest[] DoTweenTestGroup;
 
-
+    IEffect[] temp;
+    [SerializeField] GameObject effectObj;
     void Start()
     {
+        temp = effectObj.GetComponentsInChildren<IEffect>();
         DoTweenTestGroup = spinObj.GetComponentsInChildren<DoTweenTest>();
     }
 
@@ -41,7 +43,7 @@ public class DotweenSlotMachine : MonoBehaviour
 
     public void StartSpin()
     {
-        Debug.Log("in start spin");
+        StartCoroutine(SetupLineEffect(false));
         foreach (var item in DoTweenTestGroup)
         {
             item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.motionless, null);
@@ -58,6 +60,9 @@ public class DotweenSlotMachine : MonoBehaviour
             item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.Spinning, NumToImg);
         }
 
+
+        StartCoroutine(SetupLineEffect(true));
+
     }
 
     void NumToImg()
@@ -68,16 +73,36 @@ public class DotweenSlotMachine : MonoBehaviour
         }
     }
 
+    IEnumerator SetupLineEffect(bool isLineEffectAppear)
+    {
+        if (isLineEffectAppear)
+        {
+            yield return new WaitForSeconds(2f);
+            foreach (var item in temp)
+            {
+                item.AfterSpin();
+            }
+        }
+        else
+        {
+
+            foreach (var item in temp)
+            {
+                item.BeforeSpin();
+            }
+        }
+    }
+
     IEnumerator SlotProcessCoro()
     {
-        yield return new WaitForSeconds(0.5f);
-
         IServer server = new SimulationServer();
         boardNum = server.GenerateNum();
 
         int oddsTotal = server.CalculateOdds(boardNum);
 
         Debug.Log(oddsTotal);
+
+        yield return new WaitForSeconds(1f);
 
     }
 }

@@ -761,7 +761,7 @@ MonoBehaviour:
   spinImage: {fileID: 1104062345}
   item: {fileID: 1104062344}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &524014256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1466,7 +1466,7 @@ MonoBehaviour:
   spinImage: {fileID: 666817768}
   item: {fileID: 666817767}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &880243265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2122,7 +2122,7 @@ MonoBehaviour:
   spinImage: {fileID: 1364742217}
   item: {fileID: 1364742216}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &1137604007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   spinImage: {fileID: 2014245388}
   item: {fileID: 2014245387}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &1279823894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,7 +3337,7 @@ MonoBehaviour:
   spinImage: {fileID: 1740165771}
   item: {fileID: 1740165770}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &1747575513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3689,7 +3689,7 @@ MonoBehaviour:
   spinImage: {fileID: 953231261}
   item: {fileID: 953231260}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &1771691398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3976,7 +3976,7 @@ MonoBehaviour:
   spinImage: {fileID: 1368624575}
   item: {fileID: 1368624574}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &1881026975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4096,7 +4096,7 @@ MonoBehaviour:
   spinImage: {fileID: 1080087771}
   item: {fileID: 1080087770}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &1899810484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4392,7 +4392,7 @@ MonoBehaviour:
   spinImage: {fileID: 903704279}
   item: {fileID: 903704278}
   endPoint: -110
-  speed: 1
+  speed: 0.2
 --- !u!114 &1935516334
 MonoBehaviour:
   m_ObjectHideFlags: 0

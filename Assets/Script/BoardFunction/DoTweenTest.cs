@@ -12,7 +12,7 @@ public class DoTweenTest : MonoBehaviour
     public RectTransform item;
 
     public float endPoint;
-    public float speed;
+    float speed;
     public enum SpinType
     {
         motionless,
@@ -52,6 +52,7 @@ public class DoTweenTest : MonoBehaviour
     }
     Tween SpinDown()
     {
+        speed = Random.Range(.2f, .25f);
         return item.transform.DOLocalMoveY(endPoint, speed, true).SetEase(Ease.Linear);
     }
     Tween SpinToOrigin()
@@ -77,7 +78,7 @@ public class DoTweenTest : MonoBehaviour
         .Append(SpinDown())
         .Append(SpinToOrigin())
         .AppendCallback(callBack)
-        .Append(item.transform.DOLocalMoveY(0, speed, true));
+        .Append(item.transform.DOLocalMoveY(0, 1.5f, true).SetEase(Ease.OutBack));
 
 
     }
