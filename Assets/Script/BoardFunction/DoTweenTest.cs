@@ -27,16 +27,7 @@ public class DoTweenTest : MonoBehaviour
         spriteSource = Resources.LoadAll<Sprite>(path);
     }
 
-    private void Start()
-    {
-
-    }
-    private void Update()
-    {
-        Debug.Log(spinType);
-    }
-
-    public void SpinTypeSwitch(SpinType type)
+    public void SpinTypeSwitch(SpinType type, TweenCallback callBack)
     {
         if (SpinSequence != null)
         {
@@ -52,7 +43,7 @@ public class DoTweenTest : MonoBehaviour
             case SpinType.Spinning:
                 spinType = SpinType.motionless;
 
-                SpinDown().OnComplete(SpinToStop);
+                SpinToStop(callBack);
                 break;
             default:
                 break;
@@ -79,12 +70,16 @@ public class DoTweenTest : MonoBehaviour
         SpinSequence.SetLoops(-1, LoopType.Restart);
     }
 
-    void SpinToStop()
+    void SpinToStop(TweenCallback callBack)
     {
         SpinSequence = DOTween.Sequence();
         SpinSequence
+        .Append(SpinDown())
         .Append(SpinToOrigin())
+        .AppendCallback(callBack)
         .Append(item.transform.DOLocalMoveY(0, speed, true));
+
+
     }
 
     void RandomChangeSprite()

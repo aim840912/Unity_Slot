@@ -44,18 +44,28 @@ public class DotweenSlotMachine : MonoBehaviour
         Debug.Log("in start spin");
         foreach (var item in DoTweenTestGroup)
         {
-            item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.motionless);
+            item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.motionless, null);
         }
     }
 
     public void StopSpin()
     {
-        Debug.Log("in stop spin");
+
+        StartCoroutine(SlotProcessCoro());
+
         foreach (var item in DoTweenTestGroup)
         {
-            item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.Spinning);
+            item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.Spinning, NumToImg);
         }
-        StartCoroutine(SlotProcessCoro());
+
+    }
+
+    void NumToImg()
+    {
+        for (var i = 0; i < board.Length; i++)
+        {
+            board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
+        }
     }
 
     IEnumerator SlotProcessCoro()
@@ -69,10 +79,5 @@ public class DotweenSlotMachine : MonoBehaviour
 
         Debug.Log(oddsTotal);
 
-        for (var i = 0; i < board.Length; i++)
-        {
-            board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
-        }
-        yield return new WaitForSeconds(2.5f);
     }
 }
