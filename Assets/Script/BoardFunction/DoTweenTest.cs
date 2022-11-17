@@ -8,8 +8,9 @@ public class DoTweenTest : MonoBehaviour
 {
     [SerializeField] Sprite[] spriteSource = new Sprite[10];
 
-    public Image spinImage;
-    public RectTransform item;
+
+    [SerializeField]
+    Image item;
 
     public float endPoint;
     float speed;
@@ -25,6 +26,10 @@ public class DoTweenTest : MonoBehaviour
     {
         string path = "Art";
         spriteSource = Resources.LoadAll<Sprite>(path);
+    }
+    private void Start()
+    {
+        item = this.gameObject.transform.GetChild(0).GetComponent<Image>();
     }
 
     public void SpinTypeSwitch(SpinType type, TweenCallback callBack)
@@ -62,8 +67,7 @@ public class DoTweenTest : MonoBehaviour
 
     void SpinLoop()
     {
-        SpinSequence = DOTween.Sequence();
-        SpinSequence
+        SpinSequence = DOTween.Sequence()
         .Append(SpinToOrigin())
         .Append(SpinDown())
         .AppendCallback(RandomChangeSprite);
@@ -73,8 +77,7 @@ public class DoTweenTest : MonoBehaviour
 
     void SpinToStop(TweenCallback callBack)
     {
-        SpinSequence = DOTween.Sequence();
-        SpinSequence
+        SpinSequence = DOTween.Sequence()
         .Append(SpinDown())
         .Append(SpinToOrigin())
         .AppendCallback(callBack)
@@ -86,6 +89,6 @@ public class DoTweenTest : MonoBehaviour
     void RandomChangeSprite()
     {
         int imageIndex = Random.Range(0, spriteSource.Length);
-        spinImage.sprite = spriteSource[imageIndex];
+        item.sprite = spriteSource[imageIndex];
     }
 }
