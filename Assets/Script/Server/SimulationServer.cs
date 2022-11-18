@@ -3,13 +3,13 @@ using UnityEngine;
 public class SimulationServer : IServer
 {
     public int[] boardNum = new int[9];
-    int maxRandomNum = 10;
+    public int MaxRandomNum { get { return 10; } }
 
     public int[] GenerateNum() // 模擬伺服器產生數字
     {
         for (var i = 0; i < boardNum.Length; i++)
         {
-            boardNum[i] = Random.Range(0, maxRandomNum);
+            boardNum[i] = Random.Range(0, MaxRandomNum);
         }
         return boardNum;
     }

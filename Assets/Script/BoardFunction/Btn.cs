@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class Btn : MonoBehaviour
 {
     [SerializeField] private Button button;
+    public float InteractableTime
+    {
+        get { return 3; }
+    }
     private void Reset()
     {
         button = this.GetComponent<Button>();
@@ -25,7 +29,7 @@ public class Btn : MonoBehaviour
     private IEnumerator DelayInteractableButton()
     {
         button.interactable = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(InteractableTime);
         button.interactable = true;
         coroutine = null;
     }

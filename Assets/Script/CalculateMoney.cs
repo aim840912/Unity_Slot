@@ -12,7 +12,7 @@ public class CalculateMoney
 
         if (oddsNum == 0)
         {
-            foreach (var item in GetJudgeLine(boardArr))
+            foreach (var item in SetJudgeLine(boardArr))
             {
                 oddsNum += judgeArray.JudgeThree(item);
             }
@@ -21,7 +21,7 @@ public class CalculateMoney
         return oddsNum;
     }
 
-    private int[][] GetJudgeLine(int[] boardArr)
+    private int[][] SetJudgeLine(int[] boardArr)
     {
         int[][] eachLine =  {
          new int[] { boardArr[0], boardArr[1], boardArr[2] },

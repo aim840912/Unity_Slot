@@ -1,94 +1,103 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
 public class DoTweenTest : MonoBehaviour
 {
-    [SerializeField] Sprite[] spriteSource = new Sprite[10];
+    [SerializeField] Sprite[] _spriteSource = new Sprite[10];
+    Image Item
+    {
+        get
+        {
+            return this.gameObject.transform.GetChild(0).GetComponent<Image>();
+        }
+    }
 
-
-    [SerializeField]
-    Image item;
-
-    public float endPoint;
-    float speed;
+    public float EndPoint
+    {
+        get { return -100; }
+    }
+    public float StartPoint
+    {
+        get { return 100; }
+    }
+    public float Speed
+    {
+        get { return Random.Range(.2f, .25f); }
+    }
     public enum SpinType
     {
         motionless,
         Spinning,
         Ending,
     }
-    private SpinType spinType = SpinType.motionless;
-    Sequence SpinSequence;
+    private SpinType _spinType = SpinType.motionless;
+    Sequence _spinSequence;
     void Awake()
     {
-        string path = "Art";
-        spriteSource = Resources.LoadAll<Sprite>(path);
+        GetAllSprite();
     }
-    private void Start()
+
+    void GetAllSprite()
     {
-        item = this.gameObject.transform.GetChild(0).GetComponent<Image>();
+        string path = "Art";
+        _spriteSource = Resources.LoadAll<Sprite>(path);
     }
 
     public void SpinTypeSwitch(SpinType type, TweenCallback callBack)
     {
-        if (SpinSequence != null)
-        {
-            SpinSequence.Kill();
-        }
-
-        switch (spinType)
+        ResetSequence();
+        switch (_spinType)
         {
             case SpinType.motionless:
-                spinType = SpinType.Spinning;
+                _spinType = SpinType.Spinning;
                 SpinDown().OnComplete(SpinLoop);
                 break;
             case SpinType.Spinning:
-                spinType = SpinType.motionless;
-
+                _spinType = SpinType.motionless;
                 SpinToStop(callBack);
                 break;
-            default:
-                break;
         }
-
     }
     Tween SpinDown()
     {
-        speed = Random.Range(.2f, .25f);
-        return item.transform.DOLocalMoveY(endPoint, speed, true).SetEase(Ease.Linear);
+        return Item.transform.DOLocalMoveY(EndPoint, Speed, true).SetEase(Ease.Linear);
     }
     Tween SpinToOrigin()
     {
-        return item.transform.DOLocalMoveY(100, 0, true).SetEase(Ease.Linear);
+        return Item.transform.DOLocalMoveY(StartPoint, 0, true).SetEase(Ease.Linear);
     }
 
     void SpinLoop()
     {
-        SpinSequence = DOTween.Sequence()
+        _spinSequence = DOTween.Sequence()
         .Append(SpinToOrigin())
         .Append(SpinDown())
-        .AppendCallback(RandomChangeSprite);
+        .AppendCallback(ChangeSprite);
 
-        SpinSequence.SetLoops(-1, LoopType.Restart);
+        _spinSequence.SetLoops(-1, LoopType.Restart);
     }
 
     void SpinToStop(TweenCallback callBack)
     {
-        SpinSequence = DOTween.Sequence()
+        _spinSequence = DOTween.Sequence()
         .Append(SpinDown())
         .Append(SpinToOrigin())
         .AppendCallback(callBack)
-        .Append(item.transform.DOLocalMoveY(0, 1.5f, true).SetEase(Ease.OutBack));
-
-
+        .Append(Item.transform.DOLocalMoveY(0, 1.5f, true).SetEase(Ease.OutBack));
     }
 
-    void RandomChangeSprite()
+    void ResetSequence()
     {
-        int imageIndex = Random.Range(0, spriteSource.Length);
-        item.sprite = spriteSource[imageIndex];
+        if (_spinSequence != null)
+        {
+            _spinSequence.Kill();
+        }
+    }
+
+    void ChangeSprite()
+    {
+        int imageIndex = Random.Range(0, _spriteSource.Length);
+        Item.sprite = _spriteSource[imageIndex];
     }
 }

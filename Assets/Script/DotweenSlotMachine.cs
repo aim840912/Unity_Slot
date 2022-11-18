@@ -52,17 +52,13 @@ public class DotweenSlotMachine : MonoBehaviour
 
     public void StopSpin()
     {
-
         StartCoroutine(SlotProcessCoro());
 
         foreach (var item in DoTweenTestGroup)
         {
             item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.Spinning, NumToImg);
         }
-
-
         StartCoroutine(SetupLineEffect(true));
-
     }
 
     void NumToImg()
