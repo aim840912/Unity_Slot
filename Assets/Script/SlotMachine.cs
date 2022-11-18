@@ -3,11 +3,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DotweenSlotMachine : MonoBehaviour
+public class SlotMachine : MonoBehaviour
 {
 
-    [SerializeField] Image[] board = new Image[9];
-    [SerializeField] public int[] boardNum = new int[9];
+    [SerializeField] Image[] _board = new Image[9];
+    [SerializeField] public int[] BoardNum { get; set; }
     [SerializeField] GameObject spinObj;
 
     [Header("UI")]
@@ -27,7 +27,6 @@ public class DotweenSlotMachine : MonoBehaviour
 
     public void SetupBtn()
     {
-        Debug.Log("in setupBtn");
         isSpin = !isSpin;
         setupBtn.SetupButton();
 
@@ -46,7 +45,7 @@ public class DotweenSlotMachine : MonoBehaviour
         StartCoroutine(SetupLineEffect(false));
         foreach (var item in DoTweenTestGroup)
         {
-            item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.motionless, null);
+            item.GetComponent<DoTweenTest>().SetType(DoTweenTest.SpinType.motionless, null);
         }
     }
 
@@ -56,16 +55,16 @@ public class DotweenSlotMachine : MonoBehaviour
 
         foreach (var item in DoTweenTestGroup)
         {
-            item.GetComponent<DoTweenTest>().SpinTypeSwitch(DoTweenTest.SpinType.Spinning, NumToImg);
+            item.GetComponent<DoTweenTest>().SetType(DoTweenTest.SpinType.Spinning, SetNumToImg);
         }
         StartCoroutine(SetupLineEffect(true));
     }
 
-    void NumToImg()
+    void SetNumToImg()
     {
-        for (var i = 0; i < board.Length; i++)
+        for (var i = 0; i < _board.Length; i++)
         {
-            board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[boardNum[i]];
+            _board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[BoardNum[i]];
         }
     }
 
@@ -81,7 +80,6 @@ public class DotweenSlotMachine : MonoBehaviour
         }
         else
         {
-
             foreach (var item in temp)
             {
                 item.BeforeSpin();
@@ -92,9 +90,9 @@ public class DotweenSlotMachine : MonoBehaviour
     IEnumerator SlotProcessCoro()
     {
         IServer server = new SimulationServer();
-        boardNum = server.GenerateNum();
+        BoardNum = server.GenerateNum();
 
-        int oddsTotal = server.CalculateOdds(boardNum);
+        int oddsTotal = server.CalculateOdds(BoardNum);
 
         Debug.Log(oddsTotal);
 

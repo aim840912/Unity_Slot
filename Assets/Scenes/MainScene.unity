@@ -747,7 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -758,8 +758,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 1104062345}
-  endPoint: -100
 --- !u!114 &524014256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,10 +850,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 606385560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dea42f3a06da1143b5eb45b6f823f98, type: 3}
+  m_Script: {fileID: 11500000, guid: 78d934019e345ce48bc1412bc4aa276a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board:
+  _board:
   - {fileID: 1368624575}
   - {fileID: 1740165771}
   - {fileID: 2014245388}
@@ -865,7 +863,6 @@ MonoBehaviour:
   - {fileID: 953231261}
   - {fileID: 666817768}
   - {fileID: 1364742217}
-  boardNum: 000000000000000000000000000000000000000000000000000000000000000000000000
   spinObj: {fileID: 1460027931}
   setupBtn: {fileID: 1016390011}
   effectObj: {fileID: 383900229}
@@ -1451,7 +1448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1462,8 +1459,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 666817768}
-  endPoint: -100
 --- !u!114 &880243265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1804,7 +1799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e936811ba6265f4da8b7087a8345b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 1016390012}
+  _button: {fileID: 1016390012}
 --- !u!114 &1016390012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2105,7 +2100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -2116,8 +2111,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 1364742217}
-  endPoint: -100
 --- !u!114 &1137604007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2223,7 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -2234,8 +2227,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 2014245388}
-  endPoint: -100
 --- !u!114 &1279823894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3316,7 +3307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3327,8 +3318,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 1740165771}
-  endPoint: -100
 --- !u!114 &1747575513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3666,7 +3655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3677,8 +3666,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 953231261}
-  endPoint: -100
 --- !u!114 &1771691398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3951,7 +3938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3962,8 +3949,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 1368624575}
-  endPoint: -100
 --- !u!114 &1881026975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4069,7 +4054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -4080,8 +4065,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 1080087771}
-  endPoint: -100
 --- !u!114 &1899810484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4363,7 +4346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7b448c38feb8c40acf72ee333458d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSource:
+  _spriteSource:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -4374,8 +4357,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  item: {fileID: 903704279}
-  endPoint: -100
 --- !u!114 &1935516334
 MonoBehaviour:
   m_ObjectHideFlags: 0

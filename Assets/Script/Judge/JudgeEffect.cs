@@ -9,13 +9,13 @@ public class JudgeEffect : MonoBehaviour, IEffect
 
     JudgeArray judgeArray = new JudgeArray();
 
-    public DotweenSlotMachine slotMachine;
+    public SlotMachine slotMachine;
     public void AfterSpin()
     {
         this.GetComponent<Image>().enabled = JudgeRole(
-    slotMachine.boardNum[effectInt[0]],
-    slotMachine.boardNum[effectInt[1]],
-    slotMachine.boardNum[effectInt[2]]);
+    slotMachine.BoardNum[effectInt[0]],
+    slotMachine.BoardNum[effectInt[1]],
+    slotMachine.BoardNum[effectInt[2]]);
     }
 
     public void BeforeSpin()

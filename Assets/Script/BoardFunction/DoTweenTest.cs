@@ -44,7 +44,7 @@ public class DoTweenTest : MonoBehaviour
         _spriteSource = Resources.LoadAll<Sprite>(path);
     }
 
-    public void SpinTypeSwitch(SpinType type, TweenCallback callBack)
+    public void SetType(SpinType type, TweenCallback callBack)
     {
         ResetSequence();
         switch (_spinType)
