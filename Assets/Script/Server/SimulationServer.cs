@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class SimulationServer : IServer
 {
-    public int[] boardNum = new int[9];
+    public int[] BoardNum = new int[9];
     public int MaxRandomNum { get { return 10; } }
 
-    public int[] GenerateNum() // 模擬伺服器產生數字
+    public int[] GenerateNum()
     {
-        for (var i = 0; i < boardNum.Length; i++)
+        for (var i = 0; i < BoardNum.Length; i++)
         {
-            boardNum[i] = Random.Range(0, MaxRandomNum);
+            BoardNum[i] = Random.Range(0, MaxRandomNum);
         }
-        return boardNum;
+        return BoardNum;
     }
 
     CalculateMoney calculateMoney = new CalculateMoney();

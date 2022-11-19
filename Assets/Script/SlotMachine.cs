@@ -6,31 +6,36 @@ using TMPro;
 public class SlotMachine : MonoBehaviour
 {
 
-    [SerializeField] Image[] _board = new Image[9];
-    [SerializeField] public int[] BoardNum { get; set; }
-    [SerializeField] GameObject spinObj;
+    [SerializeField] Image[] _rollingImageGroup = new Image[9];
+    public int[] BoardNum { get; set; }
+    [SerializeField] GameObject _spinObj;
 
     [Header("UI")]
-    [SerializeField] Btn setupBtn;
+    [SerializeField] Btn _setupBtn;
 
-    bool isSpin = false;
+    bool _isSpin = false;
 
-    DoTweenTest[] DoTweenTestGroup;
+    SetSpin[] _spinObjs;
 
-    IEffect[] temp;
-    [SerializeField] GameObject effectObj;
+    IEffect[] _lineObjs;
+    [SerializeField] GameObject _lineObj;
     void Start()
     {
-        temp = effectObj.GetComponentsInChildren<IEffect>();
-        DoTweenTestGroup = spinObj.GetComponentsInChildren<DoTweenTest>();
+        SetGroup();
     }
 
+
+    void SetGroup()
+    {
+        _lineObjs = _lineObj.GetComponentsInChildren<IEffect>();
+        _spinObjs = _spinObj.GetComponentsInChildren<SetSpin>();
+    }
     public void SetupBtn()
     {
-        isSpin = !isSpin;
-        setupBtn.SetupButton();
+        _isSpin = !_isSpin;
+        _setupBtn.SetupButton();
 
-        if (isSpin)
+        if (_isSpin)
         {
             StartSpin();
         }
@@ -43,9 +48,9 @@ public class SlotMachine : MonoBehaviour
     public void StartSpin()
     {
         StartCoroutine(SetupLineEffect(false));
-        foreach (var item in DoTweenTestGroup)
+        foreach (SetSpin item in _spinObjs)
         {
-            item.GetComponent<DoTweenTest>().SetType(DoTweenTest.SpinType.motionless, null);
+            item.SetType(SetSpin.SpinType.motionless, null);
         }
     }
 
@@ -53,18 +58,18 @@ public class SlotMachine : MonoBehaviour
     {
         StartCoroutine(SlotProcessCoro());
 
-        foreach (var item in DoTweenTestGroup)
+        foreach (SetSpin item in _spinObjs)
         {
-            item.GetComponent<DoTweenTest>().SetType(DoTweenTest.SpinType.Spinning, SetNumToImg);
+            item.SetType(SetSpin.SpinType.Spinning, SetNumToImg);
         }
         StartCoroutine(SetupLineEffect(true));
     }
 
     void SetNumToImg()
     {
-        for (var i = 0; i < _board.Length; i++)
+        for (var i = 0; i < _rollingImageGroup.Length; i++)
         {
-            _board[i].GetComponent<Image>().sprite = DictNumToImg.numToImg[BoardNum[i]];
+            _rollingImageGroup[i].sprite = DictNumToImg.numToImg[BoardNum[i]];
         }
     }
 
@@ -73,14 +78,14 @@ public class SlotMachine : MonoBehaviour
         if (isLineEffectAppear)
         {
             yield return new WaitForSeconds(2f);
-            foreach (var item in temp)
+            foreach (var item in _lineObjs)
             {
                 item.AfterSpin();
             }
         }
         else
         {
-            foreach (var item in temp)
+            foreach (var item in _lineObjs)
             {
                 item.BeforeSpin();
             }

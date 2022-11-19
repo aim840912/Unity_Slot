@@ -338,7 +338,6 @@ GameObject:
   m_Component:
   - component: {fileID: 118396072}
   - component: {fileID: 118396071}
-  - component: {fileID: 118396073}
   m_Layer: 0
   m_Name: '[DOTween]'
   m_TagString: Untagged
@@ -374,23 +373,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &118396073
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118396070}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 6df83bce154d8d74398fd5f2e30ec8c1, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings: []
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &229088653
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,16 +865,6 @@ MonoBehaviour:
   - {fileID: 1364742217}
   _spinObj: {fileID: 1460027931}
   _setupBtn: {fileID: 1016390011}
-  _spinObjs:
-  - {fileID: 1881026974}
-  - {fileID: 1747575512}
-  - {fileID: 1279823893}
-  - {fileID: 524014255}
-  - {fileID: 1935516333}
-  - {fileID: 1899810483}
-  - {fileID: 1771691397}
-  - {fileID: 880243264}
-  - {fileID: 1137604006}
   _lineObj: {fileID: 383900229}
 --- !u!1 &640371453
 GameObject:

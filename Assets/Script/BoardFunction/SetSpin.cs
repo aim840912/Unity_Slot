@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Collections;
 
-public class DoTweenTest : MonoBehaviour
+public class SetSpin : MonoBehaviour
 {
     [SerializeField] Sprite[] _spriteSource = new Sprite[10];
     Image Item
@@ -23,7 +24,7 @@ public class DoTweenTest : MonoBehaviour
     }
     public float Speed
     {
-        get { return Random.Range(.2f, .25f); }
+        get { return Random.Range(.2f, .5f); }
     }
     public enum SpinType
     {
@@ -51,7 +52,7 @@ public class DoTweenTest : MonoBehaviour
         {
             case SpinType.motionless:
                 _spinType = SpinType.Spinning;
-                SpinDown().OnComplete(SpinLoop);
+                SpinDown().OnStepComplete(SpinLoop);
                 break;
             case SpinType.Spinning:
                 _spinType = SpinType.motionless;
@@ -84,7 +85,7 @@ public class DoTweenTest : MonoBehaviour
         .Append(SpinDown())
         .Append(SpinToOrigin())
         .AppendCallback(callBack)
-        .Append(Item.transform.DOLocalMoveY(0, 1.5f, true).SetEase(Ease.OutBack));
+        .Append(Item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack));
     }
 
     void ResetSequence()
