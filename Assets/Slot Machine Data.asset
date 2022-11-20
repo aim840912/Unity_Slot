@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aeb638511895b41b1a9f4e21a9b9e9, type: 3}
+  m_Name: Slot Machine Data
+  m_EditorClassIdentifier: 
+  RollingImage:
+  - {fileID: 21300000, guid: d1398f917ed652a4a80def2dfbd53105, type: 3}
+  - {fileID: 21300000, guid: a372064dcc7f09f4d8c454721641ef50, type: 3}
+  - {fileID: 21300000, guid: 8c5d51ac10a79c54dabe1ec04e2d8b5d, type: 3}
+  - {fileID: 21300000, guid: 1e6af61564ff4a84098613a121b20b98, type: 3}
+  - {fileID: 21300000, guid: 867168e456ff0e04ea727a2dd5451baf, type: 3}
+  - {fileID: 21300000, guid: 87a9a20957a2c6d4aa5e2bd59f862d2f, type: 3}
+  - {fileID: 21300000, guid: d3d1c2e8c8b1e2745b9d257e0dec38e7, type: 3}
+  - {fileID: 21300000, guid: 2624f5b284d8c9241952afc8ca2ab4cf, type: 3}
+  - {fileID: 21300000, guid: 2efd24f709caa0f44b16138765a95b7a, type: 3}
+  - {fileID: 21300000, guid: 32e2d988a2bd70143b21558a3e217ac0, type: 3}

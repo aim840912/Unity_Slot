@@ -6,40 +6,32 @@ using System.Collections;
 public class SetSpin : MonoBehaviour
 {
     [SerializeField] Sprite[] _spriteSource = new Sprite[10];
-    Image Item
-    {
-        get
-        {
-            return this.gameObject.transform.GetChild(0).GetComponent<Image>();
-        }
-    }
+    [SerializeField] Image Item;// so bad , 直接拉關聯比較好
 
-    public float EndPoint
-    {
-        get { return -100; }
-    }
-    public float StartPoint
-    {
-        get { return 100; }
-    }
-    public float Speed
+
+    public float EndPoint { get; set; }
+    public float StartPoint { get; set; }
+    public float Duration
     {
         get { return Random.Range(.2f, .5f); }
     }
     public enum SpinType
     {
         motionless,
-        Spinning,
-        Ending,
+        Spinning
     }
     private SpinType _spinType = SpinType.motionless;
     Sequence _spinSequence;
     void Awake()
     {
+        var _imageHeight = Item.rectTransform.rect.size.y;
+        StartPoint = _imageHeight;
+        EndPoint = _imageHeight * -1f;
+
         GetAllSprite();
     }
 
-    void GetAllSprite()
+    void GetAllSprite()// so bad 做出manager比較好
     {
         string path = "Art";
         _spriteSource = Resources.LoadAll<Sprite>(path);
@@ -62,7 +54,7 @@ public class SetSpin : MonoBehaviour
     }
     Tween SpinDown()
     {
-        return Item.transform.DOLocalMoveY(EndPoint, Speed, true).SetEase(Ease.Linear);
+        return Item.transform.DOLocalMoveY(EndPoint, Duration, true).SetEase(Ease.Linear);
     }
     Tween SpinToOrigin()
     {

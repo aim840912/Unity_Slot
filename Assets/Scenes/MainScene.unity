@@ -776,6 +776,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 1104062345}
 --- !u!114 &524014256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,18 +883,11 @@ MonoBehaviour:
   - {fileID: 666817768}
   - {fileID: 1364742217}
   _spinObj: {fileID: 1460027931}
-  _setupBtn: {fileID: 1016390011}
-  _spinObjs:
-  - {fileID: 1881026974}
-  - {fileID: 1747575512}
-  - {fileID: 1279823893}
-  - {fileID: 524014255}
-  - {fileID: 1935516333}
-  - {fileID: 1899810483}
-  - {fileID: 1771691397}
-  - {fileID: 880243264}
-  - {fileID: 1137604006}
   _lineObj: {fileID: 383900229}
+  _setupBtn: {fileID: 1016390011}
+  _inputBet: {fileID: 1934596511}
+  _winMoneyText: {fileID: 864793685}
+  _playerMoneyText: {fileID: 0}
 --- !u!1 &640371453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,6 +1481,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 666817768}
 --- !u!114 &880243265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2139,6 +2134,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 1364742217}
 --- !u!114 &1137604007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2255,6 +2251,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 2014245388}
 --- !u!114 &1279823894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3346,6 +3343,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 1740165771}
 --- !u!114 &1747575513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3694,6 +3692,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 953231261}
 --- !u!114 &1771691398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3977,6 +3976,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 1368624575}
 --- !u!114 &1881026975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4093,6 +4093,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 1080087771}
 --- !u!114 &1899810484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4232,14 +4233,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
@@ -4385,6 +4386,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Item: {fileID: 903704279}
 --- !u!114 &1935516334
 MonoBehaviour:
   m_ObjectHideFlags: 0

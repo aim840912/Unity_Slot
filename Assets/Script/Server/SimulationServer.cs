@@ -18,11 +18,11 @@ public class SimulationServer : IServer
 
     public int CalculateOdds(int[] boardArr)
     {
-        return calculateMoney.GetOddsTotal(boardArr);
+        return calculateMoney.GetOddsTotal(boardArr);// so bad,多此一舉 改成 BoardNum
     }
 
     public int CalculateFinalMoney(int[] boardArr, int betMoney)
     {
-        return calculateMoney.GetOddsTotal(boardArr) * (betMoney / 8);
+        return CalculateOdds(boardArr) * (betMoney / 8);
     }
 }

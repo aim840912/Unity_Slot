@@ -5,20 +5,33 @@ using TMPro;
 
 public class SlotMachine : MonoBehaviour
 {
-
     [SerializeField] Image[] _rollingImageGroup = new Image[9];
     public int[] BoardNum { get; set; }
     [SerializeField] GameObject _spinObj;
+    [SerializeField] GameObject _lineObj;
 
     [Header("UI")]
     [SerializeField] Btn _setupBtn;
+    [SerializeField] TMP_InputField _inputBet;
+    [SerializeField] TMP_Text _winMoneyText;
+    [SerializeField] TMP_Text _playerMoneyText;
+
 
     bool _isSpin = false;
 
     SetSpin[] _spinObjs;
 
     IEffect[] _lineObjs;
-    [SerializeField] GameObject _lineObj;
+
+    int BetMoney
+    {
+        get
+        {
+            return GetInputValue();
+        }
+
+    }
+
     void Start()
     {
         SetGroup();
@@ -99,9 +112,19 @@ public class SlotMachine : MonoBehaviour
 
         int oddsTotal = server.CalculateOdds(BoardNum);
 
+        _winMoneyText.text = server.CalculateFinalMoney(BoardNum, BetMoney).ToString();
+
         Debug.Log(oddsTotal);
 
         yield return new WaitForSeconds(1f);
 
+    }
+
+    int GetInputValue()
+    {
+        if (_inputBet.text == "")
+            return 0;
+
+        return int.Parse(_inputBet.text) < 0 ? 0 : int.Parse(_inputBet.text);
     }
 }

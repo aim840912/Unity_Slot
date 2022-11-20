@@ -1,39 +1,34 @@
-using UnityEngine;
-
 public class CalculateMoney
 {
-    [SerializeField] int oddsNum;
     JudgeArray judgeArray = new JudgeArray();
-
+    int[][] _eachLineIndexList = {
+         new int[] { 0, 1, 2 },
+         new int[] { 3, 4, 5 },
+         new int[] { 6, 7, 8 },
+         new int[] { 0, 3, 6 },
+         new int[] { 1, 4, 7 },
+         new int[] { 2, 5, 8 },
+         new int[] { 0, 4, 8 },
+         new int[] { 6, 4, 2 },
+         };
     public int GetOddsTotal(int[] boardArr)
     {
-        oddsNum = 0;
+        var oddsNum = 0;
         oddsNum = judgeArray.CheckAllTheSame(boardArr);
 
         if (oddsNum == 0)
         {
-            foreach (var item in SetJudgeLine(boardArr))
+            foreach (var item in _eachLineIndexList)
             {
-                oddsNum += judgeArray.JudgeThree(item);
+                var line = new int[item.Length];
+                for (int i = 0; i < line.Length; i++)
+                {
+                    line[i] = boardArr[item[i]];
+                }
+                oddsNum += judgeArray.JudgeThree(line);
             }
             oddsNum += judgeArray.CheckSeven(boardArr);
         }
         return oddsNum;
-    }
-
-    private int[][] SetJudgeLine(int[] boardArr)
-    {
-        int[][] eachLine =  {
-         new int[] { boardArr[0], boardArr[1], boardArr[2] },
-         new int[] { boardArr[3], boardArr[4], boardArr[5] },
-         new int[] { boardArr[6], boardArr[7], boardArr[8] },
-         new int[] { boardArr[0], boardArr[3], boardArr[6] },
-         new int[] { boardArr[1], boardArr[4], boardArr[7] },
-         new int[] { boardArr[2], boardArr[5], boardArr[8] },
-         new int[] { boardArr[0], boardArr[4], boardArr[8] },
-         new int[] { boardArr[6], boardArr[4], boardArr[2] },
-         };
-
-        return eachLine;
     }
 }
