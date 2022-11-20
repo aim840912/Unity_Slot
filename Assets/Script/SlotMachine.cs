@@ -69,7 +69,7 @@ public class SlotMachine : MonoBehaviour
 
     public void StopSpin()
     {
-        StartCoroutine(SlotProcessCoro());
+        SlotProcessCoro();
 
         foreach (SetSpin item in _spinObjs)
         {
@@ -105,19 +105,16 @@ public class SlotMachine : MonoBehaviour
         }
     }
 
-    IEnumerator SlotProcessCoro()
+    void SlotProcessCoro()
     {
         IServer server = new SimulationServer();
         BoardNum = server.GenerateNum();
 
-        int oddsTotal = server.CalculateOdds(BoardNum);
+        int oddsTotal = server.CalculateOdds();
 
-        _winMoneyText.text = server.CalculateFinalMoney(BoardNum, BetMoney).ToString();
+        _winMoneyText.text = server.CalculateFinalMoney(BetMoney).ToString();
 
         Debug.Log(oddsTotal);
-
-        yield return new WaitForSeconds(1f);
-
     }
 
     int GetInputValue()

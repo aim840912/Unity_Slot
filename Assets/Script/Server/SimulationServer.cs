@@ -3,7 +3,7 @@ using UnityEngine;
 public class SimulationServer : IServer
 {
     public int[] BoardNum = new int[9];
-    public int MaxRandomNum { get { return 10; } }
+    public const int MaxRandomNum = 10;
 
     public int[] GenerateNum()
     {
@@ -16,13 +16,13 @@ public class SimulationServer : IServer
 
     CalculateMoney calculateMoney = new CalculateMoney();
 
-    public int CalculateOdds(int[] boardArr)
+    public int CalculateOdds()
     {
-        return calculateMoney.GetOddsTotal(boardArr);// so bad,多此一舉 改成 BoardNum
+        return calculateMoney.GetOddsTotal(BoardNum);// so bad,多此一舉 改成 BoardNum
     }
 
-    public int CalculateFinalMoney(int[] boardArr, int betMoney)
+    public int CalculateFinalMoney(int betMoney)
     {
-        return CalculateOdds(boardArr) * (betMoney / 8);
+        return CalculateOdds() * (betMoney / 8);
     }
 }
