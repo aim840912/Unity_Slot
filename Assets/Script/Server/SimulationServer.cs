@@ -18,7 +18,7 @@ public class SimulationServer : IServer
 
     public int CalculateOdds()
     {
-        return calculateMoney.GetOddsTotal(BoardNum);// so bad,多此一舉 改成 BoardNum
+        return calculateMoney.GetOddsTotal(BoardNum);
     }
 
     public int CalculateFinalMoney(int betMoney)

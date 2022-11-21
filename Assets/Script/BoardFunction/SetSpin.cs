@@ -7,6 +7,7 @@ public class SetSpin : MonoBehaviour
 {
     [SerializeField] Sprite[] _spriteSource = new Sprite[10];
     [SerializeField] Image Item;// so bad , 直接拉關聯比較好
+    [SerializeField] Data _imageData;
 
 
     public float EndPoint { get; set; }
@@ -31,10 +32,9 @@ public class SetSpin : MonoBehaviour
         GetAllSprite();
     }
 
-    void GetAllSprite()// so bad 做出manager比較好
+    void GetAllSprite()
     {
-        string path = "Art";
-        _spriteSource = Resources.LoadAll<Sprite>(path);
+        _spriteSource = _imageData.RollingImage;
     }
 
     public void SetType(SpinType type, TweenCallback callBack)

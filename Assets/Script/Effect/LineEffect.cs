@@ -13,9 +13,9 @@ public class LineEffect : MonoBehaviour
     public void AfterSpin()
     {
         this.GetComponent<Image>().enabled = JudgeRole(
-    slotMachine.BoardNum[effectInt[0]],
-    slotMachine.BoardNum[effectInt[1]],
-    slotMachine.BoardNum[effectInt[2]]);
+   (Odds)slotMachine.BoardNum[effectInt[0]],
+   (Odds)slotMachine.BoardNum[effectInt[1]],
+   (Odds)slotMachine.BoardNum[effectInt[2]]);
     }
 
     public void BeforeSpin()
@@ -23,7 +23,7 @@ public class LineEffect : MonoBehaviour
         this.GetComponent<Image>().enabled = false;
     }
 
-    private bool JudgeRole(params int[] a)
+    private bool JudgeRole(params Odds[] a)
     {
         int anySeven = 0;
         int anyBar = 0;
@@ -34,7 +34,7 @@ public class LineEffect : MonoBehaviour
             judgeArray.CheckEachCount(a[i], ref anySeven, ref anyBar, ref anyFruit);
         }
 
-        if (a[0] == 9)
+        if (a[0] == Odds.hololive)
         {
             return true;
         }

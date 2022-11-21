@@ -3,19 +3,19 @@ using System.Linq;
 
 public class JudgeArray
 {
-    public int CheckAllTheSame(params int[] a)
+    public int CheckAllTheSame(params Odds[] a)
     {
         int characterCount = a.Count(x => x == a[0]);
 
         if (characterCount == 9)
         {
-            return OddsDict.dictOverall[(Odds)a[0]];
+            return OddsDict.dictOverall[a[0]];
         }
 
         return CheckBoard(a);
     }
 
-    public int CheckBoard(params int[] a)
+    public int CheckBoard(params Odds[] a)
     {
         int anySeven = 0;
         int anyBar = 0;
@@ -44,10 +44,10 @@ public class JudgeArray
         }
     }
 
-    public int CheckSeven(params int[] a)
+    public int CheckSeven(params Odds[] a)
     {
-        int redSeven = a.Count(x => x == (int)Odds.gura);
-        int blueSeven = a.Count(x => x == (int)Odds.ame);
+        int redSeven = a.Count(x => x == Odds.gura);
+        int blueSeven = a.Count(x => x == Odds.ame);
 
         if (redSeven > 0 && blueSeven > 0)
         {
@@ -64,7 +64,7 @@ public class JudgeArray
         return 0;
     }
 
-    public int JudgeThree(params int[] a)
+    public int JudgeThree(params Odds[] a)
     {
         int anySeven = 0;
         int anyBar = 0;
@@ -76,7 +76,7 @@ public class JudgeArray
         }
         if (a[0] == a[1] && a[0] == a[2])
         {
-            return OddsDict.dicNormal[(Odds)a[0]];
+            return OddsDict.dicNormal[a[0]];
         }
         else if (anySeven == 3)
         {
@@ -87,7 +87,7 @@ public class JudgeArray
         {
             return OddsDict.dicNormal[Odds.anyBar];
         }
-        else if (a[0] == (int)Odds.hololive)
+        else if (a[0] == Odds.hololive)
         {
             if (a[0] == a[1]) return 5;
             else return 2;
@@ -95,20 +95,20 @@ public class JudgeArray
         return 0;
     }
 
-    public void CheckEachCount(int a, ref int anySeven, ref int anyBar, ref int anyFruit)
+    public void CheckEachCount(Odds a, ref int anySeven, ref int anyBar, ref int anyFruit)
     {
         switch (a)
         {
-            case (int)Odds.gura:
-            case (int)Odds.ame:
+            case Odds.gura:
+            case Odds.ame:
                 anySeven++;
                 break;
-            case (int)Odds.ina:
-            case (int)Odds.kronii:
-            case (int)Odds.mumei:
+            case Odds.ina:
+            case Odds.kronii:
+            case Odds.mumei:
                 anyBar++;
                 break;
-            case (int)Odds.sana:
+            case Odds.sana:
                 break;
             default:
                 anyFruit++;
