@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JudgeEffect : MonoBehaviour, IEffect
+public class LineEffect : MonoBehaviour
 {
     [SerializeField] int[] effectInt = new int[3];
 

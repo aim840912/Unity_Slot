@@ -515,7 +515,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 279298330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 020000000500000008000000
@@ -882,12 +882,30 @@ MonoBehaviour:
   - {fileID: 953231261}
   - {fileID: 666817768}
   - {fileID: 1364742217}
-  _spinObj: {fileID: 1460027931}
-  _lineObj: {fileID: 383900229}
   _setupBtn: {fileID: 1016390011}
   _inputBet: {fileID: 1934596511}
   _winMoneyText: {fileID: 864793685}
-  _playerMoneyText: {fileID: 0}
+  _playerMoneyText: {fileID: 840491377}
+  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _spinObjs:
+  - {fileID: 1881026974}
+  - {fileID: 1747575512}
+  - {fileID: 1279823893}
+  - {fileID: 524014255}
+  - {fileID: 1935516333}
+  - {fileID: 1899810483}
+  - {fileID: 1771691397}
+  - {fileID: 880243264}
+  - {fileID: 1137604006}
+  _lineObjs:
+  - {fileID: 279298332}
+  - {fileID: 1814364867}
+  - {fileID: 2021607024}
+  - {fileID: 1948146578}
+  - {fileID: 640371455}
+  - {fileID: 698854695}
+  - {fileID: 1734174213}
+  - {fileID: 2138419788}
 --- !u!1 &640371453
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +954,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 640371453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 030000000400000005000000
@@ -1103,7 +1121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 698854693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 060000000700000008000000
@@ -1158,7 +1176,7 @@ GameObject:
   - component: {fileID: 840491378}
   - component: {fileID: 840491377}
   m_Layer: 5
-  m_Name: OwnMoney
+  m_Name: PlayerMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3159,7 +3177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1734174211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 060000000400000002000000
@@ -3792,7 +3810,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1814364865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 010000000400000007000000
@@ -4486,7 +4504,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1948146576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 000000000100000002000000
@@ -4653,7 +4671,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2021607022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 000000000300000006000000
@@ -4955,7 +4973,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2138419786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   effectInt: 000000000400000008000000
