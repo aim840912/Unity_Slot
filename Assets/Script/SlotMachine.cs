@@ -19,7 +19,7 @@ public class SlotMachine : MonoBehaviour
 
     bool _isSpin = false;
 
-    [SerializeField] SetSpin[] _spinObjs;
+    [SerializeField] SpinHandler[] _spinObjs;
 
     [SerializeField] LineEffect[] _lineObjs;
 
@@ -45,7 +45,7 @@ public class SlotMachine : MonoBehaviour
         StartCoroutine(SetupLineEffect(false));
         for (int i = 0; i < _spinObjs.Length; i++)
         {
-            _spinObjs[i].SetType(SetSpin.SpinType.motionless, null);
+            _spinObjs[i].SetType(SpinHandler.SpinType.motionless, null);
         }
     }
 
@@ -54,7 +54,7 @@ public class SlotMachine : MonoBehaviour
         SlotProcessCoro();
         for (int i = 0; i < _spinObjs.Length; i++)
         {
-            _spinObjs[i].SetType(SetSpin.SpinType.Spinning, SetNumToImg);
+            _spinObjs[i].SetType(SpinHandler.SpinType.Spinning, SetNumToImg);
         }
         StartCoroutine(SetupLineEffect(true));
     }
@@ -91,9 +91,9 @@ public class SlotMachine : MonoBehaviour
         IServer server = new SimulationServer();
         BoardNum = server.GenerateNum();
 
-        int oddsTotal = server.CalculateOdds();
+        int oddsTotal = server.GetOdds();
 
-        _winMoneyText.text = server.CalculateFinalMoney(BetMoney).ToString();
+        _winMoneyText.text = server.GetFinalMoney(BetMoney).ToString();
 
         Debug.Log(oddsTotal);
     }

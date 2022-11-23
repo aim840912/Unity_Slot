@@ -497,11 +497,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 279298330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectInt: 020000000500000008000000
-  slotMachine: {fileID: 606385563}
+  effectInt: 000000000000000000000000
+  slotMachine: {fileID: 0}
 --- !u!114 &279298333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,7 +705,6 @@ GameObject:
   - component: {fileID: 524014258}
   - component: {fileID: 524014257}
   - component: {fileID: 524014256}
-  - component: {fileID: 524014255}
   m_Layer: 5
   m_Name: Node (3)
   m_TagString: Untagged
@@ -735,29 +734,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &524014255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524014253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &524014256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -863,9 +839,13 @@ MonoBehaviour:
   - {fileID: 953231261}
   - {fileID: 666817768}
   - {fileID: 1364742217}
-  _spinObj: {fileID: 1460027931}
   _setupBtn: {fileID: 1016390011}
-  _lineObj: {fileID: 383900229}
+  _inputBet: {fileID: 0}
+  _winMoneyText: {fileID: 0}
+  _playerMoneyText: {fileID: 0}
+  _imageData: {fileID: 0}
+  _spinObjs: []
+  _lineObjs: []
 --- !u!1 &640371453
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,11 +894,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 640371453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectInt: 030000000400000005000000
-  slotMachine: {fileID: 606385563}
+  effectInt: 000000000000000000000000
+  slotMachine: {fileID: 0}
 --- !u!114 &640371456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,11 +1061,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 698854693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectInt: 060000000700000008000000
-  slotMachine: {fileID: 606385563}
+  effectInt: 000000000000000000000000
+  slotMachine: {fileID: 0}
 --- !u!114 &698854696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,7 +1386,6 @@ GameObject:
   - component: {fileID: 880243267}
   - component: {fileID: 880243266}
   - component: {fileID: 880243265}
-  - component: {fileID: 880243264}
   m_Layer: 5
   m_Name: Node (7)
   m_TagString: Untagged
@@ -1436,29 +1415,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &880243264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880243262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &880243265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,7 +2014,6 @@ GameObject:
   - component: {fileID: 1137604009}
   - component: {fileID: 1137604008}
   - component: {fileID: 1137604007}
-  - component: {fileID: 1137604006}
   m_Layer: 5
   m_Name: Node (8)
   m_TagString: Untagged
@@ -2088,29 +2043,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1137604006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137604004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1137604007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,7 +2106,6 @@ GameObject:
   - component: {fileID: 1279823896}
   - component: {fileID: 1279823895}
   - component: {fileID: 1279823894}
-  - component: {fileID: 1279823893}
   m_Layer: 5
   m_Name: Node (2)
   m_TagString: Untagged
@@ -2204,29 +2135,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1279823893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279823891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1279823894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2663,6 +2571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1460027932}
   - component: {fileID: 1460027933}
+  - component: {fileID: 1460027934}
   m_Layer: 5
   m_Name: SpinObj
   m_TagString: Untagged
@@ -2723,6 +2632,41 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 3
+--- !u!114 &1460027934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460027931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8b968fa889e7a458b87bea83228ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteSource:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _imageItem:
+  - {fileID: 1368624575}
+  - {fileID: 1740165771}
+  - {fileID: 2014245388}
+  - {fileID: 1104062345}
+  - {fileID: 903704279}
+  - {fileID: 1080087771}
+  - {fileID: 953231261}
+  - {fileID: 666817768}
+  - {fileID: 1364742217}
+  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  slotMachine: {fileID: 606385563}
 --- !u!1 &1475050413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3134,11 +3078,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1734174211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectInt: 060000000400000002000000
-  slotMachine: {fileID: 606385563}
+  effectInt: 000000000000000000000000
+  slotMachine: {fileID: 0}
 --- !u!114 &1734174214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3265,7 +3209,6 @@ GameObject:
   - component: {fileID: 1747575515}
   - component: {fileID: 1747575514}
   - component: {fileID: 1747575513}
-  - component: {fileID: 1747575512}
   m_Layer: 5
   m_Name: Node (1)
   m_TagString: Untagged
@@ -3295,29 +3238,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1747575512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747575510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1747575513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3613,7 +3533,6 @@ GameObject:
   - component: {fileID: 1771691400}
   - component: {fileID: 1771691399}
   - component: {fileID: 1771691398}
-  - component: {fileID: 1771691397}
   m_Layer: 5
   m_Name: Node (6)
   m_TagString: Untagged
@@ -3643,29 +3562,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1771691397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771691395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1771691398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3765,11 +3661,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1814364865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectInt: 010000000400000007000000
-  slotMachine: {fileID: 606385563}
+  effectInt: 000000000000000000000000
+  slotMachine: {fileID: 0}
 --- !u!114 &1814364868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3896,7 +3792,6 @@ GameObject:
   - component: {fileID: 1881026977}
   - component: {fileID: 1881026976}
   - component: {fileID: 1881026975}
-  - component: {fileID: 1881026974}
   m_Layer: 5
   m_Name: Node (0)
   m_TagString: Untagged
@@ -3926,29 +3821,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1881026974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1881026972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1881026975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4012,7 +3884,6 @@ GameObject:
   - component: {fileID: 1899810486}
   - component: {fileID: 1899810485}
   - component: {fileID: 1899810484}
-  - component: {fileID: 1899810483}
   m_Layer: 5
   m_Name: Node (5)
   m_TagString: Untagged
@@ -4042,29 +3913,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1899810483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899810481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1899810484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4304,7 +4152,6 @@ GameObject:
   - component: {fileID: 1935516336}
   - component: {fileID: 1935516335}
   - component: {fileID: 1935516334}
-  - component: {fileID: 1935516333}
   m_Layer: 5
   m_Name: Node (4)
   m_TagString: Untagged
@@ -4334,29 +4181,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1935516333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935516331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072f766c22bd0514e9467b3f45fa227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1935516334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4456,11 +4280,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1948146576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectInt: 000000000100000002000000
-  slotMachine: {fileID: 606385563}
+  effectInt: 000000000000000000000000
+  slotMachine: {fileID: 0}
 --- !u!114 &1948146579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4623,11 +4447,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2021607022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectInt: 000000000300000006000000
-  slotMachine: {fileID: 606385563}
+  effectInt: 000000000000000000000000
+  slotMachine: {fileID: 0}
 --- !u!114 &2021607025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4925,11 +4749,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2138419786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db49d919d90f23e4099a771dbee26220, type: 3}
+  m_Script: {fileID: 11500000, guid: 05099575c695b154c9aeba287c49f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectInt: 000000000400000008000000
-  slotMachine: {fileID: 606385563}
+  effectInt: 000000000000000000000000
+  slotMachine: {fileID: 0}
 --- !u!114 &2138419789
 MonoBehaviour:
   m_ObjectHideFlags: 0

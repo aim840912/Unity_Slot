@@ -13,16 +13,21 @@ public class SimulationServer : IServer
         }
         return BoardNum;
     }
-
+    GameHandler gameHandler = new GameHandler();
     CalculateMoney calculateMoney = new CalculateMoney();
 
-    public int CalculateOdds()
+    public int GetOdds()
     {
         return calculateMoney.GetOddsTotal(BoardNum);
     }
 
-    public int CalculateFinalMoney(int betMoney)
+    public int GetFinalMoney(int betMoney)
     {
-        return CalculateOdds() * (betMoney / 8);
+        int money = gameHandler.ReadPlayerData().Money;
+        money += GetOdds() * (betMoney / 8);
+        gameHandler.WritePlayerData(money);
+        return money;
     }
+
+
 }

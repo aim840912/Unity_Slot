@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
 
-public class SetSpin : MonoBehaviour
+public class SpinHandler : MonoBehaviour
 {
     [SerializeField] Sprite[] _spriteSource = new Sprite[10];
     [SerializeField] Image Item;// so bad , 直接拉關聯比較好
