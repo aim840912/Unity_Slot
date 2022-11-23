@@ -14,7 +14,7 @@ public class CalculateMoney
     public int GetOddsTotal(int[] boardArr)
     {
         var oddsNum = 0;
-        oddsNum = judgeArray.CheckAllTheSame(IntConvertToOddsArr(boardArr));
+        oddsNum = judgeArray.CheckAllTheSame(IntConvertToOdds(boardArr));
 
         if (oddsNum == 0)
         {
@@ -25,14 +25,14 @@ public class CalculateMoney
                 {
                     line[i] = boardArr[item[i]];
                 }
-                oddsNum += judgeArray.JudgeThree(IntConvertToOddsArr(line));
+                oddsNum += judgeArray.JudgeThree(IntConvertToOdds(line));
             }
-            oddsNum += judgeArray.CheckSeven(IntConvertToOddsArr(boardArr));
+            oddsNum += judgeArray.CheckSeven(IntConvertToOdds(boardArr));
         }
         return oddsNum;
     }
 
-    Odds[] IntConvertToOddsArr(int[] convertThing)
+    Odds[] IntConvertToOdds(int[] convertThing)
     {
         Odds[] _oddsArr = new Odds[9];
         for (int i = 0; i < convertThing.Length; i++)
@@ -41,9 +41,5 @@ public class CalculateMoney
 
         }
         return _oddsArr;
-    }
-    Odds IntConvertToOdds(int convertThing)
-    {
-        return (Odds)convertThing;
     }
 }

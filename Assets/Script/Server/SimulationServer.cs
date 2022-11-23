@@ -23,9 +23,10 @@ public class SimulationServer : IServer
 
     public int GetFinalMoney(int betMoney)
     {
-        int money = gameHandler.ReadPlayerData().Money;
+        // int money = gameHandler.ReadPlayerData().Money;
+        int money = 0;
         money += GetOdds() * (betMoney / 8);
-        gameHandler.WritePlayerData(money);
+        // gameHandler.WritePlayerData(money);
         return money;
     }
 
