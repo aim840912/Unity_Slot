@@ -11,7 +11,7 @@ public static class SaveManager
     public const string FILE_NAME = "DataSaver.sav";
 
 
-    public static bool SaveIntoJson()
+    public static bool SaveGame()
     {
         var dir = Application.persistentDataPath + SAVE_DIRECTORY;
         if (!Directory.Exists(dir))
