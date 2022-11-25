@@ -21,33 +21,31 @@ public static class SaveManager
         string json = JsonUtility.ToJson(CurrentSaveData, true);
         File.WriteAllText(dir + FILE_NAME, json);
 
-        GUIUtility.systemCopyBuffer = dir + FILE_NAME;
+        // GUIUtility.systemCopyBuffer = dir + FILE_NAME;
 
         return true;
     }
 
-    public static void LoadGame()
+    public static PlayerData LoadGame()
     {
         string fullPath = Application.persistentDataPath + SAVE_DIRECTORY + FILE_NAME;
-        PlayerData tempData = new PlayerData();
+
 
         if (File.Exists(fullPath))
         {
             string json = File.ReadAllText(fullPath);
-            tempData = JsonUtility.FromJson<PlayerData>(json);
+            CurrentSaveData = JsonUtility.FromJson<PlayerData>(json);
         }
         else
         {
-            Debug.Log("Save file does not exist!");
+            SaveGame();
         }
-        CurrentSaveData = tempData;
-
+        return CurrentSaveData;
     }
 }
 
 [System.Serializable]
 public class PlayerData
 {
-    public string Name { get; set; } = "Default Name";
-    public int Money { get; set; }
+    public int money = 1000;
 }

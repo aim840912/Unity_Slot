@@ -16,21 +16,18 @@ public class SimulationServer : IServer
 
     CalculateMoney calculateMoney = new CalculateMoney();
 
-    GameManager gameManager = new GameManager();
+
     public int GetOdds()
     {
-        gameManager.StoreBoardNum(BoardNum);
         return calculateMoney.GetOddsTotal(BoardNum);
     }
 
     public int GetFinalMoney(int betMoney)
     {
-        int money = SaveManager.CurrentSaveData.Money;
+        int money = SaveManager.CurrentSaveData.money;
         money += GetOdds() * (betMoney / 8);
-        SaveManager.CurrentSaveData.Money = money;
+        SaveManager.CurrentSaveData.money = money;
         SaveManager.SaveGame();
         return money;
     }
-
-
 }
