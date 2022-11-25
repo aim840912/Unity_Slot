@@ -25,7 +25,7 @@ public class SimulationServer : IServer
     public int GetFinalMoney(int betMoney)
     {
         int money = SaveManager.CurrentSaveData.money;
-        money += GetOdds() * (betMoney / 8);
+        money += -betMoney + GetOdds() * (betMoney / 8);
         SaveManager.CurrentSaveData.money = money;
         SaveManager.SaveGame();
         return money;

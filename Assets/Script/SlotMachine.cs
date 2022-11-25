@@ -28,7 +28,7 @@ public class SlotMachine : MonoBehaviour
     {
         GetBoardNum(BoardNum);
         SaveManager.LoadGame();
-        _winMoneyText.text = SaveManager.LoadGame().money.ToString();
+        _playerMoneyText.text = "player : " + SaveManager.LoadGame().money.ToString();
     }
     public void SetupBtn()
     {
@@ -98,7 +98,8 @@ public class SlotMachine : MonoBehaviour
         StoreBoardNum(BoardNum);
         int oddsTotal = server.GetOdds();
 
-        _winMoneyText.text = server.GetFinalMoney(BetMoney).ToString();
+        _playerMoneyText.text = "player : " + server.GetFinalMoney(BetMoney).ToString();
+        _winMoneyText.text = "win : " + server.GetOdds().ToString();
 
         Debug.Log(oddsTotal);
     }
