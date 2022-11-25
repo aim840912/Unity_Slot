@@ -5,9 +5,9 @@ using System.IO;
 
 public static class SaveManager
 {
-    [SerializeField] private static PlayerData CurrentSaveData = new PlayerData();
+    public static PlayerData CurrentSaveData = new PlayerData();
 
-    public const string SAVE_DIRECTORY = "/DataSaver";
+    public const string SAVE_DIRECTORY = "/DataSaver/";
     public const string FILE_NAME = "DataSaver.sav";
 
 
