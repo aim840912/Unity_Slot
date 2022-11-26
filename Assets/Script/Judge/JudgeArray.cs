@@ -3,6 +3,7 @@ using System.Linq;
 
 public class JudgeArray
 {
+
     public int CheckAllTheSame(params Odds[] a)
     {
         int characterCount = a.Count(x => x == a[0]);
@@ -74,6 +75,7 @@ public class JudgeArray
         {
             CheckEachCount(a[i], ref anySeven, ref anyBar, ref anyFruit);
         }
+        Debug.Log($" anySeven={anySeven}");
         if (a[0] == a[1] && a[0] == a[2])
         {
             return OddsDict.dicNormal[a[0]];

@@ -1,3 +1,4 @@
+using UnityEngine;
 public class CalculateMoney
 {
     JudgeArray judgeArray = new JudgeArray();
@@ -34,7 +35,7 @@ public class CalculateMoney
 
     Odds[] IntConvertToOdds(int[] convertThing)
     {
-        Odds[] _oddsArr = new Odds[9];
+        Odds[] _oddsArr = new Odds[convertThing.Length];
         for (int i = 0; i < convertThing.Length; i++)
         {
             _oddsArr[i] = (Odds)convertThing[i];

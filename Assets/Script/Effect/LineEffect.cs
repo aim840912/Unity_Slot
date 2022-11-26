@@ -50,5 +50,7 @@ public class LineEffect : MonoBehaviour
         {
             return false;
         }
+
     }
+
 }

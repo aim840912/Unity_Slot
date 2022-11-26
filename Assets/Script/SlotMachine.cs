@@ -6,7 +6,7 @@ using TMPro;
 public class SlotMachine : MonoBehaviour
 {
     [SerializeField] Image[] _rollingImageGroup = new Image[9];
-    public int[] BoardNum { get; set; } = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public int[] BoardNum { get; set; }
 
     [Header("UI")]
     [SerializeField] Btn _setupBtn;
@@ -26,7 +26,7 @@ public class SlotMachine : MonoBehaviour
     int BetMoney { get { return GetInputValue(); } }
     private void Awake()
     {
-        GetBoardNum(BoardNum);
+        LoadBoardNum(BoardNum);
         SaveManager.LoadGame();
         _playerMoneyText.text = "player : " + SaveManager.LoadGame().money.ToString();
     }
@@ -113,27 +113,13 @@ public class SlotMachine : MonoBehaviour
     }
     void StoreBoardNum(int[] boardNum)
     {
-        for (int i = 0; i < boardNum.Length; i++)
-        {
-            PlayerPrefs.SetInt("BoardNum" + i, boardNum[i]);
-        }
+        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
+        SaveManager.SaveBoard();
     }
-    void GetBoardNum(int[] boardNum)
+    void LoadBoardNum(int[] boardNum)
     {
-        if (!PlayerPrefs.HasKey("BoardNum0"))
-        {
-            for (int i = 0; i < boardNum.Length; i++)
-            {
-                PlayerPrefs.SetInt("BoardNum" + i, 0);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < boardNum.Length; i++)
-            {
-                boardNum[i] = PlayerPrefs.GetInt("BoardNum" + i);
-            }
-        }
+
+        BoardNum = SaveManager.LoadBoard().boardNum;
 
         SetNumToImg();
     }
