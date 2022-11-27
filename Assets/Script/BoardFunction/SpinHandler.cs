@@ -6,7 +6,7 @@ using System.Collections;
 public class SpinHandler : MonoBehaviour
 {
     [SerializeField] Sprite[] _spriteSource = new Sprite[10];
-    [SerializeField] Image Item;// so bad , 直接拉關聯比較好
+    [SerializeField] Image Item;
     [SerializeField] Data _imageData;
 
 

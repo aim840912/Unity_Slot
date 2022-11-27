@@ -1,4 +1,3 @@
-using UnityEngine;
 public class CalculateMoney
 {
     JudgeArray judgeArray = new JudgeArray();
@@ -12,7 +11,7 @@ public class CalculateMoney
          new int[] { 0, 4, 8 },
          new int[] { 6, 4, 2 },
          };
-    public int GetOddsTotal(int[] boardArr)
+    public int GetOdds(int[] boardArr)
     {
         var oddsNum = 0;
         oddsNum = judgeArray.CheckAllTheSame(IntConvertToOdds(boardArr));

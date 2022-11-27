@@ -75,7 +75,6 @@ public class JudgeArray
         {
             CheckEachCount(a[i], ref anySeven, ref anyBar, ref anyFruit);
         }
-        Debug.Log($" anySeven={anySeven}");
         if (a[0] == a[1] && a[0] == a[2])
         {
             return OddsDict.dicNormal[a[0]];

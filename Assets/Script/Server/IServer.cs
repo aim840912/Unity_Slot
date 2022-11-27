@@ -1,6 +1,5 @@
 public interface IServer
 {
     int[] GenerateNum();
-    int GetOdds();
-    int GetFinalMoney(int betMoney);
+    int GetFinalMoney(int betMoney, out int odds);
 }

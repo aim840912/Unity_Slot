@@ -6,10 +6,7 @@ using UnityEngine.UI;
 public class Btn : MonoBehaviour
 {
     [SerializeField] private Button _button;
-    public float InteractableTime
-    {
-        get { return 3; }
-    }
+    public float InteractableTime { get; } = 2;
     private void Reset()
     {
         _button = this.GetComponent<Button>();

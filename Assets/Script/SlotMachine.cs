@@ -10,6 +10,7 @@ public class SlotMachine : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] Btn _setupBtn;
+    [SerializeField] Image _oddsImage;
     [SerializeField] TMP_InputField _inputBet;
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;
@@ -29,6 +30,10 @@ public class SlotMachine : MonoBehaviour
         LoadBoardNum(BoardNum);
         SaveManager.LoadGame();
         _playerMoneyText.text = "player : " + SaveManager.LoadGame().money.ToString();
+    }
+    public void SetOddsImage()
+    {
+        _oddsImage.enabled = !_oddsImage.enabled;
     }
     public void SetupBtn()
     {
@@ -95,27 +100,38 @@ public class SlotMachine : MonoBehaviour
     {
         IServer server = new SimulationServer();
         BoardNum = server.GenerateNum();
-        StoreBoardNum(BoardNum);
-        int oddsTotal = server.GetOdds();
 
-        _playerMoneyText.text = "player : " + server.GetFinalMoney(BetMoney).ToString();
-        _winMoneyText.text = "win : " + server.GetOdds().ToString();
+        StoreBoardNum(BoardNum);
+
+        int oddsTotal = 0;
+        int finalMoney = server.GetFinalMoney(BetMoney, out oddsTotal);
+
+        _playerMoneyText.text = $"player : {finalMoney.ToString()}";
+        _winMoneyText.text = $"win : {oddsTotal.ToString()}";
 
         Debug.Log(oddsTotal);
     }
 
+
     int GetInputValue()
     {
+        int betMoney = int.Parse(_inputBet.text);
+
         if (_inputBet.text == "")
             return 0;
-
-        return int.Parse(_inputBet.text) < 0 ? 0 : int.Parse(_inputBet.text);
+        if (betMoney > SaveManager.CurrentSaveData.money)
+        {
+            return 0;
+        }
+        return betMoney < 0 ? 0 : betMoney;
     }
+
     void StoreBoardNum(int[] boardNum)
     {
         SaveManager.CurrentBoardSaveData.boardNum = boardNum;
         SaveManager.SaveBoard();
     }
+
     void LoadBoardNum(int[] boardNum)
     {
 

@@ -1,9 +1,12 @@
 using UnityEngine;
-
+/*
+    模擬後端
+*/
 public class SimulationServer : IServer
 {
     public int[] BoardNum = new int[9];
     public const int MAX_RANDOM_NUM = 10;
+    CalculateMoney calculateMoney = new CalculateMoney();
 
     public int[] GenerateNum()
     {
@@ -14,20 +17,25 @@ public class SimulationServer : IServer
         return BoardNum;
     }
 
-    CalculateMoney calculateMoney = new CalculateMoney();
-
-
-    public int GetOdds()
+    public int GetFinalMoney(int betMoney, out int odds)
     {
-        return calculateMoney.GetOddsTotal(BoardNum);
+        odds = calculateMoney.GetOdds(BoardNum);
+
+        int money = GetData();
+
+        money += odds * (betMoney / 8) - betMoney;
+        SaveData(money);
+        return money;
     }
 
-    public int GetFinalMoney(int betMoney)
+    int GetData()
     {
-        int money = SaveManager.CurrentSaveData.money;
-        money += -betMoney + GetOdds() * (betMoney / 8);
+        return SaveManager.CurrentSaveData.money;
+    }
+
+    void SaveData(int money)
+    {
         SaveManager.CurrentSaveData.money = money;
         SaveManager.SaveGame();
-        return money;
     }
 }
