@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 /*
-    測試用
+    測試 另一種做法
 */
 public class SpinHandlerTest : MonoBehaviour
 {

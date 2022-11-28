@@ -98,7 +98,7 @@ public class SlotMachine : MonoBehaviour
 
     void SlotProcessCoro()
     {
-        IServer server = new SimulationServer();
+        Server server = new SimulationServer();
         BoardNum = server.GenerateNum();
 
         StoreBoardNum(BoardNum);
@@ -115,10 +115,11 @@ public class SlotMachine : MonoBehaviour
 
     int GetInputValue()
     {
-        int betMoney = int.Parse(_inputBet.text);
-
         if (_inputBet.text == "")
             return 0;
+
+        int betMoney = int.Parse(_inputBet.text);
+
         if (betMoney > SaveManager.CurrentSaveData.money)
         {
             return 0;

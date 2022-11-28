@@ -2,13 +2,13 @@ using UnityEngine;
 /*
     模擬後端
 */
-public class SimulationServer : IServer
+public class SimulationServer : Server
 {
     public int[] BoardNum = new int[9];
     public const int MAX_RANDOM_NUM = 10;
     CalculateMoney calculateMoney = new CalculateMoney();
 
-    public int[] GenerateNum()
+    public override int[] GenerateNum()
     {
         for (var i = 0; i < BoardNum.Length; i++)
         {
@@ -17,7 +17,7 @@ public class SimulationServer : IServer
         return BoardNum;
     }
 
-    public int GetFinalMoney(int betMoney, out int odds)
+    public override int GetFinalMoney(int betMoney, out int odds)
     {
         odds = calculateMoney.GetOdds(BoardNum);
 
