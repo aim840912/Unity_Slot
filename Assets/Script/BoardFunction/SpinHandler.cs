@@ -6,7 +6,7 @@ using System.Collections;
 public class SpinHandler : MonoBehaviour
 {
     [SerializeField] Sprite[] _spriteSource = new Sprite[10];
-    [SerializeField] Image Item;
+    [SerializeField] Image _item;
     [SerializeField] Data _imageData;
 
 
@@ -25,7 +25,7 @@ public class SpinHandler : MonoBehaviour
     Sequence _spinSequence;
     void Awake()
     {
-        var _imageHeight = Item.rectTransform.rect.size.y;
+        var _imageHeight = _item.rectTransform.rect.size.y;
         StartPoint = _imageHeight;
         EndPoint = _imageHeight * -1f;
 
@@ -54,11 +54,11 @@ public class SpinHandler : MonoBehaviour
     }
     Tween SpinDown()
     {
-        return Item.transform.DOLocalMoveY(EndPoint, Duration, true).SetEase(Ease.Linear);
+        return _item.transform.DOLocalMoveY(EndPoint, Duration, true).SetEase(Ease.Linear);
     }
     Tween SpinToOrigin()
     {
-        return Item.transform.DOLocalMoveY(StartPoint, 0, true).SetEase(Ease.Linear);
+        return _item.transform.DOLocalMoveY(StartPoint, 0, true).SetEase(Ease.Linear);
     }
 
     void SpinLoop()
@@ -77,7 +77,7 @@ public class SpinHandler : MonoBehaviour
         .Append(SpinDown())
         .Append(SpinToOrigin())
         .AppendCallback(callBack)
-        .Append(Item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack));
+        .Append(_item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack));
     }
 
     void ResetSequence()
@@ -91,6 +91,6 @@ public class SpinHandler : MonoBehaviour
     void ChangeSprite()
     {
         int imageIndex = Random.Range(0, _spriteSource.Length);
-        Item.sprite = _spriteSource[imageIndex];
+        _item.sprite = _spriteSource[imageIndex];
     }
 }

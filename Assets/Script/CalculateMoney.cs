@@ -32,7 +32,7 @@ public class CalculateMoney
         return oddsNum;
     }
 
-    Odds[] IntConvertToOdds(int[] convertThing)
+    public Odds[] IntConvertToOdds(int[] convertThing)
     {
         Odds[] _oddsArr = new Odds[convertThing.Length];
         for (int i = 0; i < convertThing.Length; i++)

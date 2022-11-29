@@ -9,8 +9,6 @@ public class SlotMachine : MonoBehaviour
     public int[] BoardNum { get; set; }
 
     [Header("UI")]
-    [SerializeField] Btn _setupBtn;
-    [SerializeField] Image _oddsImage;
     [SerializeField] TMP_InputField _inputBet;
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;
@@ -18,36 +16,20 @@ public class SlotMachine : MonoBehaviour
     [Header("Data")]
     [SerializeField] Data _imageData;
 
-    bool _isSpin = false;
-
     [SerializeField] SpinHandler[] _spinObjs;
 
     [SerializeField] LineEffect[] _lineObjs;
 
     int BetMoney { get { return GetInputValue(); } }
-    private void Awake()
+    void Awake()
+    {
+        Init();
+    }
+    void Init()
     {
         LoadBoardNum(BoardNum);
         SaveManager.LoadGame();
-        _playerMoneyText.text = "player : " + SaveManager.LoadGame().money.ToString();
-    }
-    public void SetOddsImage()
-    {
-        _oddsImage.enabled = !_oddsImage.enabled;
-    }
-    public void SetupBtn()
-    {
-        _isSpin = !_isSpin;
-        _setupBtn.SetupButton();
-
-        if (_isSpin)
-        {
-            StartSpin();
-        }
-        else
-        {
-            StopSpin();
-        }
+        _playerMoneyText.text = $"player : {SaveManager.LoadGame().money.ToString()}";
     }
 
     public void StartSpin()
@@ -135,9 +117,7 @@ public class SlotMachine : MonoBehaviour
 
     void LoadBoardNum(int[] boardNum)
     {
-
         BoardNum = SaveManager.LoadBoard().boardNum;
-
         SetNumToImg();
     }
 }

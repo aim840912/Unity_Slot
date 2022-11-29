@@ -9,17 +9,17 @@ public class LineEffect : MonoBehaviour
 
     Image _image;
 
-    JudgeArray judgeArray = new JudgeArray();
+    JudgeArray _judgeArray = new JudgeArray();
 
-    public SlotMachine slotMachine;
+    [SerializeField] SlotMachine _slotMachine;
 
-    private void Awake()
+    void Awake()
     {
         _image = this.GetComponent<Image>();
     }
     public void AfterSpin()
     {
-        _image.enabled = JudgeRole(SetArray());
+        _image.enabled = IsLineShow(SetGroup());
     }
 
     public void BeforeSpin()
@@ -27,17 +27,17 @@ public class LineEffect : MonoBehaviour
         _image.enabled = false;
     }
 
-    Odds[] SetArray()
+    Odds[] SetGroup()
     {
         Odds[] Odds_index = new Odds[effectInt.Length];
         for (int i = 0; i < effectInt.Length; i++)
         {
-            Odds_index[i] = (Odds)slotMachine.BoardNum[effectInt[i]];
+            Odds_index[i] = (Odds)_slotMachine.BoardNum[effectInt[i]];
         }
         return Odds_index;
     }
 
-    private bool JudgeRole(params Odds[] a)
+    bool IsLineShow(params Odds[] a)
     {
         int anySeven = 0;
         int anyBar = 0;
@@ -45,7 +45,7 @@ public class LineEffect : MonoBehaviour
 
         for (int i = 0; i < a.Length; i++)
         {
-            judgeArray.CheckEachCount(a[i], ref anySeven, ref anyBar, ref anyFruit);
+            _judgeArray.CheckEachCount(a[i], ref anySeven, ref anyBar, ref anyFruit);
         }
 
         if (a[0] == Odds.hololive)

@@ -2,20 +2,33 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
 public class Btn : MonoBehaviour
 {
-    [SerializeField] private Button _button;
-    public float InteractableTime { get; } = 2;
-    private void Reset()
+    [SerializeField] Button _spinButton;
+    [SerializeField] Button _oddsButton;
+    [SerializeField] Image _oddsImage;
+    [SerializeField] SlotMachine _slotMachine;
+
+    bool _isSpin = false;
+    float InteractableTime = 2;
+
+    void Start()
     {
-        _button = this.GetComponent<Button>();
+        _spinButton.onClick.AddListener(delegate ()
+        {
+            SetupButton();
+        });
+        _oddsButton.onClick.AddListener(delegate ()
+        {
+            IsShowingOddsImage();
+        });
     }
 
     private Coroutine coroutine;
 
-    public void SetupButton()
+    void SetupButton()
     {
+        SetSpin();
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -23,11 +36,30 @@ public class Btn : MonoBehaviour
         coroutine = StartCoroutine(DelayInteractableButton());
     }
 
-    private IEnumerator DelayInteractableButton()
+    IEnumerator DelayInteractableButton()
     {
-        _button.interactable = false;
+        _spinButton.interactable = false;
         yield return new WaitForSeconds(InteractableTime);
-        _button.interactable = true;
+        _spinButton.interactable = true;
         coroutine = null;
+    }
+
+    void IsShowingOddsImage()
+    {
+        _oddsImage.enabled = !_oddsImage.enabled;
+    }
+
+    void SetSpin()
+    {
+        _isSpin = !_isSpin;
+
+        if (_isSpin)
+        {
+            _slotMachine.StartSpin();
+        }
+        else
+        {
+            _slotMachine.StopSpin();
+        }
     }
 }

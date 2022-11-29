@@ -4,27 +4,28 @@ using UnityEngine;
 */
 public class SimulationServer : Server
 {
-    public int[] BoardNum = new int[9];
+    int[] _boardNum = new int[9];
     public const int MAX_RANDOM_NUM = 10;
     CalculateMoney calculateMoney = new CalculateMoney();
 
     public override int[] GenerateNum()
     {
-        for (var i = 0; i < BoardNum.Length; i++)
+        for (var i = 0; i < _boardNum.Length; i++)
         {
-            BoardNum[i] = Random.Range(0, MAX_RANDOM_NUM);
+            _boardNum[i] = Random.Range(0, MAX_RANDOM_NUM);
         }
-        return BoardNum;
+        return _boardNum;
     }
 
     public override int GetFinalMoney(int betMoney, out int odds)
     {
-        odds = calculateMoney.GetOdds(BoardNum);
+        odds = calculateMoney.GetOdds(_boardNum);
 
         int money = GetData();
 
         money += odds * (betMoney / 8) - betMoney;
         SaveData(money);
+
         return money;
     }
 
