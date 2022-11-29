@@ -91,9 +91,7 @@ public class SlotMachine : MonoBehaviour
         int finalMoney = server.GetFinalMoney(BetMoney, out oddsTotal);
 
         _playerMoneyText.text = $"player : {finalMoney.ToString()}";
-        _winMoneyText.text = $"win : {oddsTotal.ToString()}";
-
-        Debug.Log(oddsTotal);
+        _winMoneyText.text = $"oddsTotal : {oddsTotal.ToString()}";
     }
 
 
@@ -104,7 +102,7 @@ public class SlotMachine : MonoBehaviour
 
         int betMoney = int.Parse(_inputBet.text);
 
-        if (betMoney > SaveManager.CurrentSaveData.money)
+        if (betMoney * 8 > SaveManager.CurrentSaveData.money)
         {
             return 0;
         }

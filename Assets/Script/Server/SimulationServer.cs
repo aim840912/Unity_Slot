@@ -23,7 +23,7 @@ public class SimulationServer : Server
 
         int money = GetData();
 
-        money += odds * (betMoney / 8) - betMoney;
+        money += odds * betMoney - betMoney * 8;
         SaveData(money);
 
         return money;
