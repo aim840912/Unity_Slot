@@ -7,7 +7,7 @@ public class LineEffect : MonoBehaviour
 {
     [SerializeField] int[] effectInt = new int[3];
 
-    Image _image;
+    Image _lineImage;
 
     JudgeArray _judgeArray = new JudgeArray();
 
@@ -15,16 +15,16 @@ public class LineEffect : MonoBehaviour
 
     void Awake()
     {
-        _image = this.GetComponent<Image>();
+        _lineImage = this.GetComponent<Image>();
     }
     public void AfterSpin()
     {
-        _image.enabled = IsLineShow(SetGroup());
+        _lineImage.enabled = IsLineShow(SetGroup());
     }
 
     public void BeforeSpin()
     {
-        _image.enabled = false;
+        _lineImage.enabled = false;
     }
 
     Odds[] SetGroup()
