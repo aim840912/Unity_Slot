@@ -34,7 +34,8 @@ public class SlotMachine : MonoBehaviour
 
     public void StartSpin()
     {
-        StartCoroutine(SetupLineEffect(false));
+        StartCoroutine(IsLineShowing(false));
+        _inputBet.interactable = false;
         for (int i = 0; i < _spinObjs.Length; i++)
         {
             _spinObjs[i].SetType(SpinHandler.SpinType.motionless, null);
@@ -43,12 +44,13 @@ public class SlotMachine : MonoBehaviour
 
     public void StopSpin()
     {
-        SlotProcessCoro();
+        GetServerData();
         for (int i = 0; i < _spinObjs.Length; i++)
         {
             _spinObjs[i].SetType(SpinHandler.SpinType.Spinning, SetNumToImg);
         }
-        StartCoroutine(SetupLineEffect(true));
+        StartCoroutine(IsLineShowing(true));
+        _inputBet.interactable = true;
     }
 
     void SetNumToImg()
@@ -59,7 +61,7 @@ public class SlotMachine : MonoBehaviour
         }
     }
 
-    IEnumerator SetupLineEffect(bool isLineEffectAppear)
+    IEnumerator IsLineShowing(bool isLineEffectAppear)
     {
         if (isLineEffectAppear)
         {
@@ -78,7 +80,7 @@ public class SlotMachine : MonoBehaviour
         }
     }
 
-    void SlotProcessCoro()
+    void GetServerData()
     {
         Server server = new SimulationServer();
         BoardNum = server.GenerateNum();
