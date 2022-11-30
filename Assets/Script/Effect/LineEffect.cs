@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
+    暫且棄用 不確定哪個作法更好
+*/
 public class LineEffect : MonoBehaviour
 {
     [SerializeField] int[] effectInt = new int[3];

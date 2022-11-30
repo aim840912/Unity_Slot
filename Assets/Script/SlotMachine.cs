@@ -6,6 +6,8 @@ using TMPro;
 public class SlotMachine : MonoBehaviour
 {
     [SerializeField] Image[] _rollingImageGroup = new Image[9];
+
+
     public int[] BoardNum { get; set; }
 
     [Header("UI")]
@@ -17,8 +19,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] Data _imageData;
 
     [SerializeField] SpinHandler[] _spinObjs;
-
-    [SerializeField] LineEffect[] _lineObjs;
+    [SerializeField] LineHandler _lineHandler;
 
     int BetMoney { get { return GetInputValue(); } }
     void Awake()
@@ -30,6 +31,7 @@ public class SlotMachine : MonoBehaviour
         LoadBoardNum(BoardNum);
         SaveManager.LoadGame();
         _playerMoneyText.text = $"player : {SaveManager.LoadGame().money.ToString()}";
+
     }
 
     public void StartSpin()
@@ -66,17 +68,11 @@ public class SlotMachine : MonoBehaviour
         if (isLineEffectAppear)
         {
             yield return new WaitForSeconds(2f);
-            for (int i = 0; i < _lineObjs.Length; i++)
-            {
-                _lineObjs[i].AfterSpin();
-            }
+            _lineHandler.AfterSpin();
         }
         else
         {
-            for (int i = 0; i < _lineObjs.Length; i++)
-            {
-                _lineObjs[i].BeforeSpin();
-            }
+            _lineHandler.BeforeSpin();
         }
     }
 
