@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 public class Btn : MonoBehaviour
 {
     [SerializeField] Button _spinButton;

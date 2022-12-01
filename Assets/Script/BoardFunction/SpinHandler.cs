@@ -5,10 +5,8 @@ using System.Collections;
 
 public class SpinHandler : MonoBehaviour
 {
-    [SerializeField] Sprite[] _spriteSource = new Sprite[10];
     [SerializeField] Image _item;
     [SerializeField] Data _imageData;
-
 
     public float EndPoint { get; set; }
     public float StartPoint { get; set; }
@@ -28,13 +26,6 @@ public class SpinHandler : MonoBehaviour
         var _imageHeight = _item.rectTransform.rect.size.y;
         StartPoint = _imageHeight;
         EndPoint = _imageHeight * -1f;
-
-        GetAllSprite();
-    }
-
-    void GetAllSprite()
-    {
-        _spriteSource = _imageData.RollingImage;
     }
 
     public void SetType(SpinType type, TweenCallback callBack)
@@ -90,7 +81,7 @@ public class SpinHandler : MonoBehaviour
 
     void ChangeSprite()
     {
-        int imageIndex = Random.Range(0, _spriteSource.Length);
-        _item.sprite = _spriteSource[imageIndex];
+        int imageIndex = Random.Range(0, _imageData.RollingImage.Length);
+        _item.sprite = _imageData.RollingImage[imageIndex];
     }
 }

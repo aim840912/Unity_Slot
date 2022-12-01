@@ -5,9 +5,6 @@ using TMPro;
 
 public class SlotMachine : MonoBehaviour
 {
-    [SerializeField] Image[] _rollingImageGroup = new Image[9];
-
-
     public int[] BoardNum { get; set; }
 
     [Header("UI")]
@@ -73,9 +70,9 @@ public class SlotMachine : MonoBehaviour
 
     void SetNumToImg()
     {
-        for (var i = 0; i < _rollingImageGroup.Length; i++)
+        for (var i = 0; i < _spinObjs.Length; i++)
         {
-            _rollingImageGroup[i].sprite = _imageData.RollingImage[BoardNum[i]];
+            _spinObjs[i].transform.GetChild(0).GetComponent<Image>().sprite = _imageData.RollingImage[BoardNum[i]];
         }
     }
 
