@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 /*
-    暫且棄用 不確定哪個作法更好
+    暫且沒用 不確定哪個作法更好
 */
 public class LineEffect : MonoBehaviour
 {

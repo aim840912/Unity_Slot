@@ -26,16 +26,31 @@ public class SlotMachine : MonoBehaviour
     {
         Init();
     }
+
     void Init()
     {
         LoadBoardNum(BoardNum);
         SaveManager.LoadGame();
         _playerMoneyText.text = $"player : {SaveManager.LoadGame().money.ToString()}";
+        SpinEvent(true);
+    }
+    void SpinEvent(bool isSpin)
+    {
+        if (isSpin)
+        {
+            Btn.OnClicked += StartSpin;
+            Btn.OnClicked -= StopSpin;
+        }
+        else
+        {
+            Btn.OnClicked -= StartSpin;
+            Btn.OnClicked += StopSpin;
+        }
 
     }
-
     public void StartSpin()
     {
+        SpinEvent(false);
         StartCoroutine(IsLineShowing(false));
         _inputBet.interactable = false;
         for (int i = 0; i < _spinObjs.Length; i++)
@@ -46,6 +61,7 @@ public class SlotMachine : MonoBehaviour
 
     public void StopSpin()
     {
+        SpinEvent(true);
         GetServerData();
         for (int i = 0; i < _spinObjs.Length; i++)
         {
@@ -68,7 +84,7 @@ public class SlotMachine : MonoBehaviour
         if (isLineEffectAppear)
         {
             yield return new WaitForSeconds(2f);
-            _lineHandler.AfterSpin();
+            _lineHandler.AfterSpin(BoardNum);
         }
         else
         {

@@ -7,7 +7,6 @@ public class LineHandler : MonoBehaviour
 {
     [SerializeField] LineEffectData _lineEffectData;
     [SerializeField] Image[] _lineImage;
-    [SerializeField] SlotMachine _slotMachine;
     private void Start()
     {
         Init();
@@ -22,14 +21,14 @@ public class LineHandler : MonoBehaviour
         }
     }
 
-    public void AfterSpin()
+    public void AfterSpin(int[] board)
     {
         for (int i = 0; i < _lineImage.Length; i++)
         {
             _lineImage[i].enabled = IsLineShow(
-                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[0]],
-                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[1]],
-                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[2]]
+                (Odds)board[_lineEffectData.Line[i].IndexLine[0]],
+                (Odds)board[_lineEffectData.Line[i].IndexLine[1]],
+                (Odds)board[_lineEffectData.Line[i].IndexLine[2]]
             );
         }
     }

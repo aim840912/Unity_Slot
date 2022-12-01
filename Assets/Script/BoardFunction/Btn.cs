@@ -7,9 +7,12 @@ public class Btn : MonoBehaviour
     [SerializeField] Button _spinButton;
     [SerializeField] Button _oddsButton;
     [SerializeField] Image _oddsImage;
-    [SerializeField] SlotMachine _slotMachine;
+    // [SerializeField] SlotMachine _slotMachine;
 
-    bool _isSpin = false;
+    public delegate void ClickAction();
+    public static event ClickAction OnClicked;
+
+    // bool _isSpin = false;
     float InteractableTime = 2;
 
     void Start()
@@ -28,7 +31,12 @@ public class Btn : MonoBehaviour
 
     void SetupButton()
     {
-        SetSpin();
+        // SetSpin();
+        OnClicked?.Invoke();
+        // if (OnClicked != null)
+        // {
+        //     OnClicked();
+        // }
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -49,17 +57,18 @@ public class Btn : MonoBehaviour
         _oddsImage.enabled = !_oddsImage.enabled;
     }
 
-    void SetSpin()
-    {
-        _isSpin = !_isSpin;
+    // 這做法與35行比較
+    // void SetSpin()
+    // {
+    //     _isSpin = !_isSpin;
 
-        if (_isSpin)
-        {
-            _slotMachine.StartSpin();
-        }
-        else
-        {
-            _slotMachine.StopSpin();
-        }
-    }
+    //     if (_isSpin)
+    //     {
+    //         _slotMachine.StartSpin();
+    //     }
+    //     else
+    //     {
+    //         _slotMachine.StopSpin();
+    //     }
+    // }
 }
