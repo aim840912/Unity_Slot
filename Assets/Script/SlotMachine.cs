@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class SlotMachine : MonoBehaviour
@@ -52,33 +51,15 @@ public class SlotMachine : MonoBehaviour
         SpinEvent(false);
         StartCoroutine(IsLineShowing(false));
         _inputBet.interactable = false;
-        // for (int i = 0; i < _spinObjs.Length; i++)
-        // {
-        //     _spinObjs[i].SetType(SpinHandler.SpinType.motionless, null);
-        // }
-        _spinObj.StartSpin();
     }
 
     public void StopSpin()
     {
         SpinEvent(true);
         GetServerData();
-        // for (int i = 0; i < _spinObjs.Length; i++)
-        // {
-        //     _spinObjs[i].SetType(SpinHandler.SpinType.Spinning, SetNumToImg);
-        // }
-        _spinObj.StopSpin();
+
         StartCoroutine(IsLineShowing(true));
         _inputBet.interactable = true;
-    }
-
-    void SetNumToImg()
-    {
-        // for (var i = 0; i < _spinObjs.Length; i++)
-        // {
-        //     _spinObjs[i].transform.GetChild(0).GetComponent<Image>().sprite = _imageData.RollingImage[BoardNum[i]];
-        // }
-        Debug.Log("cool");
     }
 
     IEnumerator IsLineShowing(bool isLineEffectAppear)
@@ -132,6 +113,5 @@ public class SlotMachine : MonoBehaviour
     void LoadBoardNum(int[] boardNum)
     {
         BoardNum = SaveManager.LoadBoard().boardNum;
-        SetNumToImg();
     }
 }

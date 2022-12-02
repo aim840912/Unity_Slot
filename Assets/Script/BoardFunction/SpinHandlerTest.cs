@@ -32,33 +32,25 @@ public class SpinHandlerTest : MonoBehaviour
         EndPoint = _imageHeight * -1f;
 
         GetAllSprite();
+        Btn.OnClicked += StartSpin;
     }
-    bool _isSpin = false;
-    private void Update()
+
+    void Start()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            _isSpin = !_isSpin;
-            if (_isSpin)
-            {
-                StartSpin();
-            }
-            else
-            {
-                StopSpin();
-            }
-        }
+        FinalImage();
     }
 
     public void StartSpin()
     {
+        Btn.OnClicked -= StartSpin;
+        Btn.OnClicked += StopSpin;
         this.SetType(SpinType.motionless);
     }
 
     public void StopSpin()
     {
+        Btn.OnClicked += StartSpin;
+        Btn.OnClicked -= StopSpin;
         this.SetType(SpinType.Spinning);
     }
 
