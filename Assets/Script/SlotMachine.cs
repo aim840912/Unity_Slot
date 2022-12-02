@@ -15,7 +15,8 @@ public class SlotMachine : MonoBehaviour
     [Header("Data")]
     [SerializeField] Data _imageData;
 
-    [SerializeField] SpinHandler[] _spinObjs;
+    // [SerializeField] SpinHandler[] _spinObjs;
+    [SerializeField] SpinHandlerTest _spinObj;
     [SerializeField] LineHandler _lineHandler;
 
     int BetMoney { get { return GetInputValue(); } }
@@ -29,6 +30,7 @@ public class SlotMachine : MonoBehaviour
         LoadBoardNum(BoardNum);
         SaveManager.LoadGame();
         _playerMoneyText.text = $"player : {SaveManager.LoadGame().money.ToString()}";
+
         SpinEvent(true);
     }
     void SpinEvent(bool isSpin)
@@ -50,30 +52,33 @@ public class SlotMachine : MonoBehaviour
         SpinEvent(false);
         StartCoroutine(IsLineShowing(false));
         _inputBet.interactable = false;
-        for (int i = 0; i < _spinObjs.Length; i++)
-        {
-            _spinObjs[i].SetType(SpinHandler.SpinType.motionless, null);
-        }
+        // for (int i = 0; i < _spinObjs.Length; i++)
+        // {
+        //     _spinObjs[i].SetType(SpinHandler.SpinType.motionless, null);
+        // }
+        _spinObj.StartSpin();
     }
 
     public void StopSpin()
     {
         SpinEvent(true);
         GetServerData();
-        for (int i = 0; i < _spinObjs.Length; i++)
-        {
-            _spinObjs[i].SetType(SpinHandler.SpinType.Spinning, SetNumToImg);
-        }
+        // for (int i = 0; i < _spinObjs.Length; i++)
+        // {
+        //     _spinObjs[i].SetType(SpinHandler.SpinType.Spinning, SetNumToImg);
+        // }
+        _spinObj.StopSpin();
         StartCoroutine(IsLineShowing(true));
         _inputBet.interactable = true;
     }
 
     void SetNumToImg()
     {
-        for (var i = 0; i < _spinObjs.Length; i++)
-        {
-            _spinObjs[i].transform.GetChild(0).GetComponent<Image>().sprite = _imageData.RollingImage[BoardNum[i]];
-        }
+        // for (var i = 0; i < _spinObjs.Length; i++)
+        // {
+        //     _spinObjs[i].transform.GetChild(0).GetComponent<Image>().sprite = _imageData.RollingImage[BoardNum[i]];
+        // }
+        Debug.Log("cool");
     }
 
     IEnumerator IsLineShowing(bool isLineEffectAppear)

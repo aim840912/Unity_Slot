@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -8,12 +6,10 @@ using UnityEngine.UI;
 */
 public class SpinHandlerTest : MonoBehaviour
 {
-
     [SerializeField] Sprite[] _spriteSource = new Sprite[10];
     [SerializeField] Image[] _imageItem;
 
     [SerializeField] Data _imageData;
-
     [SerializeField] SlotMachine slotMachine;
 
     public float EndPoint { get; set; }
@@ -34,7 +30,6 @@ public class SpinHandlerTest : MonoBehaviour
         var _imageHeight = _imageItem[0].rectTransform.rect.size.y;
         StartPoint = _imageHeight;
         EndPoint = _imageHeight * -1f;
-        // DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
 
         GetAllSprite();
     }
@@ -114,9 +109,6 @@ public class SpinHandlerTest : MonoBehaviour
 
     void Stop(Image item)
     {
-        // FinalImage();
-        // item.transform.localPosition = new Vector3(0, 100, 0);
-        // ChangeSprite(item);
         item.transform.DOLocalMoveY(StartPoint, 0, true).OnComplete(FinalImage);
 
         item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack);
