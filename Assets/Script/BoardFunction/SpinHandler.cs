@@ -2,7 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
-
+/*
+    測試 另一種做法
+*/
 public class SpinHandler : MonoBehaviour
 {
     [SerializeField] Image _item;

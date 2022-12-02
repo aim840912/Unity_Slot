@@ -37,6 +37,6 @@ public class SimulationServer : Server
     void SaveData(int money)
     {
         SaveManager.CurrentSaveData.money = money;
-        SaveManager.SaveGame();
+        SaveManager.SavePlayerData();
     }
 }

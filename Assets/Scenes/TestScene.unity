@@ -533,12 +533,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d934019e345ce48bc1412bc4aa276a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lineHandler: {fileID: 383900231}
   _inputBet: {fileID: 1934596511}
   _winMoneyText: {fileID: 864793685}
   _playerMoneyText: {fileID: 840491377}
-  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
-  _spinObj: {fileID: 1460027934}
-  _lineHandler: {fileID: 383900231}
 --- !u!1 &666817766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2239,17 +2237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8b968fa889e7a458b87bea83228ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _imageItem:
   - {fileID: 1368624575}
   - {fileID: 1740165771}
@@ -2261,7 +2248,7 @@ MonoBehaviour:
   - {fileID: 666817768}
   - {fileID: 1364742217}
   _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
-  slotMachine: {fileID: 606385563}
+  _slotMachine: {fileID: 606385563}
 --- !u!1 &1475050413
 GameObject:
   m_ObjectHideFlags: 0

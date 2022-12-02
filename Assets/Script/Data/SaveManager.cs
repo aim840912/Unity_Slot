@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
@@ -15,7 +13,7 @@ public static class SaveManager
     public const string SLOT_FILE_NAME = "SlotSaver.sav";
 
     #region Player
-    public static bool SaveGame()
+    public static void SavePlayerData()
     {
         var dir = Application.persistentDataPath + SAVE_DIRECTORY;
         if (!Directory.Exists(dir))
@@ -26,11 +24,9 @@ public static class SaveManager
         File.WriteAllText(dir + FILE_NAME, json);
 
         GUIUtility.systemCopyBuffer = dir + FILE_NAME;
-
-        return true;
     }
 
-    public static PlayerData LoadGame()
+    public static PlayerData LoadPlayerData()
     {
         string fullPath = Application.persistentDataPath + SAVE_DIRECTORY + FILE_NAME;
 
@@ -42,14 +38,14 @@ public static class SaveManager
         }
         else
         {
-            SaveGame();
+            SavePlayerData();
         }
         return CurrentSaveData;
     }
     #endregion
 
     #region Board
-    public static bool SaveBoard()
+    public static void SaveBoard()
     {
         var dir = Application.persistentDataPath + SLOT_SAVE_DIRECTORY;
         if (!Directory.Exists(dir))
@@ -60,8 +56,6 @@ public static class SaveManager
         File.WriteAllText(dir + SLOT_FILE_NAME, json);
 
         GUIUtility.systemCopyBuffer = dir + SLOT_FILE_NAME;
-
-        return true;
     }
 
     public static BoardData LoadBoard()

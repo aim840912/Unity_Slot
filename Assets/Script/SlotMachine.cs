@@ -5,18 +5,12 @@ using TMPro;
 public class SlotMachine : MonoBehaviour
 {
     public int[] BoardNum { get; set; }
+    [SerializeField] LineHandler _lineHandler;
 
     [Header("UI")]
     [SerializeField] TMP_InputField _inputBet;
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;
-
-    [Header("Data")]
-    [SerializeField] Data _imageData;
-
-    // [SerializeField] SpinHandler[] _spinObjs;
-    [SerializeField] SpinHandlerTest _spinObj;
-    [SerializeField] LineHandler _lineHandler;
 
     int BetMoney { get { return GetInputValue(); } }
     void Awake()
@@ -27,8 +21,8 @@ public class SlotMachine : MonoBehaviour
     void Init()
     {
         LoadBoardNum(BoardNum);
-        SaveManager.LoadGame();
-        _playerMoneyText.text = $"player : {SaveManager.LoadGame().money.ToString()}";
+        SaveManager.LoadPlayerData();
+        _playerMoneyText.text = $"player : {SaveManager.LoadPlayerData().money.ToString()}";
 
         SpinEvent(true);
     }

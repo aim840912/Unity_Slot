@@ -1,16 +1,14 @@
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-/*
-    測試 另一種做法
-*/
+
 public class SpinHandlerTest : MonoBehaviour
 {
-    [SerializeField] Sprite[] _spriteSource = new Sprite[10];
+    Sprite[] _spriteSource;
     [SerializeField] Image[] _imageItem;
 
     [SerializeField] Data _imageData;
-    [SerializeField] SlotMachine slotMachine;
+    [SerializeField] SlotMachine _slotMachine;
 
     public float EndPoint { get; set; }
     public float StartPoint { get; set; }
@@ -23,8 +21,8 @@ public class SpinHandlerTest : MonoBehaviour
         motionless,
         Spinning
     }
-    private SpinType _spinType = SpinType.motionless;
-    Sequence _spinSequence;
+    private SpinType _spinType;
+
     void Awake()
     {
         var _imageHeight = _imageItem[0].rectTransform.rect.size.y;
@@ -117,7 +115,7 @@ public class SpinHandlerTest : MonoBehaviour
     {
         for (int i = 0; i < _imageItem.Length; i++)
         {
-            _imageItem[i].sprite = _imageData.RollingImage[slotMachine.BoardNum[i]];
+            _imageItem[i].sprite = _imageData.RollingImage[_slotMachine.BoardNum[i]];
         }
     }
 }
