@@ -451,19 +451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 1104062345}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &524014256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,20 +548,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d934019e345ce48bc1412bc4aa276a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rollingImageGroup:
-  - {fileID: 1368624575}
-  - {fileID: 1740165771}
-  - {fileID: 2014245388}
-  - {fileID: 1104062345}
-  - {fileID: 903704279}
-  - {fileID: 1080087771}
-  - {fileID: 953231261}
-  - {fileID: 666817768}
-  - {fileID: 1364742217}
   _inputBet: {fileID: 1934596511}
   _winMoneyText: {fileID: 864793685}
   _playerMoneyText: {fileID: 840491377}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
   _spinObjs:
   - {fileID: 1881026974}
   - {fileID: 1747575512}
@@ -1037,19 +1016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 666817768}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &880243265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1664,19 +1632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 1364742217}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &1137604007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1916,19 +1873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 2014245388}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &1279823894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2613,19 +2559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 1740165771}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &1747575513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2886,19 +2821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 953231261}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &1771691398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3201,19 +3125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 1368624575}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &1881026975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3318,19 +3231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 1080087771}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &1899810484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3611,19 +3513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteSource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _item: {fileID: 903704279}
-  _imageData: {fileID: 11400000, guid: cb38d12112a28ee4a849807d916fdf9a, type: 2}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
 --- !u!114 &1935516334
 MonoBehaviour:
   m_ObjectHideFlags: 0

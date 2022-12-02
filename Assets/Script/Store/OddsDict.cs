@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 public class OddsDict
 {
-    public static Dictionary<Odds, int> dicNormal = new Dictionary<Odds, int>()
+    public static readonly Dictionary<Odds, int> dicNormal = new Dictionary<Odds, int>()
     {
         { Odds.gura, 300 },
         { Odds.ame, 200 },
@@ -17,7 +17,7 @@ public class OddsDict
         { Odds.hololive, 10 },
     };
 
-    public static Dictionary<Odds, int> dictOverall = new Dictionary<Odds, int>
+    public static readonly Dictionary<Odds, int> dictOverall = new Dictionary<Odds, int>
     {
         { Odds.gura, 700 },
         { Odds.ame, 500 },
@@ -33,7 +33,7 @@ public class OddsDict
         { Odds.hololive, 40 },
         { Odds.anyFruit, 15 }
     };
-    public static Dictionary<Odds, Dictionary<int, int>> dictSpecial = new Dictionary<Odds, Dictionary<int, int>>()
+    public static readonly Dictionary<Odds, Dictionary<int, int>> dictSpecial = new Dictionary<Odds, Dictionary<int, int>>()
     {
         {
             Odds.gura,
