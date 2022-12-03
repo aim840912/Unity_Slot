@@ -9,8 +9,9 @@ public class Btn : MonoBehaviour
     [SerializeField] Image _oddsImage;
     // [SerializeField] SlotMachine _slotMachine;
 
-    public delegate void ClickAction();
-    public static event ClickAction OnClicked;
+    // public delegate void ClickAction();
+    // public static event ClickAction OnClicked;
+    public static event Action OnClicked;
 
     // bool _isSpin = false;
     float InteractableTime = 2;

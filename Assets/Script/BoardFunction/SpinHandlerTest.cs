@@ -22,7 +22,7 @@ public class SpinHandlerTest : MonoBehaviour
         Spinning
     }
     private SpinType _spinType;
-
+    bool _isSpin;
     void Awake()
     {
         var _imageHeight = _imageItem[0].rectTransform.rect.size.y;
@@ -30,7 +30,7 @@ public class SpinHandlerTest : MonoBehaviour
         EndPoint = _imageHeight * -1f;
 
         GetAllSprite();
-        Btn.OnClicked += StartSpin;
+        Btn.OnClicked += SwitchSpinType;
     }
 
     void Start()
@@ -38,18 +38,17 @@ public class SpinHandlerTest : MonoBehaviour
         FinalImage();
     }
 
-    public void StartSpin()
+    void SwitchSpinType()
     {
-        Btn.OnClicked -= StartSpin;
-        Btn.OnClicked += StopSpin;
-        this.SetType(SpinType.motionless);
-    }
-
-    public void StopSpin()
-    {
-        Btn.OnClicked += StartSpin;
-        Btn.OnClicked -= StopSpin;
-        this.SetType(SpinType.Spinning);
+        if (!_isSpin)
+        {
+            this.SetType(SpinType.motionless);
+        }
+        else
+        {
+            this.SetType(SpinType.Spinning);
+        }
+        _isSpin = !_isSpin;
     }
 
     void GetAllSprite()
@@ -86,7 +85,7 @@ public class SpinHandlerTest : MonoBehaviour
     }
     void SpinLoop(Image item)
     {
-        item.transform.localPosition = new Vector3(0, 100, 0);
+        item.transform.localPosition = new Vector3(0, StartPoint, 0);
         item.transform.DOLocalMoveY(EndPoint, Duration, true).SetEase(Ease.Linear).SetLoops(-1).OnStepComplete(() => ChangeSprite(item));
     }
 

@@ -11,7 +11,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] TMP_InputField _inputBet;
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;
-
+    bool _isSpin;
     int BetMoney { get { return GetInputValue(); } }
     void Awake()
     {
@@ -24,34 +24,30 @@ public class SlotMachine : MonoBehaviour
         SaveManager.LoadPlayerData();
         _playerMoneyText.text = $"player : {SaveManager.LoadPlayerData().money.ToString()}";
 
-        SpinEvent(true);
+        Btn.OnClicked += SpinEvent;
     }
-    void SpinEvent(bool isSpin)
+
+    void SpinEvent()
     {
-        if (isSpin)
+        if (!_isSpin)
         {
-            Btn.OnClicked += StartSpin;
-            Btn.OnClicked -= StopSpin;
+            StartSpin();
         }
         else
         {
-            Btn.OnClicked -= StartSpin;
-            Btn.OnClicked += StopSpin;
+            StopSpin();
         }
-
+        _isSpin = !_isSpin;
     }
     public void StartSpin()
     {
-        SpinEvent(false);
         StartCoroutine(IsLineShowing(false));
         _inputBet.interactable = false;
     }
 
     public void StopSpin()
     {
-        SpinEvent(true);
         GetServerData();
-
         StartCoroutine(IsLineShowing(true));
         _inputBet.interactable = true;
     }

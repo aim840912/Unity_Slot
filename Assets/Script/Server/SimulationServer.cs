@@ -1,6 +1,6 @@
 using UnityEngine;
 /*
-    模擬後端
+    模擬後端 產生盤面 金錢計算 前端自取
 */
 public class SimulationServer : Server
 {
