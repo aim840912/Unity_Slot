@@ -22,8 +22,6 @@ public static class SaveManager
         }
         string json = JsonUtility.ToJson(CurrentSaveData, true);
         File.WriteAllText(dir + FILE_NAME, json);
-
-        GUIUtility.systemCopyBuffer = dir + FILE_NAME;
     }
 
     public static PlayerData LoadPlayerData()
@@ -54,8 +52,6 @@ public static class SaveManager
         }
         string json = JsonUtility.ToJson(CurrentBoardSaveData, true);
         File.WriteAllText(dir + SLOT_FILE_NAME, json);
-
-        GUIUtility.systemCopyBuffer = dir + SLOT_FILE_NAME;
     }
 
     public static BoardData LoadBoard()

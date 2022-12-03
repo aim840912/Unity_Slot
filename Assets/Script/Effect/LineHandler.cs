@@ -106,7 +106,6 @@ public class LineHandler : MonoBehaviour
         {
             return false;
         }
-
     }
 
     void CheckEachCount(Odds a, ref int anySeven, ref int anyBar)

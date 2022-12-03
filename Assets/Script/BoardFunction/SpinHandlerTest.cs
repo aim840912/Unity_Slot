@@ -97,7 +97,6 @@ public class SpinHandlerTest : MonoBehaviour
         item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack);
     }
 
-
     void ChangeSprite(Image item)
     {
         int imageIndex = Random.Range(0, _spriteSource.Length);
