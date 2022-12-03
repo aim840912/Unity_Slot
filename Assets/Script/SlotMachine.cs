@@ -5,14 +5,14 @@ using TMPro;
 public class SlotMachine : MonoBehaviour
 {
     public int[] BoardNum { get; set; }
-    [SerializeField] LineHandler _lineHandler;
 
     [Header("UI")]
     [SerializeField] TMP_InputField _inputBet;
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;
-    bool _isSpin;
+
     int BetMoney { get { return GetInputValue(); } }
+
     void Awake()
     {
         Init();
@@ -27,7 +27,7 @@ public class SlotMachine : MonoBehaviour
         Btn.OnClicked += SpinEvent;
     }
 
-    void SpinEvent()
+    void SpinEvent(bool _isSpin)
     {
         if (!_isSpin)
         {
@@ -37,32 +37,17 @@ public class SlotMachine : MonoBehaviour
         {
             StopSpin();
         }
-        _isSpin = !_isSpin;
+
     }
     public void StartSpin()
     {
-        StartCoroutine(IsLineShowing(false));
         _inputBet.interactable = false;
     }
 
     public void StopSpin()
     {
         GetServerData();
-        StartCoroutine(IsLineShowing(true));
         _inputBet.interactable = true;
-    }
-
-    IEnumerator IsLineShowing(bool isLineEffectAppear)
-    {
-        if (isLineEffectAppear)
-        {
-            yield return new WaitForSeconds(2f);
-            _lineHandler.AfterSpin(BoardNum);
-        }
-        else
-        {
-            _lineHandler.BeforeSpin();
-        }
     }
 
     void GetServerData()

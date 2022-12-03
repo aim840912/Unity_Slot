@@ -7,6 +7,8 @@ public class LineHandler : MonoBehaviour
 {
     [SerializeField] LineEffectData _lineEffectData;
     [SerializeField] Image[] _lineImage;
+    [SerializeField] SlotMachine _slotMachine;
+
     private void Start()
     {
         Init();
@@ -19,16 +21,53 @@ public class LineHandler : MonoBehaviour
         {
             _lineImage[i] = Instantiate(_lineEffectData.Line[i].LineImage, this.transform);
         }
+
+        Btn.OnClicked += SpinEvent;
     }
 
-    public void AfterSpin(int[] board)
+    void SpinEvent(bool _isSpin)
+    {
+        if (!_isSpin)
+        {
+            StartSpin();
+        }
+        else
+        {
+            StopSpin();
+        }
+    }
+
+    public void StartSpin()
+    {
+        StartCoroutine(IsLineShowing(false));
+    }
+
+    public void StopSpin()
+    {
+        StartCoroutine(IsLineShowing(true));
+    }
+
+    IEnumerator IsLineShowing(bool isLineEffectAppear)
+    {
+        if (isLineEffectAppear)
+        {
+            yield return new WaitForSeconds(2f);
+            AfterSpin();
+        }
+        else
+        {
+            BeforeSpin();
+        }
+    }
+
+    public void AfterSpin()
     {
         for (int i = 0; i < _lineImage.Length; i++)
         {
             _lineImage[i].enabled = IsLineShow(
-                (Odds)board[_lineEffectData.Line[i].IndexLine[0]],
-                (Odds)board[_lineEffectData.Line[i].IndexLine[1]],
-                (Odds)board[_lineEffectData.Line[i].IndexLine[2]]
+                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[0]],
+                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[1]],
+                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[2]]
             );
         }
     }

@@ -398,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lineEffectData: {fileID: 11400000, guid: 393d87d258197e84baecceb5d375415b, type: 2}
   _lineImage: []
+  _slotMachine: {fileID: 606385563}
 --- !u!1 &524014253
 GameObject:
   m_ObjectHideFlags: 0

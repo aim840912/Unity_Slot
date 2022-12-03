@@ -11,9 +11,9 @@ public class Btn : MonoBehaviour
 
     // public delegate void ClickAction();
     // public static event ClickAction OnClicked;
-    public static event Action OnClicked;
+    public static event Action<bool> OnClicked;
 
-    // bool _isSpin = false;
+    bool _isSpin;
     float InteractableTime = 2;
 
     void Start()
@@ -33,7 +33,8 @@ public class Btn : MonoBehaviour
     void SetupButton()
     {
         // SetSpin();
-        OnClicked?.Invoke();
+        OnClicked?.Invoke(_isSpin);
+        _isSpin = !_isSpin;
         // if (OnClicked != null)
         // {
         //     OnClicked();

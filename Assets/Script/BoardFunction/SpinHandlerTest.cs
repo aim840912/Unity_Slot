@@ -6,7 +6,6 @@ public class SpinHandlerTest : MonoBehaviour
 {
     Sprite[] _spriteSource;
     [SerializeField] Image[] _imageItem;
-
     [SerializeField] Data _imageData;
     [SerializeField] SlotMachine _slotMachine;
 
@@ -16,13 +15,9 @@ public class SpinHandlerTest : MonoBehaviour
     {
         get { return Random.Range(.2f, .5f); }
     }
-    public enum SpinType
-    {
-        motionless,
-        Spinning
-    }
+    public enum SpinType { motionless, Spinning }
     private SpinType _spinType;
-    bool _isSpin;
+
     void Awake()
     {
         var _imageHeight = _imageItem[0].rectTransform.rect.size.y;
@@ -38,7 +33,7 @@ public class SpinHandlerTest : MonoBehaviour
         FinalImage();
     }
 
-    void SwitchSpinType()
+    void SwitchSpinType(bool _isSpin)
     {
         if (!_isSpin)
         {
@@ -48,7 +43,6 @@ public class SpinHandlerTest : MonoBehaviour
         {
             this.SetType(SpinType.Spinning);
         }
-        _isSpin = !_isSpin;
     }
 
     void GetAllSprite()
