@@ -1,12 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LineHandler : MonoBehaviour
 {
-    [SerializeField] LineEffectData _lineEffectData;
-    [SerializeField] Image[] _lineImage;
+    [SerializeField] LineRendererData _lineRendererData;
+    [SerializeField] LineRenderer[] _lineRender;
     [SerializeField] SlotMachine _slotMachine;
     [SerializeField] Btn _btn;
 
@@ -17,10 +15,10 @@ public class LineHandler : MonoBehaviour
 
     void Init()
     {
-        _lineImage = new Image[_lineEffectData.Line.Length];
-        for (int i = 0; i < _lineEffectData.Line.Length; i++)
+        _lineRender = new LineRenderer[_lineRendererData.LineObjs.Length];
+        for (int i = 0; i < _lineRendererData.LineObjs.Length; i++)
         {
-            _lineImage[i] = Instantiate(_lineEffectData.Line[i].LineImage, this.transform);
+            _lineRender[i] = Instantiate(_lineRendererData.LineObjs[i].LineRenderer, this.transform);
         }
 
         _btn.OnClicked += SpinEvent;
@@ -52,24 +50,24 @@ public class LineHandler : MonoBehaviour
     public void AfterSpin()
     {
         Odds[] indexLine;
-        for (int i = 0; i < _lineImage.Length; i++)
+        for (int i = 0; i < _lineRender.Length; i++)
         {
-            indexLine = new Odds[_lineEffectData.Line[i].IndexLine.Length];
+            indexLine = new Odds[_lineRendererData.LineObjs[i].IndexLine.Length];
 
             for (var j = 0; j < indexLine.Length; j++)
             {
-                indexLine[j] = (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[j]];
+                indexLine[j] = (Odds)_slotMachine.BoardNum[_lineRendererData.LineObjs[i].IndexLine[j]];
             }
 
-            _lineImage[i].enabled = IsLineShow(indexLine);
+            _lineRender[i].enabled = IsLineShow(indexLine);
         }
     }
 
     public void BeforeSpin()
     {
-        for (int i = 0; i < _lineImage.Length; i++)
+        for (int i = 0; i < _lineRender.Length; i++)
         {
-            _lineImage[i].enabled = false;
+            _lineRender[i].enabled = false;
         }
     }
 

@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LineRenderer Data", menuName = "SlotMachine/Create Line Renderer Data Asset", order = 3)]
 public class LineRendererData : ScriptableObject
 {
-    public LineRender[] LineRender;
+    public LineObj[] LineObjs;
 }
 
 [System.Serializable]
-public struct LineRender
+public struct LineObj
 {
     public LineRenderer LineRenderer;
     public int[] IndexLine;
