@@ -7,38 +7,25 @@ public class Btn : MonoBehaviour
     [SerializeField] Button _spinButton;
     [SerializeField] Button _oddsButton;
     [SerializeField] Image _oddsImage;
-    // [SerializeField] SlotMachine _slotMachine;
-
-    // public delegate void ClickAction();
-    // public static event ClickAction OnClicked;
-    public static event Action<bool> OnClicked;
-
+    public event Action<bool> OnClicked;
     bool _isSpin;
-    float InteractableTime = 2;
+    float _interactableTime = 2;
 
     void Start()
     {
-        _spinButton.onClick.AddListener(delegate ()
-        {
-            SetupButton();
-        });
-        _oddsButton.onClick.AddListener(delegate ()
-        {
-            IsShowingOddsImage();
-        });
+        _spinButton.onClick.AddListener(SetupButton);
+
+        _oddsButton.onClick.AddListener(IsShowingOddsImage);
     }
 
     private Coroutine coroutine;
 
     void SetupButton()
     {
-        // SetSpin();
         OnClicked?.Invoke(_isSpin);
+
         _isSpin = !_isSpin;
-        // if (OnClicked != null)
-        // {
-        //     OnClicked();
-        // }
+
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -49,7 +36,7 @@ public class Btn : MonoBehaviour
     IEnumerator DelayInteractableButton()
     {
         _spinButton.interactable = false;
-        yield return new WaitForSeconds(InteractableTime);
+        yield return new WaitForSeconds(_interactableTime);
         _spinButton.interactable = true;
         coroutine = null;
     }
@@ -58,19 +45,4 @@ public class Btn : MonoBehaviour
     {
         _oddsImage.enabled = !_oddsImage.enabled;
     }
-
-    // 這做法與35行比較
-    // void SetSpin()
-    // {
-    //     _isSpin = !_isSpin;
-
-    //     if (_isSpin)
-    //     {
-    //         _slotMachine.StartSpin();
-    //     }
-    //     else
-    //     {
-    //         _slotMachine.StopSpin();
-    //     }
-    // }
 }

@@ -8,6 +8,7 @@ public class SpinHandlerTest : MonoBehaviour
     [SerializeField] Image[] _imageItem;
     [SerializeField] Data _imageData;
     [SerializeField] SlotMachine _slotMachine;
+    [SerializeField] Btn _btn;
 
     public float EndPoint { get; set; }
     public float StartPoint { get; set; }
@@ -25,7 +26,7 @@ public class SpinHandlerTest : MonoBehaviour
         EndPoint = _imageHeight * -1f;
 
         GetAllSprite();
-        Btn.OnClicked += SwitchSpinType;
+        _btn.OnClicked += SwitchSpinType;
     }
 
     void Start()

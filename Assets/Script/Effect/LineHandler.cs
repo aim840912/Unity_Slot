@@ -8,6 +8,7 @@ public class LineHandler : MonoBehaviour
     [SerializeField] LineEffectData _lineEffectData;
     [SerializeField] Image[] _lineImage;
     [SerializeField] SlotMachine _slotMachine;
+    [SerializeField] Btn _btn;
 
     private void Start()
     {
@@ -22,53 +23,45 @@ public class LineHandler : MonoBehaviour
             _lineImage[i] = Instantiate(_lineEffectData.Line[i].LineImage, this.transform);
         }
 
-        Btn.OnClicked += SpinEvent;
+        _btn.OnClicked += SpinEvent;
     }
 
     void SpinEvent(bool _isSpin)
     {
         if (!_isSpin)
         {
-            StartSpin();
+            CloseLine();
         }
         else
         {
-            StopSpin();
+            StartCoroutine(ShowLine());
         }
     }
 
-    public void StartSpin()
+    IEnumerator ShowLine()
     {
-        StartCoroutine(IsLineShowing(false));
+        yield return new WaitForSeconds(2f);
+        AfterSpin();
     }
 
-    public void StopSpin()
+    void CloseLine()
     {
-        StartCoroutine(IsLineShowing(true));
-    }
-
-    IEnumerator IsLineShowing(bool isLineEffectAppear)
-    {
-        if (isLineEffectAppear)
-        {
-            yield return new WaitForSeconds(2f);
-            AfterSpin();
-        }
-        else
-        {
-            BeforeSpin();
-        }
+        BeforeSpin();
     }
 
     public void AfterSpin()
     {
+        Odds[] indexLine;
         for (int i = 0; i < _lineImage.Length; i++)
         {
-            _lineImage[i].enabled = IsLineShow(
-                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[0]],
-                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[1]],
-                (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[2]]
-            );
+            indexLine = new Odds[_lineEffectData.Line[i].IndexLine.Length];
+
+            for (var j = 0; j < indexLine.Length; j++)
+            {
+                indexLine[j] = (Odds)_slotMachine.BoardNum[_lineEffectData.Line[i].IndexLine[j]];
+            }
+
+            _lineImage[i].enabled = IsLineShow(indexLine);
         }
     }
 

@@ -290,8 +290,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1280, y: 720}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -399,6 +399,7 @@ MonoBehaviour:
   _lineEffectData: {fileID: 11400000, guid: 393d87d258197e84baecceb5d375415b, type: 2}
   _lineImage: []
   _slotMachine: {fileID: 606385563}
+  _btn: {fileID: 731559445}
 --- !u!1 &524014253
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,10 +535,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d934019e345ce48bc1412bc4aa276a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lineHandler: {fileID: 383900231}
   _inputBet: {fileID: 1934596511}
   _winMoneyText: {fileID: 864793685}
   _playerMoneyText: {fileID: 840491377}
+  _btn: {fileID: 731559445}
 --- !u!1 &666817766
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 209.47829, y: -25}
+  m_AnchoredPosition: {x: 209.47827, y: -25}
   m_SizeDelta: {x: 418.9566, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840491377
@@ -2250,6 +2251,7 @@ MonoBehaviour:
   - {fileID: 1364742217}
   _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
   _slotMachine: {fileID: 606385563}
+  _btn: {fileID: 731559445}
 --- !u!1 &1475050413
 GameObject:
   m_ObjectHideFlags: 0
