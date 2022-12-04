@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
 public class Btn : MonoBehaviour
@@ -8,6 +9,7 @@ public class Btn : MonoBehaviour
     [SerializeField] Button _oddsButton;
     [SerializeField] Image _oddsImage;
     public event Action<bool> OnClicked;
+    [SerializeField] UnityEvent _unityEvent;
     bool _isSpin;
     float _interactableTime = 2;
     [SerializeField] SlotMachine _slotMachine;
@@ -16,17 +18,22 @@ public class Btn : MonoBehaviour
     Coroutine _coroutine;
     void Start()
     {
-        AddInterfaceAction(_slotMachine);
-        AddInterfaceAction(_spinHandler);
-        AddInterfaceAction(_lineHandler);
+        _unityEvent.Invoke();
+
         _spinButton.onClick.AddListener(SetupButton);
 
         _oddsButton.onClick.AddListener(IsShowingOddsImage);
     }
-
-    public void AddInterfaceAction(ISpin spin)
+    public void AddISpinAction(ISpin spin)
     {
         OnClicked += spin.SpinEvent;
+    }
+
+    public void SetupSpinEvent()
+    {
+        AddISpinAction(_slotMachine);
+        AddISpinAction(_spinHandler);
+        AddISpinAction(_lineHandler);
     }
 
     void SetupButton()

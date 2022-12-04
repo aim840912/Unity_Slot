@@ -29,7 +29,6 @@ public class SlotMachine : MonoBehaviour, ISpin
 
     public void SpinEvent(bool _isStop)
     {
-        Debug.Log("cool");
         _inputBet.interactable = _isStop;
 
         if (_isStop)
