@@ -1,14 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
-using System.Collections;
-/*
-    測試 另一種做法
-*/
+using UnityEngine.UI;
+
 public class SpinHandler : MonoBehaviour
 {
-    [SerializeField] Image _item;
+    Sprite[] _spriteSource;
+    [SerializeField] Image[] _imageItem;
     [SerializeField] Data _imageData;
+    [SerializeField] SlotMachine _slotMachine;
+    [SerializeField] Btn _btn;
 
     public float EndPoint { get; set; }
     public float StartPoint { get; set; }
@@ -16,74 +16,99 @@ public class SpinHandler : MonoBehaviour
     {
         get { return Random.Range(.2f, .5f); }
     }
-    public enum SpinType
-    {
-        motionless,
-        Spinning
-    }
-    private SpinType _spinType = SpinType.motionless;
-    Sequence _spinSequence;
+    public enum SpinType { motionless, Spinning }
+    private SpinType _spinType;
+
     void Awake()
     {
-        var _imageHeight = _item.rectTransform.rect.size.y;
+        var _imageHeight = _imageItem[0].rectTransform.rect.size.y;
         StartPoint = _imageHeight;
         EndPoint = _imageHeight * -1f;
+
+        GetAllSprite();
+        _btn.AddAction(SwitchSpinType);
     }
 
-    public void SetType(SpinType type, TweenCallback callBack)
+    void Start()
     {
-        ResetSequence();
+        FinalImage();
+    }
+
+    void SwitchSpinType(bool _isSpin)
+    {
+        if (!_isSpin)
+        {
+            this.SetType(SpinType.motionless);
+        }
+        else
+        {
+            this.SetType(SpinType.Spinning);
+        }
+    }
+
+    void GetAllSprite()
+    {
+        _spriteSource = _imageData.RollingImage;
+    }
+
+    public void SetType(SpinType type)
+    {
+        DOTween.Clear();
         switch (_spinType)
         {
             case SpinType.motionless:
                 _spinType = SpinType.Spinning;
-                SpinDown().OnStepComplete(SpinLoop);
+                for (int i = 0; i < _imageItem.Length; i++)
+                {
+                    StartSpinToLoop(_imageItem[i]);
+                }
                 break;
             case SpinType.Spinning:
                 _spinType = SpinType.motionless;
-                SpinToStop(callBack);
+                for (int i = 0; i < _imageItem.Length; i++)
+                {
+                    LoopToStop(_imageItem[i]).Play();
+                }
                 break;
         }
     }
-    Tween SpinDown()
+    Tween StartSpinToLoop(Image item)
     {
-        return _item.transform.DOLocalMoveY(EndPoint, Duration, true).SetEase(Ease.Linear);
+        return item.transform.DOLocalMoveY(EndPoint, Duration, true)
+        .SetEase(Ease.InCubic)
+        .OnComplete(() => SpinLoop(item));
     }
-    Tween SpinToOrigin()
+    void SpinLoop(Image item)
     {
-        return _item.transform.DOLocalMoveY(StartPoint, 0, true).SetEase(Ease.Linear);
-    }
-
-    void SpinLoop()
-    {
-        _spinSequence = DOTween.Sequence()
-        .Append(SpinToOrigin())
-        .Append(SpinDown())
-        .AppendCallback(ChangeSprite);
-
-        _spinSequence.SetLoops(-1, LoopType.Restart);
+        item.transform.localPosition = new Vector3(0, StartPoint, 0);
+        item.transform.DOLocalMoveY(EndPoint, Duration, true).SetEase(Ease.Linear).SetLoops(-1).OnStepComplete(() => ChangeSprite(item));
     }
 
-    void SpinToStop(TweenCallback callBack)
+    Tween LoopToStop(Image item)
     {
-        _spinSequence = DOTween.Sequence()
-        .Append(SpinDown())
-        .Append(SpinToOrigin())
-        .AppendCallback(callBack)
-        .Append(_item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack));
+        return item.transform.DOLocalMoveY(EndPoint, Duration, true)
+        .SetEase(Ease.Linear)
+        .OnComplete(() => Stop(item));
     }
 
-    void ResetSequence()
+    void Stop(Image item)
     {
-        if (_spinSequence != null)
+        item.transform.DOLocalMoveY(StartPoint, 0, true).OnComplete(FinalImage);
+
+        item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack);
+    }
+
+    void ChangeSprite(Image item)
+    {
+        int imageIndex = Random.Range(0, _spriteSource.Length);
+        item.sprite = _spriteSource[imageIndex];
+    }
+
+    void FinalImage()
+    {
+        for (int i = 0; i < _imageItem.Length; i++)
         {
-            _spinSequence.Kill();
+            _imageItem[i].sprite = _imageData.RollingImage[_slotMachine.BoardNum[i]];
         }
-    }
-
-    void ChangeSprite()
-    {
-        int imageIndex = Random.Range(0, _imageData.RollingImage.Length);
-        _item.sprite = _imageData.RollingImage[imageIndex];
     }
 }

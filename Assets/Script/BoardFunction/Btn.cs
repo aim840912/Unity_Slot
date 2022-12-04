@@ -20,6 +20,11 @@ public class Btn : MonoBehaviour
 
     private Coroutine coroutine;
 
+    public void AddAction(Action<bool> action)
+    {
+        OnClicked += action;
+    }
+
     void SetupButton()
     {
         OnClicked?.Invoke(_isSpin);

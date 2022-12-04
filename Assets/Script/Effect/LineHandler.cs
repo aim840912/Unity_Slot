@@ -21,7 +21,7 @@ public class LineHandler : MonoBehaviour
             _lineRender[i] = Instantiate(_lineRendererData.LineObjs[i].LineRenderer, this.transform);
         }
 
-        _btn.OnClicked += SpinEvent;
+        _btn.AddAction(SpinEvent);
     }
 
     void SpinEvent(bool _isSpin)

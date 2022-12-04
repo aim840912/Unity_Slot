@@ -26,7 +26,7 @@ public class SlotMachine : MonoBehaviour
         SaveManager.LoadPlayerData();
         _playerMoneyText.text = $"player : {SaveManager.LoadPlayerData().money.ToString()}";
 
-        _btn.OnClicked += SpinEvent;
+        _btn.AddAction(SpinEvent);
     }
 
     void SpinEvent(bool _isStop)
