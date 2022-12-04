@@ -10,19 +10,23 @@ public class Btn : MonoBehaviour
     public event Action<bool> OnClicked;
     bool _isSpin;
     float _interactableTime = 2;
-
+    [SerializeField] SlotMachine _slotMachine;
+    [SerializeField] SpinHandler _spinHandler;
+    [SerializeField] LineHandler _lineHandler;
+    Coroutine _coroutine;
     void Start()
     {
+        AddInterfaceAction(_slotMachine);
+        AddInterfaceAction(_spinHandler);
+        AddInterfaceAction(_lineHandler);
         _spinButton.onClick.AddListener(SetupButton);
 
         _oddsButton.onClick.AddListener(IsShowingOddsImage);
     }
 
-    private Coroutine coroutine;
-
-    public void AddAction(Action<bool> action)
+    public void AddInterfaceAction(ISpin spin)
     {
-        OnClicked += action;
+        OnClicked += spin.SpinEvent;
     }
 
     void SetupButton()
@@ -31,11 +35,11 @@ public class Btn : MonoBehaviour
 
         _isSpin = !_isSpin;
 
-        if (coroutine != null)
+        if (_coroutine != null)
         {
-            StopCoroutine(coroutine);
+            StopCoroutine(_coroutine);
         }
-        coroutine = StartCoroutine(DelayInteractableButton());
+        _coroutine = StartCoroutine(DelayInteractableButton());
     }
 
     IEnumerator DelayInteractableButton()
@@ -43,7 +47,7 @@ public class Btn : MonoBehaviour
         _spinButton.interactable = false;
         yield return new WaitForSeconds(_interactableTime);
         _spinButton.interactable = true;
-        coroutine = null;
+        _coroutine = null;
     }
 
     void IsShowingOddsImage()

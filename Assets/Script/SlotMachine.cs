@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class SlotMachine : MonoBehaviour
+public class SlotMachine : MonoBehaviour, ISpin
 {
     public int[] BoardNum { get; set; }
 
@@ -25,12 +25,11 @@ public class SlotMachine : MonoBehaviour
         LoadBoardNum(BoardNum);
         SaveManager.LoadPlayerData();
         _playerMoneyText.text = $"player : {SaveManager.LoadPlayerData().money.ToString()}";
-
-        _btn.AddAction(SpinEvent);
     }
 
-    void SpinEvent(bool _isStop)
+    public void SpinEvent(bool _isStop)
     {
+        Debug.Log("cool");
         _inputBet.interactable = _isStop;
 
         if (_isStop)

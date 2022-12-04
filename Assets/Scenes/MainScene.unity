@@ -334,10 +334,10 @@ RectTransform:
   m_Children:
   - {fileID: 1460027932}
   - {fileID: 383900230}
+  - {fileID: 731559444}
   - {fileID: 1934596510}
   - {fileID: 840491376}
   - {fileID: 864793684}
-  - {fileID: 731559444}
   - {fileID: 1850532559}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -669,6 +669,9 @@ MonoBehaviour:
   _spinButton: {fileID: 1016390012}
   _oddsButton: {fileID: 1814986580}
   _oddsImage: {fileID: 1850532560}
+  _slotMachine: {fileID: 606385563}
+  _spinHandler: {fileID: 1460027934}
+  _lineHandler: {fileID: 383900231}
 --- !u!1 &840491375
 GameObject:
   m_ObjectHideFlags: 0

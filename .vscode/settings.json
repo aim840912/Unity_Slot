@@ -66,5 +66,6 @@
     "Tweens",
     "Yoyo"
   ],
-  "commentTranslate.targetLanguage": "zh-TW"
+  "commentTranslate.targetLanguage": "zh-TW",
+  "cSpell.ignoreWords": ["Swapable"]
 }

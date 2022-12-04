@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class LineHandler : MonoBehaviour
+public class LineHandler : MonoBehaviour, ISpin
 {
     [SerializeField] LineRendererData _lineRendererData;
     [SerializeField] LineRenderer[] _lineRender;
@@ -20,11 +20,9 @@ public class LineHandler : MonoBehaviour
         {
             _lineRender[i] = Instantiate(_lineRendererData.LineObjs[i].LineRenderer, this.transform);
         }
-
-        _btn.AddAction(SpinEvent);
     }
 
-    void SpinEvent(bool _isSpin)
+    public void SpinEvent(bool _isSpin)
     {
         if (!_isSpin)
         {

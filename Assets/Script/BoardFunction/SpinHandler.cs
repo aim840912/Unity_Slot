@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class SpinHandler : MonoBehaviour
+public class SpinHandler : MonoBehaviour, ISpin
 {
     Sprite[] _spriteSource;
     [SerializeField] Image[] _imageItem;
@@ -26,7 +26,6 @@ public class SpinHandler : MonoBehaviour
         EndPoint = _imageHeight * -1f;
 
         GetAllSprite();
-        _btn.AddAction(SwitchSpinType);
     }
 
     void Start()
@@ -34,7 +33,7 @@ public class SpinHandler : MonoBehaviour
         FinalImage();
     }
 
-    void SwitchSpinType(bool _isSpin)
+    public void SpinEvent(bool _isSpin)
     {
         if (!_isSpin)
         {
