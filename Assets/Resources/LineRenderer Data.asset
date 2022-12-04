@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12847318678fd0f44b8d22e68b8b4a30, type: 3}
+  m_Name: LineRenderer Data
+  m_EditorClassIdentifier: 
+  LineRender:
+  - LineRenderer: {fileID: 8994362865846120425, guid: 28832f8abf988024b831930f64a1f463, type: 3}
+    IndexLine: 000000000400000008000000
+  - LineRenderer: {fileID: 2756832135013683621, guid: 782bdf7e6e38e3240bca36862f6cc458, type: 3}
+    IndexLine: 060000000400000002000000
+  - LineRenderer: {fileID: 3145203938385567307, guid: 2b0d86811bdb9314180e4710d924ee7c, type: 3}
+    IndexLine: 000000000300000006000000
+  - LineRenderer: {fileID: 6146487829060578969, guid: c2663081345baa24bab6cc68abbc815b, type: 3}
+    IndexLine: 010000000400000007000000
+  - LineRenderer: {fileID: 6835542177590292031, guid: 1e6df6b17fb679344a052712f739967d, type: 3}
+    IndexLine: 020000000500000008000000
+  - LineRenderer: {fileID: 6626599380635930770, guid: dc7fa131f5ef221468563f3ccbdbe389, type: 3}
+    IndexLine: 000000000100000002000000
+  - LineRenderer: {fileID: 8720973546245015317, guid: 1899e84f794e1244ea9d7b49aaa9b5fb, type: 3}
+    IndexLine: 030000000400000005000000
+  - LineRenderer: {fileID: 5624215990054801654, guid: 3535ba7fb2aacf04f8dfced8a8fb5019, type: 3}
+    IndexLine: 060000000700000008000000
