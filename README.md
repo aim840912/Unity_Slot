@@ -16,9 +16,6 @@
         }
         string json = JsonUtility.ToJson(CurrentSaveData, true);
         File.WriteAllText(dir + FILE_NAME, json);
-
-        GUIUtility.systemCopyBuffer = dir + FILE_NAME;
-
         return true;
     }
 

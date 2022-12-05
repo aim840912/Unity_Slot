@@ -11,8 +11,6 @@ public class SlotMachine : MonoBehaviour, ISpin
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;
 
-    [SerializeField] OddsButton _btn;
-
     int BetMoney { get { return GetInputValue(); } }
 
     void Awake()
