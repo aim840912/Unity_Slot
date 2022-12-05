@@ -1,8 +1,7 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using System;
+
+[RequireComponent(typeof(Button))]
 public class OddsButton : MonoBehaviour
 {
     [SerializeField] Button _button;

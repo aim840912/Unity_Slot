@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+
+[RequireComponent(typeof(Button))]
 public class SpinButton : MonoBehaviour
 {
     public event Action<bool> OnClicked;
@@ -9,7 +11,6 @@ public class SpinButton : MonoBehaviour
     float _interactableTime = 2;
     bool _isSpin;
     Coroutine _coroutine;
-
     [SerializeField] SlotMachine _slotMachine;
     [SerializeField] SpinHandler _spinHandler;
     [SerializeField] LineHandler _lineHandler;
@@ -19,16 +20,15 @@ public class SpinButton : MonoBehaviour
     }
     void Start()
     {
-
-        SetupButtonEvent();
+        SetButton();
     }
-    public void SetupButtonEvent()
+    public void SetButton()
     {
-        AddISpinAction(_slotMachine, _spinHandler, _lineHandler);
-        _button.onClick.AddListener(SetupButton);
+        AddSpinEvent(_slotMachine, _spinHandler, _lineHandler);
+        _button.onClick.AddListener(BtnControl);
     }
 
-    public void AddISpinAction(params ISpin[] spin)
+    public void AddSpinEvent(params ISpin[] spin)
     {
         for (var i = 0; i < spin.Length; i++)
         {
@@ -36,7 +36,7 @@ public class SpinButton : MonoBehaviour
         }
     }
 
-    void SetupButton()
+    void BtnControl()
     {
         OnClicked?.Invoke(_isSpin);
 
@@ -48,6 +48,7 @@ public class SpinButton : MonoBehaviour
         }
         _coroutine = StartCoroutine(DelayInteractableButton());
     }
+
     IEnumerator DelayInteractableButton()
     {
         _button.interactable = false;
@@ -55,5 +56,4 @@ public class SpinButton : MonoBehaviour
         _button.interactable = true;
         _coroutine = null;
     }
-
 }
