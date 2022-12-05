@@ -6,7 +6,7 @@ public class LineHandler : MonoBehaviour, ISpin
     [SerializeField] LineRendererData _lineRendererData;
     [SerializeField] LineRenderer[] _lineRender;
     [SerializeField] SlotMachine _slotMachine;
-    [SerializeField] Btn _btn;
+    [SerializeField] OddsButton _btn;
 
     private void Start()
     {
