@@ -24,7 +24,7 @@ public class SlotMachine : MonoBehaviour, ISpin
     {
         LoadBoardNum(BoardNum);
         SaveManager.LoadPlayerData();
-        _playerMoneyText.text = $"player : {SaveManager.LoadPlayerData().money.ToString()}";
+        _playerMoneyText.text = $"{SaveManager.LoadPlayerData().money.ToString()}";
     }
 
     public void SpinEvent(bool _isStop)
@@ -44,11 +44,11 @@ public class SlotMachine : MonoBehaviour, ISpin
 
         StoreBoardNum(BoardNum);
 
-        int oddsTotal = 0;
-        int finalMoney = server.GetFinalMoney(BetMoney, out oddsTotal);
+        int win = 0;
+        int finalMoney = server.GetFinalMoney(BetMoney, out win);
 
-        _playerMoneyText.text = $"player : {finalMoney.ToString()}";
-        _winMoneyText.text = $"oddsTotal : {oddsTotal.ToString()}";
+        _playerMoneyText.text = $"{finalMoney.ToString()}";
+        _winMoneyText.text = $"{win.ToString()}";
     }
 
 

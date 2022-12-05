@@ -17,13 +17,15 @@ public class SimulationServer : Server
         return _boardNum;
     }
 
-    public override int GetFinalMoney(int betMoney, out int odds)
+    public override int GetFinalMoney(int betMoney, out int win)
     {
-        odds = calculateMoney.GetOdds(_boardNum);
+        int odds = calculateMoney.GetOdds(_boardNum);
 
         int money = GetData();
-
-        money += odds * betMoney - betMoney * 8;
+        int reduceMoney = betMoney * 8;
+        int winMoney = odds * betMoney - reduceMoney;
+        win = winMoney;
+        money += winMoney;
         SaveData(money);
 
         return money;
