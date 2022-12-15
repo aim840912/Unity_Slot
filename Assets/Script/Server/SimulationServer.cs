@@ -1,28 +1,28 @@
 using UnityEngine;
 /*
-    模擬後端 產生盤面 金錢計算 前端自取
+    模擬後端 產生盤面 金錢計算
 */
 public class SimulationServer : Server
 {
-    int[] _boardNum = new int[9];
-    public const int MAX_RANDOM_NUM = 10;
+    int[] _slotBoardCount = new int[9];
+    const int MAX_RANDOM_NUM = 10;
     PayTable _payTable = new PayTable();
     public override int[] GenerateNum()
     {
-        for (var i = 0; i < _boardNum.Length; i++)
+        for (var i = 0; i < _slotBoardCount.Length; i++)
         {
-            _boardNum[i] = Random.Range(0, MAX_RANDOM_NUM);
+            _slotBoardCount[i] = Random.Range(0, MAX_RANDOM_NUM);
         }
-        return _boardNum;
+        return _slotBoardCount;
     }
 
     public override int GetFinalMoney(int betMoney, out int win)
     {
-        int odds = _payTable.GetMultiple(_boardNum);
-        Debug.Log($"{odds}");
+        int multiple = _payTable.GetMultiple(_slotBoardCount);
+        Debug.Log($"{multiple}");
         int money = GetData();
         int reduceMoney = betMoney * 8;
-        int winMoney = odds * betMoney - reduceMoney;
+        int winMoney = multiple * betMoney - reduceMoney;
         win = winMoney;
         money += winMoney;
         SaveData(money);
