@@ -6,8 +6,7 @@ public class SimulationServer : Server
 {
     int[] _boardNum = new int[9];
     public const int MAX_RANDOM_NUM = 10;
-    CalculateMoney calculateMoney = new CalculateMoney();
-
+    PayTable _payTable = new PayTable();
     public override int[] GenerateNum()
     {
         for (var i = 0; i < _boardNum.Length; i++)
@@ -19,8 +18,8 @@ public class SimulationServer : Server
 
     public override int GetFinalMoney(int betMoney, out int win)
     {
-        int odds = calculateMoney.GetOdds(_boardNum);
-
+        int odds = _payTable.GetMultiple(_boardNum);
+        Debug.Log($"{odds}");
         int money = GetData();
         int reduceMoney = betMoney * 8;
         int winMoney = odds * betMoney - reduceMoney;

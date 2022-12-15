@@ -22,7 +22,7 @@ public class SlotMachine : MonoBehaviour, ISpin
     {
         LoadBoardNum(BoardNum);
         SaveManager.LoadPlayerData();
-        _playerMoneyText.text = $"{SaveManager.LoadPlayerData().money.ToString()}";
+        _playerMoneyText.text = $"{SaveManager.LoadPlayerData().money}";
     }
 
     public void SpinEvent(bool _isStop)
@@ -45,8 +45,8 @@ public class SlotMachine : MonoBehaviour, ISpin
         int win = 0;
         int finalMoney = server.GetFinalMoney(BetMoney, out win);
 
-        _playerMoneyText.text = $"{finalMoney.ToString()}";
-        _winMoneyText.text = $"{win.ToString()}";
+        _playerMoneyText.text = $"{finalMoney}";
+        _winMoneyText.text = $"{win}";
     }
 
 

@@ -8,7 +8,6 @@ public class SpinHandler : MonoBehaviour, ISpin
     [SerializeField] Image[] _imageItem;
     [SerializeField] Data _imageData;
     [SerializeField] SlotMachine _slotMachine;
-    [SerializeField] OddsButton _btn;
 
     public float EndPoint { get; set; }
     public float StartPoint { get; set; }
