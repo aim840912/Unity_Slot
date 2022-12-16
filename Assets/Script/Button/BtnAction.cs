@@ -2,14 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-public class SpinTest : MonoBehaviour
+public class BtnAction : MonoBehaviour
 {
-    public event Action<bool> OnClicked;
     [SerializeField] Button _button;
     float _interactableTime = 2;
     Coroutine _coroutine;
 
-    void BtnProcess()
+    public void BtnProcess()
     {
         if (_coroutine != null)
         {

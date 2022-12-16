@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class OddsButton : MonoBehaviour
+public class ShowImageButton : MonoBehaviour
 {
     [SerializeField] Button _button;
-    [SerializeField] Image _oddsImage;
+    [SerializeField] Image _showImage;
     private void Reset()
     {
         _button = this.GetComponent<Button>();
@@ -23,6 +23,6 @@ public class OddsButton : MonoBehaviour
 
     void IsShowingOddsImage()
     {
-        _oddsImage.enabled = !_oddsImage.enabled;
+        _showImage.enabled = !_showImage.enabled;
     }
 }
