@@ -16,9 +16,9 @@ public class SpinHandlerTest : BaseAction
     }
     public enum SpinType { motionless, Spinning }
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
+        BoardNum = SaveManager.LoadBoard().boardNum;
         var _imageHeight = _imageItem[0].rectTransform.rect.size.y;
 
         StartPoint = _imageHeight;

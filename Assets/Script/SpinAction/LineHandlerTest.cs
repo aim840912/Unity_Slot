@@ -7,12 +7,12 @@ public class LineHandlerTest : BaseAction
     [SerializeField] LineRenderer[] _lineRender;
     [SerializeField] GameObject _lineObj;
 
-    protected override void Awake()
+    void Start()
     {
-        GenerateLineObj();
+        GenerateLine();
     }
 
-    void GenerateLineObj()
+    void GenerateLine()
     {
         _lineRender = new LineRenderer[_lineRendererData.LineObjs.Length];
         for (int i = 0; i < _lineRendererData.LineObjs.Length; i++)

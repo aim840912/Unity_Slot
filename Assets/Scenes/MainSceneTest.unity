@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 606385565}
   - component: {fileID: 606385567}
   - component: {fileID: 606385566}
+  - component: {fileID: 606385568}
   m_Layer: 0
   m_Name: Slot Machine
   m_TagString: Untagged
@@ -520,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2d1df8d21a33e4ebe81e73f4a123e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uIControlTest: {fileID: 606385568}
 --- !u!114 &606385566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +560,21 @@ MonoBehaviour:
   _lineRendererData: {fileID: 11400000, guid: 5f5f2db83f9a6e148bc3c510f86b5519, type: 2}
   _lineRender: []
   _lineObj: {fileID: 383900229}
+--- !u!114 &606385568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606385560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92953fa18fb38e94a9cbba1cbcc32226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputBet: {fileID: 1934596511}
+  _winMoneyText: {fileID: 890897552}
+  _playerMoneyText: {fileID: 1898265110}
 --- !u!1 &666817766
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +651,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666817766}
   m_CullTransparentMesh: 1
+--- !u!1 &679656729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 679656731}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &679656731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679656729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06177592, y: -16.078535, z: 83.63055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &731559443
 GameObject:
   m_ObjectHideFlags: 0
