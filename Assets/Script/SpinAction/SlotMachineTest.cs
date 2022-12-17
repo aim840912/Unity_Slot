@@ -5,38 +5,25 @@ public class SlotMachineTest : MonoBehaviour
     int[] _boardNum;
     bool _isSpin;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _isSpin = !_isSpin;
-            SpinProcess(_isSpin);
-        }
-    }
     BaseAction[] baseActionArray;
     void Start()
     {
         baseActionArray = GetComponents<BaseAction>();
     }
 
-    void OnSpinClick()
+    public void SpinBtnClick()
     {
         _isSpin = !_isSpin;
-        SpinProcess(_isSpin);
+        SpinSOP(_isSpin);
     }
 
-
-    void SpinProcess(bool isSpin)
+    void SpinSOP(bool isSpin)
     {
-        if (isSpin)
+        if (!isSpin)
         {
-            GetNum();
-        }
-        else
-        {
+            GetServerData();
             UpdateUI();
         }
-
         foreach (BaseAction baseAction in baseActionArray)
         {
             baseAction.SpinEvent(_boardNum, isSpin);
@@ -45,7 +32,7 @@ public class SlotMachineTest : MonoBehaviour
 
     Server _server = new SimulationServer();
     [SerializeField] UIControlTest _uIControlTest;
-    public void GetNum()
+    public void GetServerData()
     {
         _boardNum = _server.GenerateNum();
         StoreBoardNum(_boardNum);
@@ -53,12 +40,8 @@ public class SlotMachineTest : MonoBehaviour
 
     public void UpdateUI()
     {
-        int BetMoney = _uIControlTest.GetInputValue();
-        int win = 0;
-        int finalMoney = _server.GetFinalMoney(BetMoney, out win);
-        _uIControlTest.UpdateUI(finalMoney, win);
+        _uIControlTest.UpdateUI(_server);
     }
-
 
     void StoreBoardNum(int[] boardNum)
     {
