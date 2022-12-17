@@ -532,7 +532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a944e8395f4768f40981810139523d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpin: 0
   _imageItem:
   - {fileID: 1368624575}
   - {fileID: 1740165771}
@@ -556,10 +555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1d3a770c1d1d74c9f6f09d0681ed8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpin: 0
   _lineRendererData: {fileID: 11400000, guid: 5f5f2db83f9a6e148bc3c510f86b5519, type: 2}
   _lineRender: []
-  LineObj: {fileID: 383900229}
+  _lineObj: {fileID: 383900229}
 --- !u!1 &666817766
 GameObject:
   m_ObjectHideFlags: 0

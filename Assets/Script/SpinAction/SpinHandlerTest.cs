@@ -15,10 +15,10 @@ public class SpinHandlerTest : BaseAction
         get { return Random.Range(.2f, .5f); }
     }
     public enum SpinType { motionless, Spinning }
-    private SpinType _spinType;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         var _imageHeight = _imageItem[0].rectTransform.rect.size.y;
 
         StartPoint = _imageHeight;
@@ -27,42 +27,42 @@ public class SpinHandlerTest : BaseAction
 
     void Start()
     {
-        GetAllSprite();
-        FinalImage();
+        GetSprite();
+        FinalImage(BoardNum);
     }
 
-    public override void SpinEvent()
+    public override void SpinEvent(int[] boardNum, bool isSpin)
     {
         if (isSpin)
         {
-            SetType(SpinType.Spinning);
+            SetType(SpinType.Spinning, boardNum);
         }
         else
         {
-            SetType(SpinType.motionless);
+            SetType(SpinType.motionless, boardNum);
         }
     }
 
-    void GetAllSprite()
+    void GetSprite()
     {
         _spriteSource = _imageData.RollingImage;
     }
 
-    public void SetType(SpinType spinType)
+    public void SetType(SpinType spinType, int[] boardNum)
     {
         DOTween.Clear();
         switch (spinType)
         {
-            case SpinType.motionless:
+            case SpinType.Spinning:
                 for (int i = 0; i < _imageItem.Length; i++)
                 {
                     StartSpinToLoop(_imageItem[i]);
                 }
                 break;
-            case SpinType.Spinning:
+            case SpinType.motionless:
                 for (int i = 0; i < _imageItem.Length; i++)
                 {
-                    LoopToStop(_imageItem[i]).Play();
+                    LoopToStop(_imageItem[i], boardNum).Play();
                 }
                 break;
         }
@@ -79,16 +79,16 @@ public class SpinHandlerTest : BaseAction
         item.transform.DOLocalMoveY(EndPoint, Duration, true).SetEase(Ease.Linear).SetLoops(-1).OnStepComplete(() => ChangeSprite(item));
     }
 
-    Tween LoopToStop(Image item)
+    Tween LoopToStop(Image item, int[] boardNum)
     {
         return item.transform.DOLocalMoveY(EndPoint, Duration, true)
         .SetEase(Ease.Linear)
-        .OnComplete(() => Stop(item));
+        .OnComplete(() => Stop(item, boardNum));
     }
 
-    void Stop(Image item)
+    void Stop(Image item, int[] boardNum)
     {
-        item.transform.DOLocalMoveY(StartPoint, 0, true).OnComplete(FinalImage);
+        item.transform.DOLocalMoveY(StartPoint, 0, true).OnComplete(() => FinalImage(boardNum));
 
         item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack);
     }
@@ -99,11 +99,11 @@ public class SpinHandlerTest : BaseAction
         item.sprite = _spriteSource[imageIndex];
     }
 
-    void FinalImage()
+    void FinalImage(int[] boardNum)
     {
         for (int i = 0; i < _imageItem.Length; i++)
         {
-            _imageItem[i].sprite = _imageData.RollingImage[BoardNum[i]];
+            _imageItem[i].sprite = _imageData.RollingImage[boardNum[i]];
         }
     }
 }

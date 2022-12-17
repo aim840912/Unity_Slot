@@ -5,48 +5,41 @@ public class LineHandlerTest : BaseAction
 {
     [SerializeField] LineRendererData _lineRendererData;
     [SerializeField] LineRenderer[] _lineRender;
-    [SerializeField] GameObject LineObj;
+    [SerializeField] GameObject _lineObj;
 
-    private void Start()
+    protected override void Awake()
     {
-        Init();
+        GenerateLineObj();
     }
 
-    void Init()
+    void GenerateLineObj()
     {
         _lineRender = new LineRenderer[_lineRendererData.LineObjs.Length];
         for (int i = 0; i < _lineRendererData.LineObjs.Length; i++)
         {
-            _lineRender[i] = Instantiate(_lineRendererData.LineObjs[i].LineRenderer, LineObj.transform);
+            _lineRender[i] = Instantiate(_lineRendererData.LineObjs[i].LineRenderer, _lineObj.transform);
         }
     }
 
-    public override void SpinEvent()
+    public override void SpinEvent(int[] boardNum, bool isSpin)
     {
         if (isSpin)
         {
-            CloseLine();
+            LineOff();
         }
         else
         {
-            StartCoroutine(ShowLine());
+            StartCoroutine(LineOnCoro(boardNum));
         }
     }
 
-
-
-    IEnumerator ShowLine()
+    IEnumerator LineOnCoro(int[] boardNum)
     {
         yield return new WaitForSeconds(2f);
-        AfterSpin();
+        LineOn(boardNum);
     }
 
-    void CloseLine()
-    {
-        BeforeSpin();
-    }
-
-    public void AfterSpin()
+    void LineOn(int[] boardNum)
     {
         Odds[] indexLine;
         for (int i = 0; i < _lineRender.Length; i++)
@@ -55,14 +48,14 @@ public class LineHandlerTest : BaseAction
 
             for (var j = 0; j < indexLine.Length; j++)
             {
-                indexLine[j] = (Odds)BoardNum[_lineRendererData.LineObjs[i].IndexLine[j]];
+                indexLine[j] = (Odds)boardNum[_lineRendererData.LineObjs[i].IndexLine[j]];
             }
 
-            _lineRender[i].enabled = IsLineShow(indexLine);
+            _lineRender[i].enabled = IsLineOn(indexLine);
         }
     }
 
-    public void BeforeSpin()
+    void LineOff()
     {
         for (int i = 0; i < _lineRender.Length; i++)
         {
@@ -70,7 +63,7 @@ public class LineHandlerTest : BaseAction
         }
     }
 
-    bool IsLineShow(params Odds[] a)
+    bool IsLineOn(params Odds[] a)
     {
         int anySeven = 0;
         int anyBar = 0;

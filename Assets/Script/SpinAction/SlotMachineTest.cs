@@ -2,48 +2,34 @@ using UnityEngine;
 
 public class SlotMachineTest : MonoBehaviour
 {
-    int[] BoardNum { get; set; }
-
+    int[] _boardNum;
     bool _isSpin;
-    void Awake()
-    {
-        LoadBoardNum(BoardNum);
-    }
-    protected void LoadBoardNum(int[] boardNum)
-    {
-        BoardNum = SaveManager.LoadBoard().boardNum;
-    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpinProcess();
+            _isSpin = !_isSpin;
+            SpinProcess(_isSpin);
         }
     }
 
     BaseAction[] baseActionArray;
-    void SpinProcess()
+    void SpinProcess(bool isSpin)
     {
         GetNum();
-        _isSpin = !_isSpin;
         baseActionArray = GetComponents<BaseAction>();
         foreach (BaseAction baseAction in baseActionArray)
         {
-            baseAction.BoardNum = BoardNum;
-            baseAction.SpinEvent();
-            baseAction.isSpin = _isSpin;
+            baseAction.SpinEvent(_boardNum, isSpin);
         }
-
     }
 
     Server _server = new SimulationServer();
     public void GetNum()
     {
-        int a;
-        BoardNum = _server.GenerateNum();
-        StoreBoardNum(BoardNum);
-        _server.GetFinalMoney(0, out a);
+        _boardNum = _server.GenerateNum();
+        StoreBoardNum(_boardNum);
     }
 
     void StoreBoardNum(int[] boardNum)

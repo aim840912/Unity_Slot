@@ -1,17 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
 public abstract class BaseAction : MonoBehaviour
 {
-    public abstract void SpinEvent();
-
+    public abstract void SpinEvent(int[] boardNum, bool isSpin);
     public int[] BoardNum { get; set; }
 
-    public bool isSpin;
-
-    private void Awake()
+    protected virtual void Awake()
     {
         BoardNum = SaveManager.LoadBoard().boardNum;
     }
