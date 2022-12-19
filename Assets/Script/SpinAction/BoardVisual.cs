@@ -11,7 +11,7 @@ public class BoardVisual : BaseSpin
     float _endPoint;
 
     public float Duration { get { return Random.Range(.2f, .5f); } }
-    public enum SpinType { motionless, Spinning }
+
 
     void Awake()
     {
@@ -34,9 +34,9 @@ public class BoardVisual : BaseSpin
         _endPoint = _imageHeight * -1f;
     }
 
-    public override void SpinEvent(int[] boardNum, bool isSpin)
+    public override void SpinEvent(int[] boardNum, SpinType spinType)
     {
-        if (isSpin)
+        if (spinType == SpinType.Spinning)
         {
             SetType(SpinType.Spinning, boardNum);
         }

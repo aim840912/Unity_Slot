@@ -14,19 +14,26 @@ public class SlotMachine : MonoBehaviour
     public void SpinBtnClick()
     {
         _isSpin = !_isSpin;
-        SpinSOP(_isSpin);
+        if (_isSpin)
+        {
+            Spin(BaseSpin.SpinType.Spinning);
+        }
+        else
+        {
+            Spin(BaseSpin.SpinType.motionless);
+        }
     }
 
-    void SpinSOP(bool isSpin)
+    void Spin(BaseSpin.SpinType spinType)
     {
-        if (!isSpin)
+        if (spinType == BaseSpin.SpinType.motionless)
         {
             GetServerData();
             UpdateUI();
         }
         foreach (BaseSpin baseAction in _baseActionArray)
         {
-            baseAction.SpinEvent(_boardNum, isSpin);
+            baseAction.SpinEvent(_boardNum, spinType);
         }
     }
 

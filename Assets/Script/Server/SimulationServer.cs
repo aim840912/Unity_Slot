@@ -16,18 +16,18 @@ public class SimulationServer : Server
         return _slotBoardCount;
     }
 
-    public override int GetFinalMoney(int betMoney, out int win)
+    public override int GetFinalMoney(int betMoney, out int winMoney)
     {
         int multiple = _calcMultiple.GetMultiple(_slotBoardCount);
         Debug.Log($"{multiple}");
-        int money = GetData();
-        int reduceMoney = betMoney * 8;
-        int winMoney = multiple * betMoney - reduceMoney;
-        win = winMoney;
-        money += winMoney;
-        SaveData(money);
 
-        return money;
+        int playerMoney = GetData();
+
+        winMoney = multiple * betMoney - 8 * betMoney;
+        playerMoney += winMoney;
+
+        SaveData(playerMoney);
+        return playerMoney;
     }
 
     int GetData()
