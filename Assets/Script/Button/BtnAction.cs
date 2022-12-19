@@ -1,12 +1,21 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
+
+[RequireComponent(typeof(Button))]
 public class BtnAction : MonoBehaviour
 {
     [SerializeField] Button _button;
     float _interactableTime = 2;
     Coroutine _coroutine;
+    void Reset()
+    {
+        _button = this.GetComponent<Button>();
+    }
+    void Start()
+    {
+        _button.onClick.AddListener(BtnProcess);
+    }
 
     public void BtnProcess()
     {

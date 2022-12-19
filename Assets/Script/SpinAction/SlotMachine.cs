@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class SlotMachineTest : MonoBehaviour
+public class SlotMachine : MonoBehaviour
 {
     int[] _boardNum;
     bool _isSpin;
+    BaseSpin[] _baseActionArray;
 
-    BaseAction[] baseActionArray;
-    void Start()
+    private void Start()
     {
-        baseActionArray = GetComponents<BaseAction>();
+        _baseActionArray = GetComponents<BaseSpin>();
     }
 
     public void SpinBtnClick()
@@ -24,28 +24,20 @@ public class SlotMachineTest : MonoBehaviour
             GetServerData();
             UpdateUI();
         }
-        foreach (BaseAction baseAction in baseActionArray)
+        foreach (BaseSpin baseAction in _baseActionArray)
         {
             baseAction.SpinEvent(_boardNum, isSpin);
         }
     }
 
     Server _server = new SimulationServer();
-    [SerializeField] UIControlTest _uIControlTest;
+    [SerializeField] UIControl _uIControl;
     public void GetServerData()
     {
         _boardNum = _server.GenerateNum();
-        StoreBoardNum(_boardNum);
     }
-
     public void UpdateUI()
     {
-        _uIControlTest.UpdateUI(_server);
-    }
-
-    void StoreBoardNum(int[] boardNum)
-    {
-        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
-        SaveManager.SaveBoard();
+        _uIControl.UpdateUI(_server);
     }
 }

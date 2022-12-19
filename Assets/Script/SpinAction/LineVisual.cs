@@ -1,50 +1,45 @@
 using System.Collections;
 using UnityEngine;
 
-public class LineHandler : MonoBehaviour, ISpin
+public class LineVisual : BaseSpin
 {
     [SerializeField] LineRendererData _lineRendererData;
     [SerializeField] LineRenderer[] _lineRender;
-    [SerializeField] SlotMachine _slotMachine;
+    [SerializeField] GameObject _lineObj;
 
-    private void Start()
+    void Start()
     {
-        Init();
+        GenerateLine();
     }
 
-    void Init()
+    void GenerateLine()
     {
         _lineRender = new LineRenderer[_lineRendererData.LineObjs.Length];
         for (int i = 0; i < _lineRendererData.LineObjs.Length; i++)
         {
-            _lineRender[i] = Instantiate(_lineRendererData.LineObjs[i].LineRenderer, this.transform);
+            _lineRender[i] = Instantiate(_lineRendererData.LineObjs[i].LineRenderer, _lineObj.transform);
         }
     }
 
-    public void SpinEvent(bool _isSpin)
+    public override void SpinEvent(int[] boardNum, bool isSpin)
     {
-        if (!_isSpin)
+        if (isSpin)
         {
-            CloseLine();
+            LineOff();
         }
         else
         {
-            StartCoroutine(ShowLine());
+            StartCoroutine(LineOnCoro(boardNum));
         }
     }
 
-    IEnumerator ShowLine()
+    IEnumerator LineOnCoro(int[] boardNum)
     {
         yield return new WaitForSeconds(2f);
-        AfterSpin();
+        LineOn(boardNum);
     }
 
-    void CloseLine()
-    {
-        BeforeSpin();
-    }
-
-    public void AfterSpin()
+    void LineOn(int[] boardNum)
     {
         Odds[] indexLine;
         for (int i = 0; i < _lineRender.Length; i++)
@@ -53,14 +48,14 @@ public class LineHandler : MonoBehaviour, ISpin
 
             for (var j = 0; j < indexLine.Length; j++)
             {
-                indexLine[j] = (Odds)_slotMachine.BoardNum[_lineRendererData.LineObjs[i].IndexLine[j]];
+                indexLine[j] = (Odds)boardNum[_lineRendererData.LineObjs[i].IndexLine[j]];
             }
 
-            _lineRender[i].enabled = IsLineShow(indexLine);
+            _lineRender[i].enabled = IsLineOn(indexLine);
         }
     }
 
-    public void BeforeSpin()
+    void LineOff()
     {
         for (int i = 0; i < _lineRender.Length; i++)
         {
@@ -68,14 +63,14 @@ public class LineHandler : MonoBehaviour, ISpin
         }
     }
 
-    bool IsLineShow(params Odds[] a)
+    bool IsLineOn(params Odds[] a)
     {
-        int anySeven = 0;
-        int anyBar = 0;
+        int sevenAmount = 0;
+        int barAmount = 0;
 
         for (int i = 0; i < a.Length; i++)
         {
-            CheckEachCount(a[i], ref anySeven, ref anyBar);
+            CheckEachCount(a[i], ref sevenAmount, ref barAmount);
         }
 
         if (a[0] == Odds.hololive)
@@ -86,7 +81,7 @@ public class LineHandler : MonoBehaviour, ISpin
         {
             return true;
         }
-        else if (anyBar == 3 || anySeven == 3)
+        else if (barAmount == 3 || sevenAmount == 3)
         {
             return true;
         }

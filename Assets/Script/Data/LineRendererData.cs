@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LineRenderer Data", menuName = "SlotMachine/Create Line Renderer Data Asset", order = 3)]

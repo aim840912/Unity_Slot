@@ -1,6 +1,6 @@
 using System.Linq;
 
-public class PayTable
+public class CalcMultiple
 {
     int _winLineCount = 3;
     int _slotBoardCount = 9;

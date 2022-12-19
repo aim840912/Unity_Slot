@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class UIControlTest : MonoBehaviour
+public class UIControl : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] TMP_InputField _inputBet;

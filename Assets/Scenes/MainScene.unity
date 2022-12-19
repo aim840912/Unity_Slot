@@ -356,7 +356,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383900230}
-  - component: {fileID: 383900231}
   m_Layer: 5
   m_Name: LineObj
   m_TagString: Untagged
@@ -384,22 +383,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &383900231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383900229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29289d0db7f6087418f51486283a31b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lineRendererData: {fileID: 11400000, guid: 5f5f2db83f9a6e148bc3c510f86b5519, type: 2}
-  _lineRender: []
-  _slotMachine: {fileID: 606385563}
-  _btn: {fileID: 0}
 --- !u!1 &524014253
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +483,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 606385562}
-  - component: {fileID: 606385563}
+  - component: {fileID: 606385565}
+  - component: {fileID: 606385567}
+  - component: {fileID: 606385566}
   m_Layer: 0
   m_Name: Slot Machine
   m_TagString: Untagged
@@ -523,7 +508,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &606385563
+--- !u!114 &606385565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -532,13 +517,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 606385560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d934019e345ce48bc1412bc4aa276a, type: 3}
+  m_Script: {fileID: 11500000, guid: b8ee0c24ccaf9bd4f9c869049859f770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputBet: {fileID: 1934596511}
-  _winMoneyText: {fileID: 890897552}
-  _playerMoneyText: {fileID: 1898265110}
-  _btn: {fileID: 0}
+  _uIControl: {fileID: 679656732}
+--- !u!114 &606385566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606385560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a3182ba0db55349b5cdfd6144aee80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageItem:
+  - {fileID: 1368624575}
+  - {fileID: 1740165771}
+  - {fileID: 2014245388}
+  - {fileID: 1104062345}
+  - {fileID: 903704279}
+  - {fileID: 1080087771}
+  - {fileID: 953231261}
+  - {fileID: 666817768}
+  - {fileID: 1364742217}
+  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
+--- !u!114 &606385567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606385560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1d14bda01241249ba4ae5472136d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lineRendererData: {fileID: 11400000, guid: 5f5f2db83f9a6e148bc3c510f86b5519, type: 2}
+  _lineRender: []
+  _lineObj: {fileID: 383900229}
 --- !u!1 &666817766
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +635,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666817766}
   m_CullTransparentMesh: 1
+--- !u!1 &679656729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 679656731}
+  - component: {fileID: 679656732}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &679656731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679656729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06177592, y: -16.078535, z: 83.63055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &679656732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679656729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5618827d5b770443ae32548c02d5037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputBet: {fileID: 1934596511}
+  _winMoneyText: {fileID: 890897552}
+  _playerMoneyText: {fileID: 1898265110}
 --- !u!1 &731559443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1538,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1016390013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606385565}
+        m_TargetAssemblyTypeName: SlotMachineTest, Assembly-CSharp
+        m_MethodName: SpinBtnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1016390013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,13 +1598,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1016390009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 750761693daba524a990683de2f4d651, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e13d4dcbcb9f0b47867104909e175e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1016390012}
-  _slotMachine: {fileID: 606385563}
-  _spinHandler: {fileID: 1460027934}
-  _lineHandler: {fileID: 383900231}
 --- !u!1 &1080087769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,7 +2380,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1460027932}
   - component: {fileID: 1460027933}
-  - component: {fileID: 1460027934}
   m_Layer: 5
   m_Name: SpinObj
   m_TagString: Untagged
@@ -2365,31 +2440,6 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 3
---- !u!114 &1460027934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460027931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f89abb22642ed4b4ca5e5200a97afb6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _imageItem:
-  - {fileID: 1368624575}
-  - {fileID: 1740165771}
-  - {fileID: 2014245388}
-  - {fileID: 1104062345}
-  - {fileID: 903704279}
-  - {fileID: 1080087771}
-  - {fileID: 953231261}
-  - {fileID: 666817768}
-  - {fileID: 1364742217}
-  _imageData: {fileID: 11400000, guid: d7bf73db1b9771e4d94eaeafc2cb787e, type: 2}
-  _slotMachine: {fileID: 606385563}
-  _btn: {fileID: 0}
 --- !u!1 &1475050413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,11 +3121,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1814986578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf05cd2cbb1194040b74ca04613e1732, type: 3}
+  m_Script: {fileID: 11500000, guid: 59ec302dc08632d4bad91e7f8511615a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1814986580}
-  _oddsImage: {fileID: 1850532560}
+  _showImage: {fileID: 1850532560}
 --- !u!1 &1850532558
 GameObject:
   m_ObjectHideFlags: 0
