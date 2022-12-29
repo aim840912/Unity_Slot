@@ -23,10 +23,10 @@ public class BtnAction : MonoBehaviour
         {
             StopCoroutine(_coroutine);
         }
-        _coroutine = StartCoroutine(DelayInteractableButton());
+        _coroutine = StartCoroutine(SetDelayInteractable());
     }
 
-    IEnumerator DelayInteractableButton()
+    IEnumerator SetDelayInteractable()
     {
         _button.interactable = false;
         yield return new WaitForSeconds(_interactableTime);

@@ -6,27 +6,32 @@ public class BoardVisual : BaseSpin
 {
     [SerializeField] Image[] _imageItem;
     [SerializeField] Data _imageData;
-    int[] _boardNum;
     float _startPoint;
     float _endPoint;
 
-    public float Duration { get { return Random.Range(.2f, .5f); } }
-
-
     void Awake()
     {
-        BoardInit();
+        Init();
     }
 
-    void BoardInit()
+    void Init()
     {
-        _boardNum = SaveManager.LoadBoard().boardNum;
-        FinalBoardImage(_boardNum);
-
-        SetSpinHeight();
+        LoadImage();
+        SetSpinPoint();
     }
 
-    void SetSpinHeight()
+
+    void LoadImage() // TODO : 想更好的名稱
+    {
+        int[] _boardNum = SaveManager.LoadBoard().boardNum;
+
+        for (int i = 0; i < _imageItem.Length; i++)
+        {
+            _imageItem[i].sprite = _imageData.RollingImage[_boardNum[i]];
+        }
+    }
+
+    void SetSpinPoint()
     {
         float _imageHeight = _imageItem[0].rectTransform.rect.size.y;
 
@@ -34,15 +39,15 @@ public class BoardVisual : BaseSpin
         _endPoint = _imageHeight * -1f;
     }
 
-    public override void SpinEvent(int[] boardNum, SpinType spinType)
+    public override void Spin(int[] boardNum, SpinType spinType)
     {
-        if (spinType == SpinType.Spinning)
+        if (spinType == SpinType.spin)
         {
-            SetType(SpinType.Spinning, boardNum);
+            SetType(SpinType.spin, boardNum);
         }
         else
         {
-            SetType(SpinType.motionless, boardNum);
+            SetType(SpinType.stop, boardNum);
             StoreBoardNum(boardNum);
         }
     }
@@ -52,13 +57,13 @@ public class BoardVisual : BaseSpin
         DOTween.Clear();
         switch (spinType)
         {
-            case SpinType.Spinning:
+            case SpinType.spin:
                 for (int i = 0; i < _imageItem.Length; i++)
                 {
                     StartSpinToLoop(_imageItem[i]);
                 }
                 break;
-            case SpinType.motionless:
+            case SpinType.stop:
                 for (int i = 0; i < _imageItem.Length; i++)
                 {
                     LoopToStop(_imageItem[i], boardNum[i]).Play();
@@ -68,19 +73,19 @@ public class BoardVisual : BaseSpin
     }
     Tween StartSpinToLoop(Image item)
     {
-        return item.transform.DOLocalMoveY(_endPoint, Duration, true)
+        return item.transform.DOLocalMoveY(_endPoint, SetDuration(), true)
         .SetEase(Ease.InCubic)
         .OnComplete(() => SpinLoop(item));
     }
     void SpinLoop(Image item)
     {
         item.transform.localPosition = new Vector3(0, _startPoint, 0);
-        item.transform.DOLocalMoveY(_endPoint, Duration, true).SetEase(Ease.Linear).SetLoops(-1).OnStepComplete(() => ChangeSprite(item));
+        item.transform.DOLocalMoveY(_endPoint, SetDuration(), true).SetEase(Ease.Linear).SetLoops(-1).OnStepComplete(() => ChangeSprite(item));
     }
 
     Tween LoopToStop(Image item, int boardNum)
     {
-        return item.transform.DOLocalMoveY(_endPoint, Duration, true)
+        return item.transform.DOLocalMoveY(_endPoint, SetDuration(), true)
         .SetEase(Ease.Linear)
         .OnComplete(() => Stop(item, boardNum));
     }
@@ -102,17 +107,14 @@ public class BoardVisual : BaseSpin
         item.sprite = _imageData.RollingImage[imageIndex];
     }
 
-    void FinalBoardImage(int[] boardNum)
-    {
-        for (int i = 0; i < _imageItem.Length; i++)
-        {
-            _imageItem[i].sprite = _imageData.RollingImage[boardNum[i]];
-        }
-    }
-
     void StoreBoardNum(int[] boardNum)
     {
         SaveManager.CurrentBoardSaveData.boardNum = boardNum;
         SaveManager.SaveBoard();
+    }
+
+    float SetDuration() // TODO : 想更好的名稱
+    {
+        return Random.Range(.2f, .5f);
     }
 }

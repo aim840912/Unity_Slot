@@ -21,9 +21,9 @@ public class LineVisual : BaseSpin
         }
     }
 
-    public override void SpinEvent(int[] boardNum, SpinType spinType)
+    public override void Spin(int[] boardNum, SpinType spinType)
     {
-        if (spinType == SpinType.Spinning)
+        if (spinType == SpinType.spin)
         {
             LineOff();
         }

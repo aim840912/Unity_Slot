@@ -16,24 +16,24 @@ public class SlotMachine : MonoBehaviour
         _isSpin = !_isSpin;
         if (_isSpin)
         {
-            Spin(BaseSpin.SpinType.Spinning);
+            Spin(BaseSpin.SpinType.spin);
         }
         else
         {
-            Spin(BaseSpin.SpinType.motionless);
+            Spin(BaseSpin.SpinType.stop);
         }
     }
 
     void Spin(BaseSpin.SpinType spinType)
     {
-        if (spinType == BaseSpin.SpinType.motionless)
+        if (spinType == BaseSpin.SpinType.stop)
         {
             GetServerData();
             UpdateUI();
         }
         foreach (BaseSpin baseAction in _baseActionArray)
         {
-            baseAction.SpinEvent(_boardNum, spinType);
+            baseAction.Spin(_boardNum, spinType);
         }
     }
 

@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIControl : MonoBehaviour
 {
+
+    [SerializeField] Image _showImage;
+
     [Header("UI")]
     [SerializeField] TMP_InputField _inputBet;
     [SerializeField] TMP_Text _winMoneyText;
@@ -10,6 +14,11 @@ public class UIControl : MonoBehaviour
     void Start()
     {
         _playerMoneyText.text = $"{SaveManager.LoadPlayerData().money}";
+    }
+
+    public void IsShowingOddsImage()
+    {
+        _showImage.enabled = !_showImage.enabled;
     }
 
     public int GetInputValue()

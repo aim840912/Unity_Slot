@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5618827d5b770443ae32548c02d5037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _showImage: {fileID: 1850532560}
   _inputBet: {fileID: 1934596511}
   _winMoneyText: {fileID: 890897552}
   _playerMoneyText: {fileID: 1898265110}
@@ -3001,7 +3002,6 @@ GameObject:
   - component: {fileID: 1814986582}
   - component: {fileID: 1814986581}
   - component: {fileID: 1814986580}
-  - component: {fileID: 1814986583}
   m_Layer: 5
   m_Name: OddsBtn
   m_TagString: Untagged
@@ -3073,7 +3073,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1814986581}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 679656732}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: IsShowingOddsImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1814986581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,20 +3124,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814986578}
   m_CullTransparentMesh: 1
---- !u!114 &1814986583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814986578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ec302dc08632d4bad91e7f8511615a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 1814986580}
-  _showImage: {fileID: 1850532560}
 --- !u!1 &1850532558
 GameObject:
   m_ObjectHideFlags: 0
