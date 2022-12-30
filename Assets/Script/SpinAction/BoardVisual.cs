@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class BoardVisual : BaseSpin
 {
-    [SerializeField] Image[] _imageItem;
+    [SerializeField] Image[] _images;
     [SerializeField] Data _imageData;
-    float _startPoint;
-    float _endPoint;
+    float _topPoint;
+    float _bottomPoint;
 
     void Awake()
     {
@@ -16,105 +16,109 @@ public class BoardVisual : BaseSpin
 
     void Init()
     {
-        LoadImage();
-        SetSpinPoint();
+        LoadSprite();
+        SetPoint();
     }
 
-
-    void LoadImage() // TODO : 想更好的名稱
+    void LoadSprite() // TODO : 想更好的名稱
     {
         int[] _boardNum = SaveManager.LoadBoard().boardNum;
 
-        for (int i = 0; i < _imageItem.Length; i++)
+        for (int i = 0; i < _images.Length; i++)
         {
-            _imageItem[i].sprite = _imageData.RollingImage[_boardNum[i]];
+            _images[i].sprite = _imageData.RollingImage[_boardNum[i]];
         }
     }
 
-    void SetSpinPoint()
+    void SetPoint()
     {
-        float _imageHeight = _imageItem[0].rectTransform.rect.size.y;
+        float _imageHeight = _images[0].rectTransform.rect.size.y;
 
-        _startPoint = _imageHeight;
-        _endPoint = _imageHeight * -1f;
+        _topPoint = _imageHeight;
+        _bottomPoint = _imageHeight * -1f;
     }
 
-    public override void Spin(int[] boardNum, SpinType spinType)
+    public override void Spin(SpinType spinType)
     {
         if (spinType == SpinType.spin)
         {
-            SetType(SpinType.spin, boardNum);
+            SetSpin(SpinType.spin);
         }
         else
         {
-            SetType(SpinType.stop, boardNum);
-            StoreBoardNum(boardNum);
+            SetSpin(SpinType.stop);
+            StoreBoardNum(BoardNum);
         }
     }
 
-    public void SetType(SpinType spinType, int[] boardNum)
+    public void SetSpin(SpinType spinType)
     {
         DOTween.Clear();
         switch (spinType)
         {
             case SpinType.spin:
-                for (int i = 0; i < _imageItem.Length; i++)
+                for (int i = 0; i < _images.Length; i++)
                 {
-                    StartSpinToLoop(_imageItem[i]);
+                    StartLoop(_images[i]);
                 }
                 break;
             case SpinType.stop:
-                for (int i = 0; i < _imageItem.Length; i++)
+                for (int i = 0; i < _images.Length; i++)
                 {
-                    LoopToStop(_imageItem[i], boardNum[i]).Play();
+                    LoopStop(_images[i], BoardNum[i]).Play();
                 }
                 break;
         }
     }
-    Tween StartSpinToLoop(Image item)
+
+    #region Start Spin
+    Tween StartLoop(Image eachImage)
     {
-        return item.transform.DOLocalMoveY(_endPoint, SetDuration(), true)
+        return eachImage.transform.DOLocalMoveY(_bottomPoint, SetDuration(), true)
         .SetEase(Ease.InCubic)
-        .OnComplete(() => SpinLoop(item));
+        .OnComplete(() => Loop(eachImage));
     }
-    void SpinLoop(Image item)
+    void Loop(Image eachImage)
     {
-        item.transform.localPosition = new Vector3(0, _startPoint, 0);
-        item.transform.DOLocalMoveY(_endPoint, SetDuration(), true).SetEase(Ease.Linear).SetLoops(-1).OnStepComplete(() => ChangeSprite(item));
+        eachImage.transform.localPosition = new Vector3(0, _topPoint, 0);
+        eachImage.transform.DOLocalMoveY(_bottomPoint, SetDuration(), true).SetEase(Ease.Linear).SetLoops(-1).OnStepComplete(() => ChangeSprite(eachImage));
     }
-
-    Tween LoopToStop(Image item, int boardNum)
-    {
-        return item.transform.DOLocalMoveY(_endPoint, SetDuration(), true)
-        .SetEase(Ease.Linear)
-        .OnComplete(() => Stop(item, boardNum));
-    }
-
-    void Stop(Image item, int boardNum)
-    {
-        item.transform.DOLocalMoveY(_startPoint, 0, true).OnComplete(() => FinalImage(item, boardNum));
-
-        item.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack);
-    }
-    void FinalImage(Image item, int boardNum)
-    {
-        item.sprite = _imageData.RollingImage[boardNum];
-    }
-
     void ChangeSprite(Image item)
     {
         int imageIndex = Random.Range(0, _imageData.RollingImage.Length);
         item.sprite = _imageData.RollingImage[imageIndex];
     }
 
+    #endregion
+
+    #region Stop Spin
+    Tween LoopStop(Image eachImage, int boardNum)
+    {
+        return eachImage.transform.DOLocalMoveY(_bottomPoint, SetDuration(), true)
+        .SetEase(Ease.Linear)
+        .OnComplete(() => TopPointToOriginPoint(eachImage, boardNum));
+    }
+
+    void TopPointToOriginPoint(Image eachImage, int boardNum)
+    {
+        ChangeFinalSprite(eachImage, boardNum);
+        eachImage.transform.DOLocalMoveY(0, Random.Range(1, 1.5f), true).SetEase(Ease.OutBack);
+    }
+
+    void ChangeFinalSprite(Image eachImage, int boardNum)
+    {
+        eachImage.transform.localPosition = new Vector3(0, 100, 0);
+        eachImage.sprite = _imageData.RollingImage[boardNum];
+    }
+
+    #endregion
+    float SetDuration()
+    {
+        return Random.Range(.2f, .5f);
+    }
     void StoreBoardNum(int[] boardNum)
     {
         SaveManager.CurrentBoardSaveData.boardNum = boardNum;
         SaveManager.SaveBoard();
-    }
-
-    float SetDuration() // TODO : 想更好的名稱
-    {
-        return Random.Range(.2f, .5f);
     }
 }

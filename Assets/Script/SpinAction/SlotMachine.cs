@@ -33,7 +33,8 @@ public class SlotMachine : MonoBehaviour
         }
         foreach (BaseSpin baseAction in _baseActionArray)
         {
-            baseAction.Spin(_boardNum, spinType);
+            baseAction.BoardNum = _boardNum;
+            baseAction.Spin(spinType);
         }
     }
 

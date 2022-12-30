@@ -9,10 +9,10 @@ public class LineVisual : BaseSpin
 
     void Start()
     {
-        GenerateLine();
+        InstantiateLineObj();
     }
 
-    void GenerateLine()
+    void InstantiateLineObj()
     {
         _lineRender = new LineRenderer[_lineRendererData.LineObjs.Length];
         for (int i = 0; i < _lineRendererData.LineObjs.Length; i++)
@@ -21,7 +21,7 @@ public class LineVisual : BaseSpin
         }
     }
 
-    public override void Spin(int[] boardNum, SpinType spinType)
+    public override void Spin(SpinType spinType)
     {
         if (spinType == SpinType.spin)
         {
@@ -29,7 +29,7 @@ public class LineVisual : BaseSpin
         }
         else
         {
-            StartCoroutine(LineOnCoro(boardNum));
+            StartCoroutine(LineOnCoro(BoardNum));
         }
     }
 
