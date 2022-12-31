@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class GameSequence : MonoBehaviour
 {
-    BoardVisual _boardVisual;
-    LineVisual _lineVisual;
-    void Process()
+    public BoardVisual _boardVisual;
+    public LineVisual _lineVisual;
+    int[] _boardNum;
+    Server _server = new SimulationServer();
+
+    void GetGameBoardNum()
+    {
+        _boardNum = _server.GenerateGameBoard();
+    }
+    void Spin()
+    {
+
+    }
+
+    void Stop()
     {
 
     }

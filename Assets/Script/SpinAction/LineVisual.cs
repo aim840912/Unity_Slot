@@ -21,16 +21,13 @@ public class LineVisual : BaseSpin
         }
     }
 
-    public override void Spin(SpinType spinType)
+    public override void Spin()
     {
-        if (spinType == SpinType.spin)
-        {
-            LineOff();
-        }
-        else
-        {
-            StartCoroutine(LineOnCoro(BoardNum));
-        }
+        LineOff();
+    }
+    public override void Stop()
+    {
+        StartCoroutine(LineOnCoro(BoardNum));
     }
 
     IEnumerator LineOnCoro(int[] boardNum)

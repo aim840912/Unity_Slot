@@ -1,6 +1,6 @@
 using UnityEngine;
 /*
-    模擬後端 產生盤面 金錢計算
+    產生盤面 金錢計算
 */
 public class SimulationServer : Server
 {
@@ -17,7 +17,7 @@ public class SimulationServer : Server
         return _gameBoard;
     }
 
-    public override int GetPlayerFinalMoney(int betMoney)
+    public override int GetPlayerFinalMoneyAndSaveData(int betMoney)
     {
         int playerMoney = GetData();
 
@@ -32,8 +32,8 @@ public class SimulationServer : Server
         int multiple = _calcMultiple.GetMultiple(_gameBoard);
         Debug.Log($"{multiple}");
 
-        int bet = multiple * betMoney - 8 * betMoney;
-        return bet;
+        int totalBet = multiple * betMoney - 8 * betMoney;
+        return totalBet;
     }
 
     int GetData()

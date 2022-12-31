@@ -2,5 +2,5 @@ public abstract class Server
 {
     public abstract int[] GenerateGameBoard();
 
-    public abstract int GetPlayerFinalMoney(int betMoney);
+    public abstract int GetPlayerFinalMoneyAndSaveData(int betMoney);
 }

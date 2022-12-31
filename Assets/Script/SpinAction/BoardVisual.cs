@@ -38,28 +38,21 @@ public class BoardVisual : BaseSpin
         _bottomPoint = _imageHeight * -1f;
     }
 
-    public override void Spin(SpinType spinType)
-    {
-        SetSpin(spinType);
-    }
-
-    public void SetSpin(SpinType spinType)
+    public override void Spin()
     {
         DOTween.Clear();
-        switch (spinType)
+        for (int i = 0; i < _images.Length; i++)
         {
-            case SpinType.spin:
-                for (int i = 0; i < _images.Length; i++)
-                {
-                    StartLoop(_images[i]);
-                }
-                break;
-            case SpinType.stop:
-                for (int i = 0; i < _images.Length; i++)
-                {
-                    LoopStop(_images[i], BoardNum[i]).Play();
-                }
-                break;
+            StartLoop(_images[i]);
+        }
+    }
+
+    public override void Stop()
+    {
+        DOTween.Clear();
+        for (int i = 0; i < _images.Length; i++)
+        {
+            LoopStop(_images[i], BoardNum[i]).Play();
         }
     }
 
