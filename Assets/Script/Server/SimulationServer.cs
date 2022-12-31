@@ -4,30 +4,36 @@ using UnityEngine;
 */
 public class SimulationServer : Server
 {
-    int[] _slotBoardCount = new int[9];
-    const int MAX_RANDOM_NUM = 10;
+    int[] _gameBoard = new int[9];
+    const int MIN_NUMBER = 0;
+    const int MAX_NUMBER = 10;
     CalcMultiple _calcMultiple = new CalcMultiple();
-    public override int[] GenerateNum()
+    public override int[] GenerateGameBoard()
     {
-        for (var i = 0; i < _slotBoardCount.Length; i++)
+        for (var i = 0; i < _gameBoard.Length; i++)
         {
-            _slotBoardCount[i] = Random.Range(0, MAX_RANDOM_NUM);
+            _gameBoard[i] = Random.Range(MIN_NUMBER, MAX_NUMBER);
         }
-        return _slotBoardCount;
+        return _gameBoard;
     }
 
-    public override int GetFinalMoney(int betMoney, out int winMoney)
+    public override int GetPlayerFinalMoney(int betMoney)
     {
-        int multiple = _calcMultiple.GetMultiple(_slotBoardCount);
-        Debug.Log($"{multiple}");
-
         int playerMoney = GetData();
 
-        winMoney = multiple * betMoney - 8 * betMoney;
-        playerMoney += winMoney;
+        playerMoney += CalcBet(betMoney);
 
         SaveData(playerMoney);
         return playerMoney;
+    }
+
+    int CalcBet(int betMoney)
+    {
+        int multiple = _calcMultiple.GetMultiple(_gameBoard);
+        Debug.Log($"{multiple}");
+
+        int bet = multiple * betMoney - 8 * betMoney;
+        return bet;
     }
 
     int GetData()

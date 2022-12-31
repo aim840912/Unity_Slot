@@ -3,7 +3,7 @@ using System.Linq;
 public class CalcMultiple
 {
     int _winLineCount = 3;
-    int _slotBoardCount = 9;
+    int _gameBoardCount = 9;
     int[][] _eachLineIndexList = {
          new int[] { 0, 1, 2 },
          new int[] { 3, 4, 5 },
@@ -53,7 +53,7 @@ public class CalcMultiple
     {
         int numCount = a.Count(x => x == a[0]);
 
-        if (numCount == _slotBoardCount)
+        if (numCount == _gameBoardCount)
         {
             return OddsDict.dictOverall[a[0]];
         }
@@ -72,15 +72,15 @@ public class CalcMultiple
             CalcEachCount(a[i], ref countSeven, ref countBar, ref countFruit);
         }
 
-        if (countSeven == _slotBoardCount)
+        if (countSeven == _gameBoardCount)
         {
             return OddsDict.dictOverall[Odds.anySeven];
         }
-        else if (countBar == _slotBoardCount)
+        else if (countBar == _gameBoardCount)
         {
             return OddsDict.dictOverall[Odds.anyBar];
         }
-        else if (countFruit == _slotBoardCount)
+        else if (countFruit == _gameBoardCount)
         {
             return OddsDict.dictOverall[Odds.anyFruit];
         }

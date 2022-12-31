@@ -16,11 +16,11 @@ public class BoardVisual : BaseSpin
 
     void Init()
     {
-        LoadSprite();
+        LastGameBoard();
         SetPoint();
     }
 
-    void LoadSprite() // TODO : 想更好的名稱
+    void LastGameBoard() // TODO : 想更好的名稱
     {
         int[] _boardNum = SaveManager.LoadBoard().boardNum;
 
@@ -40,15 +40,7 @@ public class BoardVisual : BaseSpin
 
     public override void Spin(SpinType spinType)
     {
-        if (spinType == SpinType.spin)
-        {
-            SetSpin(SpinType.spin);
-        }
-        else
-        {
-            SetSpin(SpinType.stop);
-            StoreBoardNum(BoardNum);
-        }
+        SetSpin(spinType);
     }
 
     public void SetSpin(SpinType spinType)
@@ -115,10 +107,5 @@ public class BoardVisual : BaseSpin
     float SetDuration()
     {
         return Random.Range(.2f, .5f);
-    }
-    void StoreBoardNum(int[] boardNum)
-    {
-        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
-        SaveManager.SaveBoard();
     }
 }

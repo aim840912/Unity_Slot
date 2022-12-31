@@ -6,6 +6,7 @@ public class SlotMachine : MonoBehaviour
     bool _isSpin;
     BaseSpin[] _baseActionArray;
 
+    public BoardVisual boardVisual;
     private void Start()
     {
         _baseActionArray = GetComponents<BaseSpin>();
@@ -28,7 +29,7 @@ public class SlotMachine : MonoBehaviour
     {
         if (spinType == BaseSpin.SpinType.stop)
         {
-            GetServerData();
+            GetServerDataAndStore();
             UpdateUI();
         }
         foreach (BaseSpin baseAction in _baseActionArray)
@@ -39,11 +40,20 @@ public class SlotMachine : MonoBehaviour
     }
 
     Server _server = new SimulationServer();
-    [SerializeField] UIControl _uIControl;
-    public void GetServerData()
+
+    public void GetServerDataAndStore()
     {
-        _boardNum = _server.GenerateNum();
+        _boardNum = _server.GenerateGameBoard();
+        StoreBoardNum(_boardNum);
     }
+
+
+    void StoreBoardNum(int[] boardNum)
+    {
+        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
+        SaveManager.SaveBoard();
+    }
+    [SerializeField] UIControl _uIControl;
     public void UpdateUI()
     {
         _uIControl.UpdateUI(_server);
