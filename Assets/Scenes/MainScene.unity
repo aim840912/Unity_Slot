@@ -520,7 +520,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ee0c24ccaf9bd4f9c869049859f770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardVisual: {fileID: 0}
   _uIControl: {fileID: 679656732}
 --- !u!114 &606385566
 MonoBehaviour:

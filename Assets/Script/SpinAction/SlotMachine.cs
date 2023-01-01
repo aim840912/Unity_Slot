@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class SlotMachine : MonoBehaviour
 {
-    int[] _boardNum;
     bool _isSpin;
     BaseSpin[] _baseActionArray;
-
     private void Start()
     {
         _baseActionArray = GetComponents<BaseSpin>();
@@ -18,36 +16,28 @@ public class SlotMachine : MonoBehaviour
         {
             foreach (BaseSpin baseAction in _baseActionArray)
             {
-                baseAction.BoardNum = _boardNum;
                 baseAction.Spin();
             }
         }
         else
         {
-            GetGameBoardNumAndStore();
-            UpdateUI();
             foreach (BaseSpin baseAction in _baseActionArray)
             {
-                baseAction.BoardNum = _boardNum;
+                baseAction.BoardNum = GetGameBoardNumAndStore();
                 baseAction.Stop();
             }
+
+            UpdateUI();
         }
     }
 
     Server _server = new SimulationServer();
 
-    void GetGameBoardNumAndStore()
+    int[] GetGameBoardNumAndStore()
     {
-        _boardNum = _server.GenerateGameBoard();
-        StoreBoardNum(_boardNum);
+        return _server.GenerateGameBoardAndStore();
     }
 
-
-    void StoreBoardNum(int[] boardNum)
-    {
-        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
-        SaveManager.SaveBoard();
-    }
     [SerializeField] UIControl _uIControl;
     void UpdateUI()
     {

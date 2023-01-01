@@ -8,12 +8,15 @@ public class SimulationServer : Server
     const int MIN_NUMBER = 0;
     const int MAX_NUMBER = 10;
     CalcMultiple _calcMultiple = new CalcMultiple();
-    public override int[] GenerateGameBoard()
+    public override int[] GenerateGameBoardAndStore()
     {
         for (var i = 0; i < _gameBoard.Length; i++)
         {
             _gameBoard[i] = Random.Range(MIN_NUMBER, MAX_NUMBER);
         }
+
+        StoreBoardNum(_gameBoard);
+
         return _gameBoard;
     }
 
@@ -45,5 +48,11 @@ public class SimulationServer : Server
     {
         SaveManager.CurrentSaveData.money = money;
         SaveManager.SavePlayerData();
+    }
+
+    void StoreBoardNum(int[] boardNum)
+    {
+        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
+        SaveManager.SaveBoard();
     }
 }

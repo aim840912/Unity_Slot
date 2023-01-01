@@ -11,7 +11,7 @@ public class GameSequence : MonoBehaviour
 
     void GetGameBoardNum()
     {
-        _boardNum = _server.GenerateGameBoard();
+        _boardNum = _server.GenerateGameBoardAndStore();
     }
     void Spin()
     {
