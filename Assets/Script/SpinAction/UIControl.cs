@@ -38,7 +38,7 @@ public class UIControl : MonoBehaviour
     public void UpdateUI(Server server)
     {
         int winMoney = 0;
-        int FinalMoney = server.GetPlayerFinalMoneyAndSave(this);
+        int FinalMoney = server.CalcMoneyAndSave(this);
 
         _playerMoneyText.text = $"{FinalMoney}";
         _winMoneyText.text = $"{winMoney}";

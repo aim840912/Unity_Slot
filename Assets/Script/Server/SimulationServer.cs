@@ -20,7 +20,7 @@ public class SimulationServer : Server
         return _gameBoard;
     }
 
-    public override int GetPlayerFinalMoneyAndSave(UIControl uIControl)
+    public override int CalcMoneyAndSave(UIControl uIControl)
     {
         int playerMoney = GetPlayerMoneyFromData();
 
