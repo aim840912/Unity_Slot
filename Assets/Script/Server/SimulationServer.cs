@@ -20,31 +20,37 @@ public class SimulationServer : Server
         return _gameBoard;
     }
 
-    public override int GetPlayerFinalMoneyAndSaveData(int betMoney)
+    public override int GetPlayerFinalMoneyAndSave(UIControl uIControl)
     {
-        int playerMoney = GetData();
+        int playerMoney = GetPlayerMoneyFromData();
 
-        playerMoney += CalcBet(betMoney);
+        playerMoney += CalcBet(uIControl);
 
-        SaveData(playerMoney);
+        SavePlayerMoneyToData(playerMoney);
         return playerMoney;
     }
 
-    int CalcBet(int betMoney)
+    int CalcBet(UIControl uIControl)
+    {
+        int betMoney = uIControl.GetInputValue();
+        int totalBet = GetMultiple() * betMoney - 8 * betMoney;
+        return totalBet;
+    }
+
+    int GetMultiple()
     {
         int multiple = _calcMultiple.GetMultiple(_gameBoard);
         Debug.Log($"{multiple}");
 
-        int totalBet = multiple * betMoney - 8 * betMoney;
-        return totalBet;
+        return multiple;
     }
 
-    int GetData()
+    int GetPlayerMoneyFromData()
     {
         return SaveManager.CurrentSaveData.money;
     }
 
-    void SaveData(int money)
+    void SavePlayerMoneyToData(int money)
     {
         SaveManager.CurrentSaveData.money = money;
         SaveManager.SavePlayerData();
