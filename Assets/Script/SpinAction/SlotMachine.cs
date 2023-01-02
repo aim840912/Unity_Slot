@@ -12,6 +12,7 @@ public class SlotMachine : MonoBehaviour
     public void SpinBtnClick()
     {
         _isSpin = !_isSpin;
+
         if (_isSpin)
         {
             foreach (BaseSpin baseAction in _baseActionArray)
@@ -27,7 +28,8 @@ public class SlotMachine : MonoBehaviour
                 baseAction.Stop();
             }
 
-            UpdatePlayerMoney();
+            Calc();
+            UpdatePlayerInform();
         }
     }
 
@@ -35,13 +37,17 @@ public class SlotMachine : MonoBehaviour
 
     int[] GetGameBoardNumAndStore()
     {
-        return _server.GenerateGameBoardAndStore();
+        return _server.GenerateGameBoardAndSave();
     }
 
     [SerializeField] UIControl _uIControl;
-    void UpdatePlayerMoney()
+
+    void Calc()
     {
         _server.CalcWinMoneyAndSave(_uIControl.GetInputValue());
+    }
+    void UpdatePlayerInform()
+    {
         _uIControl.UpdateUI(_server);
     }
 }

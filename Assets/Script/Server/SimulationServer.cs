@@ -11,14 +11,14 @@ public class SimulationServer
 
     public int WinMoney { get; set; }
 
-    public int[] GenerateGameBoardAndStore()
+    public int[] GenerateGameBoardAndSave()
     {
         for (var i = 0; i < _gameBoard.Length; i++)
         {
             _gameBoard[i] = Random.Range(MIN_NUMBER, MAX_NUMBER);
         }
 
-        StoreBoardNum(_gameBoard);
+        SaveBoardNum(_gameBoard);
 
         return _gameBoard;
     }
@@ -28,7 +28,7 @@ public class SimulationServer
         int betMoney = inputValue;
         WinMoney = GetMultiple() * betMoney - 8 * betMoney;
 
-        CalcTotalMoneyAndSave();
+        CalcPlayerMoneyAndSave();
     }
 
     int GetMultiple()
@@ -39,7 +39,7 @@ public class SimulationServer
         return multiple;
     }
 
-    void CalcTotalMoneyAndSave()
+    void CalcPlayerMoneyAndSave()
     {
         int playerMoney = GetPlayerMoneyFromData();
 
@@ -59,7 +59,7 @@ public class SimulationServer
         SaveManager.SavePlayerData();
     }
 
-    void StoreBoardNum(int[] boardNum)
+    void SaveBoardNum(int[] boardNum)
     {
         SaveManager.CurrentBoardSaveData.boardNum = boardNum;
         SaveManager.SaveBoard();

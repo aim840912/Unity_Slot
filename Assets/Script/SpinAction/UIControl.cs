@@ -38,9 +38,9 @@ public class UIControl : MonoBehaviour
     public void UpdateUI(SimulationServer server)
     {
         int winMoney = server.WinMoney;
-        int FinalMoney = server.GetPlayerMoneyFromData();
+        int playerMoney = server.GetPlayerMoneyFromData();
 
-        _playerMoneyText.text = $"{FinalMoney}";
         _winMoneyText.text = $"{winMoney}";
+        _playerMoneyText.text = $"{playerMoney}";
     }
 }
