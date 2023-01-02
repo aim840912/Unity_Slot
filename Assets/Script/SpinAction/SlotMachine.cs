@@ -27,11 +27,11 @@ public class SlotMachine : MonoBehaviour
                 baseAction.Stop();
             }
 
-            UpdateUI();
+            UpdatePlayerMoney();
         }
     }
 
-    Server _server = new SimulationServer();
+    SimulationServer _server = new SimulationServer();
 
     int[] GetGameBoardNumAndStore()
     {
@@ -39,8 +39,9 @@ public class SlotMachine : MonoBehaviour
     }
 
     [SerializeField] UIControl _uIControl;
-    void UpdateUI()
+    void UpdatePlayerMoney()
     {
+        _server.CalcWinMoneyAndSave(_uIControl.GetInputValue());
         _uIControl.UpdateUI(_server);
     }
 }

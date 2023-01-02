@@ -35,10 +35,10 @@ public class UIControl : MonoBehaviour
         return betMoney < 0 ? 0 : betMoney;
     }
 
-    public void UpdateUI(Server server)
+    public void UpdateUI(SimulationServer server)
     {
-        int winMoney = 0;
-        int FinalMoney = server.CalcMoneyAndSave(this);
+        int winMoney = server.WinMoney;
+        int FinalMoney = server.GetPlayerMoneyFromData();
 
         _playerMoneyText.text = $"{FinalMoney}";
         _winMoneyText.text = $"{winMoney}";

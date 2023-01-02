@@ -2,13 +2,16 @@ using UnityEngine;
 /*
     產生盤面 金錢計算
 */
-public class SimulationServer : Server
+public class SimulationServer
 {
     int[] _gameBoard = new int[9];
     const int MIN_NUMBER = 0;
     const int MAX_NUMBER = 10;
     CalcMultiple _calcMultiple = new CalcMultiple();
-    public override int[] GenerateGameBoardAndStore()
+
+    public int WinMoney { get; set; }
+
+    public int[] GenerateGameBoardAndStore()
     {
         for (var i = 0; i < _gameBoard.Length; i++)
         {
@@ -20,21 +23,12 @@ public class SimulationServer : Server
         return _gameBoard;
     }
 
-    public override int CalcMoneyAndSave(UIControl uIControl)
+    public void CalcWinMoneyAndSave(int inputValue)
     {
-        int playerMoney = GetPlayerMoneyFromData();
+        int betMoney = inputValue;
+        WinMoney = GetMultiple() * betMoney - 8 * betMoney;
 
-        playerMoney += CalcBet(uIControl);
-
-        SavePlayerMoneyToData(playerMoney);
-        return playerMoney;
-    }
-
-    int CalcBet(UIControl uIControl)
-    {
-        int betMoney = uIControl.GetInputValue();
-        int totalBet = GetMultiple() * betMoney - 8 * betMoney;
-        return totalBet;
+        CalcTotalMoneyAndSave();
     }
 
     int GetMultiple()
@@ -45,7 +39,16 @@ public class SimulationServer : Server
         return multiple;
     }
 
-    int GetPlayerMoneyFromData()
+    void CalcTotalMoneyAndSave()
+    {
+        int playerMoney = GetPlayerMoneyFromData();
+
+        playerMoney += WinMoney;
+
+        SavePlayerMoneyToData(playerMoney);
+    }
+
+    public int GetPlayerMoneyFromData()
     {
         return SaveManager.CurrentSaveData.money;
     }
