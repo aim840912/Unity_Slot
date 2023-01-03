@@ -11,6 +11,7 @@ public class SimulationServer
 
     public int WinMoney { get; set; }
 
+
     public int[] GenerateGameBoardAndSave()
     {
         for (var i = 0; i < _gameBoard.Length; i++)
@@ -46,6 +47,11 @@ public class SimulationServer
         playerMoney += WinMoney;
 
         SavePlayerMoneyToData(playerMoney);
+    }
+
+    public void GetInputValue(UIControl uIControl)
+    {
+        uIControl.GetInputValue(this);
     }
 
     public int GetPlayerMoneyFromData()

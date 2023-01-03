@@ -47,12 +47,12 @@ public class BoardVisual : BaseSpin
         }
     }
 
-    public override void Stop()
+    public override void Stop(int[] board)
     {
         DOTween.Clear();
         for (int i = 0; i < _images.Length; i++)
         {
-            LoopStop(_images[i], BoardNum[i]).Play();
+            LoopStop(_images[i], board[i]).Play();
         }
     }
 

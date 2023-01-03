@@ -21,14 +21,14 @@ public class UIControl : MonoBehaviour
         _showImage.enabled = !_showImage.enabled;
     }
 
-    public int GetInputValue()
+    public int GetInputValue(SimulationServer server)
     {
         if (_inputBet.text == "")
             return 0;
 
         int betMoney = int.Parse(_inputBet.text);
 
-        if (betMoney * 8 > SaveManager.CurrentSaveData.money)
+        if (betMoney * 8 > server.GetPlayerMoneyFromData())
         {
             return 0;
         }

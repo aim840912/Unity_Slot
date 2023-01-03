@@ -3,10 +3,10 @@ using UnityEngine;
 public class SlotMachine : MonoBehaviour
 {
     bool _isSpin;
-    BaseSpin[] _baseActionArray;
+    BaseSpin[] _baseSpinArray;
     private void Start()
     {
-        _baseActionArray = GetComponents<BaseSpin>();
+        _baseSpinArray = GetComponents<BaseSpin>();
     }
 
     public void SpinBtnClick()
@@ -15,17 +15,16 @@ public class SlotMachine : MonoBehaviour
 
         if (_isSpin)
         {
-            foreach (BaseSpin baseAction in _baseActionArray)
+            foreach (BaseSpin baseAction in _baseSpinArray)
             {
                 baseAction.Spin();
             }
         }
         else
         {
-            foreach (BaseSpin baseAction in _baseActionArray)
+            foreach (BaseSpin baseAction in _baseSpinArray)
             {
-                baseAction.BoardNum = GetGameBoardNumAndStore();
-                baseAction.Stop();
+                baseAction.Stop(GetGameBoardNumAndStore());
             }
 
             Calc();
@@ -44,7 +43,7 @@ public class SlotMachine : MonoBehaviour
 
     void Calc()
     {
-        _server.CalcWinMoneyAndSave(_uIControl.GetInputValue());
+        _server.CalcWinMoneyAndSave(_uIControl.GetInputValue(_server));
     }
     void UpdatePlayerInform()
     {
