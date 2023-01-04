@@ -5,34 +5,20 @@ using TMPro;
 public class UIControl : MonoBehaviour
 {
 
-    [SerializeField] Image _showImage;
-
     [Header("UI")]
-    [SerializeField] TMP_InputField _inputBet;
+    [SerializeField] CheckValue _checkValue;
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;
+
+    bool isShowing;
     void Start()
     {
         _playerMoneyText.text = $"{SaveManager.LoadPlayerData().money}";
     }
 
-    public void IsShowingOddsImage()
+    public bool CanSpin()
     {
-        _showImage.enabled = !_showImage.enabled;
-    }
-
-    public int GetInputValue(SimulationServer server)
-    {
-        if (_inputBet.text == "")
-            return 0;
-
-        int betMoney = int.Parse(_inputBet.text);
-
-        if (betMoney * 8 > server.GetPlayerMoneyFromData())
-        {
-            return 0;
-        }
-        return betMoney < 0 ? 0 : betMoney;
+        return _checkValue.CanSpin();
     }
 
     public void UpdateUI(SimulationServer server)

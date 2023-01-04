@@ -1,14 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SlotMachine : MonoBehaviour
 {
     bool _isSpin;
     BaseSpin[] _baseSpinArray;
+    int[] boardNum;
+
+    [Header("UI")]
+    [SerializeField] TMP_InputField _inputBet;
+
     private void Start()
     {
         _baseSpinArray = GetComponents<BaseSpin>();
     }
 
+    private void Update()
+    {
+
+    }
     public void SpinBtnClick()
     {
         _isSpin = !_isSpin;
@@ -19,31 +30,40 @@ public class SlotMachine : MonoBehaviour
             {
                 baseAction.Spin();
             }
+            GetInputField();
+            GetGameBoardNumAndStore();
         }
         else
         {
             foreach (BaseSpin baseAction in _baseSpinArray)
             {
-                baseAction.Stop(GetGameBoardNumAndStore());
+                baseAction.Stop(boardNum);
             }
 
-            Calc();
             UpdatePlayerInform();
         }
     }
 
     SimulationServer _server = new SimulationServer();
 
-    int[] GetGameBoardNumAndStore()
+    void GetGameBoardNumAndStore()
     {
-        return _server.GenerateGameBoardAndSave();
+        boardNum = _server.GenerateGameBoardAndSave();
     }
 
     [SerializeField] UIControl _uIControl;
 
-    void Calc()
+    void GetInputField()
     {
-        _server.CalcWinMoneyAndSave(_uIControl.GetInputValue(_server));
+        if (_uIControl.CanSpin())
+        {
+            _server.GetInputValue(int.Parse(_inputBet.text));
+        }
+        else
+        {
+            _server.GetInputValue(0);
+        }
+
     }
     void UpdatePlayerInform()
     {

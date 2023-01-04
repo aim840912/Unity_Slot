@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ee0c24ccaf9bd4f9c869049859f770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputBet: {fileID: 1934596511}
   _uIControl: {fileID: 679656732}
 --- !u!114 &606385566
 MonoBehaviour:
@@ -679,8 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ed0351902b08c468835a0b69c80782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showImage: {fileID: 1850532560}
-  _inputBet: {fileID: 1934596511}
+  _checkValue: {fileID: 1934596514}
   _winMoneyText: {fileID: 890897552}
   _playerMoneyText: {fileID: 1898265110}
 --- !u!1 &731559443
@@ -3002,8 +3002,9 @@ GameObject:
   - component: {fileID: 1814986582}
   - component: {fileID: 1814986581}
   - component: {fileID: 1814986580}
+  - component: {fileID: 1814986583}
   m_Layer: 5
-  m_Name: OddsBtn
+  m_Name: OddsImageBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3074,9 +3075,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 679656732}
-        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
-        m_MethodName: IsShowingOddsImage
+      - m_Target: {fileID: 1814986583}
+        m_TargetAssemblyTypeName: ShowImage, Assembly-CSharp
+        m_MethodName: IsShowing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3124,6 +3125,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814986578}
   m_CullTransparentMesh: 1
+--- !u!114 &1814986583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814986578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a54153968fa3eb499724f1008012ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 1850532560}
 --- !u!1 &1850532558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,8 +3543,9 @@ GameObject:
   - component: {fileID: 1934596513}
   - component: {fileID: 1934596512}
   - component: {fileID: 1934596511}
+  - component: {fileID: 1934596514}
   m_Layer: 5
-  m_Name: Money Input
+  m_Name: Bet Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3693,6 +3708,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934596509}
   m_CullTransparentMesh: 1
+--- !u!114 &1934596514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934596509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1384c9cdcdf5bcc4a9c0e6e97b38211d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputBet: {fileID: 1934596511}
 --- !u!1 &1935516331
 GameObject:
   m_ObjectHideFlags: 0

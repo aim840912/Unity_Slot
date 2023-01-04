@@ -10,7 +10,7 @@ public class SimulationServer
     CalcMultiple _calcMultiple = new CalcMultiple();
 
     public int WinMoney { get; set; }
-
+    public int InputValue { get; set; }
 
     public int[] GenerateGameBoardAndSave()
     {
@@ -20,17 +20,18 @@ public class SimulationServer
         }
 
         SaveBoardNum(_gameBoard);
-
+        CalcWinMoneyAndSave();
         return _gameBoard;
     }
 
-    public void CalcWinMoneyAndSave(int inputValue)
+    public void CalcWinMoneyAndSave()
     {
-        int betMoney = inputValue;
+        int betMoney = InputValue;
         WinMoney = GetMultiple() * betMoney - 8 * betMoney;
 
         CalcPlayerMoneyAndSave();
     }
+
 
     int GetMultiple()
     {
@@ -40,6 +41,11 @@ public class SimulationServer
         return multiple;
     }
 
+    public void GetInputValue(int inputValue)
+    {
+        InputValue = inputValue;
+    }
+
     void CalcPlayerMoneyAndSave()
     {
         int playerMoney = GetPlayerMoneyFromData();
@@ -47,11 +53,6 @@ public class SimulationServer
         playerMoney += WinMoney;
 
         SavePlayerMoneyToData(playerMoney);
-    }
-
-    public void GetInputValue(UIControl uIControl)
-    {
-        uIControl.GetInputValue(this);
     }
 
     public int GetPlayerMoneyFromData()
