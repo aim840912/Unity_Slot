@@ -12,6 +12,13 @@ public class SimulationServer
     public int WinMoney { get; set; }
     public int InputValue { get; set; }
 
+    void ServerProcess(int inputValue)// todo : 還沒完成
+    {
+        GenerateGameBoardAndSave();
+        GetInputValue(inputValue);
+        CalcWinMoneyAndSave();
+    }
+
     public int[] GenerateGameBoardAndSave()
     {
         for (var i = 0; i < _gameBoard.Length; i++)

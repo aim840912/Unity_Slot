@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class BtnAction : MonoBehaviour
+public class InteractButton : MonoBehaviour
 {
     [SerializeField] Button _button;
     float _interactableTime = 2;
@@ -14,19 +14,19 @@ public class BtnAction : MonoBehaviour
     }
     void Start()
     {
-        _button.onClick.AddListener(BtnProcess);
+        _button.onClick.AddListener(StartDelayInteractable);
     }
 
-    public void BtnProcess()
+    public void StartDelayInteractable()
     {
         if (_coroutine != null)
         {
             StopCoroutine(_coroutine);
         }
-        _coroutine = StartCoroutine(SetDelayInteractable());
+        _coroutine = StartCoroutine(SetDelayInteractableTime());
     }
 
-    IEnumerator SetDelayInteractable()
+    IEnumerator SetDelayInteractableTime()
     {
         _button.interactable = false;
         yield return new WaitForSeconds(_interactableTime);
