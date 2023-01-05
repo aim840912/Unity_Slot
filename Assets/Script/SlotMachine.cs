@@ -8,18 +8,11 @@ public class SlotMachine : MonoBehaviour
     BaseSpin[] _baseSpinArray;
     int[] boardNum;
 
-    [Header("UI")]
-    [SerializeField] TMP_InputField _inputBet;
-
     private void Start()
     {
         _baseSpinArray = GetComponents<BaseSpin>();
     }
 
-    private void Update()
-    {
-
-    }
     public void SpinBtnClick()
     {
         _isSpin = !_isSpin;
@@ -51,22 +44,14 @@ public class SlotMachine : MonoBehaviour
         boardNum = _server.GenerateGameBoardAndSave();
     }
 
-    [SerializeField] UIControl _uIControl;
-
+    [SerializeField] UpdateUI _updateUI;
+    [SerializeField] InputManager _inputManager;
     void GetInputField()
     {
-        if (_uIControl.CanSpin())
-        {
-            _server.GetInputValue(int.Parse(_inputBet.text));
-        }
-        else
-        {
-            _server.GetInputValue(0);
-        }
-
+        _server.GetInputValue(_inputManager.GetInputValue());
     }
     void UpdatePlayerInform()
     {
-        _uIControl.UpdateUI(_server);
+        _updateUI.UpdatedUI(_server);
     }
 }

@@ -24,7 +24,7 @@ public class SimulationServer
         return _gameBoard;
     }
 
-    public void CalcWinMoneyAndSave()
+    void CalcWinMoneyAndSave()
     {
         int betMoney = InputValue;
         WinMoney = GetMultiple() * betMoney - 8 * betMoney;
