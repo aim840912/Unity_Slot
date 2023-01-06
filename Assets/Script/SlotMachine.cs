@@ -1,13 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class SlotMachine : MonoBehaviour
 {
     bool _isSpin;
     BaseSpin[] _baseSpinArray;
 
-    private void Start()
+    void Start()
     {
         _baseSpinArray = GetComponents<BaseSpin>();
     }
@@ -21,11 +19,12 @@ public class SlotMachine : MonoBehaviour
 
         if (_isSpin)
         {
+            _server.ServerProcess(_inputManager.GetInputValue());
+
             foreach (BaseSpin baseAction in _baseSpinArray)
             {
                 baseAction.Spin();
             }
-            _server.ServerProcess(_inputManager.GetInputValue());
         }
         else
         {
@@ -38,10 +37,10 @@ public class SlotMachine : MonoBehaviour
         }
     }
 
-    [SerializeField] UpdateUI _updateUI;
+    [SerializeField] UIManager _uiManager;
 
     void UpdatePlayerInform()
     {
-        _updateUI.UpdatedUI(_server);
+        _uiManager.UpdatedUI(_server);
     }
 }

@@ -220,7 +220,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &118396073
 PlayableDirector:
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputManager: {fileID: 1981267628}
-  _updateUI: {fileID: 679656732}
+  _uiManager: {fileID: 679656732}
 --- !u!114 &606385566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,7 +676,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 679656729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65fa4e7490684d4c96404028413465f, type: 3}
+  m_Script: {fileID: 11500000, guid: b8373f1875b22954799c752ba002555e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _winMoneyText: {fileID: 890897552}
@@ -2325,7 +2325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1445435573
 GameObject:
@@ -3877,7 +3877,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2014245386
 GameObject:

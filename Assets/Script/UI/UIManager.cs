@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
-public class UpdateUI : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-
     [Header("UI")]
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;

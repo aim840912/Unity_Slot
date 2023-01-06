@@ -4,17 +4,15 @@ using UnityEngine;
 */
 public class SimulationServer
 {
-    int[] _gameBoard = new int[9];
+    int[] _gameBoard = new int[9] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     readonly int _minNumber = 0;
     readonly int _maxNumber = 10;
     public int WinMoney { get; private set; }
-    public int CurrentBet { get; private set; }
 
     public void ServerProcess(int inputValue)
     {
         GenerateGameBoardAndSave();
-        SetCurrentBet(inputValue);
-        CalcWinMoneyAndSave();
+        CalcWinMoneyAndSave(inputValue);
     }
 
     void GenerateGameBoardAndSave()
@@ -32,14 +30,9 @@ public class SimulationServer
         return _gameBoard;
     }
 
-    void SetCurrentBet(int inputValue)
+    void CalcWinMoneyAndSave(int currentBet)
     {
-        CurrentBet = inputValue;
-    }
-
-    void CalcWinMoneyAndSave()
-    {
-        WinMoney = GetMultiple() * CurrentBet - 8 * CurrentBet;
+        WinMoney = GetMultiple() * currentBet - 8 * currentBet;
 
         CalcPlayerMoneyAndSave();
     }
