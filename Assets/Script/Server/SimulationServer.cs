@@ -7,15 +7,13 @@ public class SimulationServer
     int[] _gameBoard = new int[9];
     readonly int _minNumber = 0;
     readonly int _maxNumber = 10;
-    CalcMultiple _calcMultiple = new CalcMultiple();
-
     public int WinMoney { get; private set; }
-    public int InputValue { get; private set; }
+    public int CurrentBet { get; private set; }
 
     public void ServerProcess(int inputValue)
     {
         GenerateGameBoardAndSave();
-        SetInputValue(inputValue);
+        SetCurrentBet(inputValue);
         CalcWinMoneyAndSave();
     }
 
@@ -34,18 +32,19 @@ public class SimulationServer
         return _gameBoard;
     }
 
-    void SetInputValue(int inputValue)
+    void SetCurrentBet(int inputValue)
     {
-        InputValue = inputValue;
+        CurrentBet = inputValue;
     }
 
     void CalcWinMoneyAndSave()
     {
-        int betAmount = InputValue;
-        WinMoney = GetMultiple() * betAmount - 8 * betAmount;
+        WinMoney = GetMultiple() * CurrentBet - 8 * CurrentBet;
 
         CalcPlayerMoneyAndSave();
     }
+
+    CalcMultiple _calcMultiple = new CalcMultiple();
 
     int GetMultiple()
     {
