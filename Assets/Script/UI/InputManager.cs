@@ -5,6 +5,11 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] TMP_InputField _inputBet;
 
+    void Reset()
+    {
+        _inputBet = this.GetComponent<TMP_InputField>();
+    }
+
     void Start()
     {
         _inputBet.onValueChanged.AddListener(delegate { CheckInputValue(_inputBet); });

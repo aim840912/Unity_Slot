@@ -1,44 +1,51 @@
 using UnityEngine;
 /*
-    產生盤面 金錢計算
+    產生盤面 金錢計算 儲存玩家資訊
 */
 public class SimulationServer
 {
     int[] _gameBoard = new int[9];
-    const int MIN_NUMBER = 0;
-    const int MAX_NUMBER = 10;
+    readonly int _minNumber = 0;
+    readonly int _maxNumber = 10;
     CalcMultiple _calcMultiple = new CalcMultiple();
 
-    public int WinMoney { get; set; }
-    public int InputValue { get; set; }
+    public int WinMoney { get; private set; }
+    public int InputValue { get; private set; }
 
-    void ServerProcess(int inputValue)// todo : 還沒完成
+    public void ServerProcess(int inputValue)
     {
         GenerateGameBoardAndSave();
-        GetInputValue(inputValue);
+        SetInputValue(inputValue);
         CalcWinMoneyAndSave();
     }
 
-    public int[] GenerateGameBoardAndSave()
+    void GenerateGameBoardAndSave()
     {
         for (var i = 0; i < _gameBoard.Length; i++)
         {
-            _gameBoard[i] = Random.Range(MIN_NUMBER, MAX_NUMBER);
+            _gameBoard[i] = Random.Range(_minNumber, _maxNumber);
         }
 
         SaveBoardNum(_gameBoard);
-        CalcWinMoneyAndSave();
+    }
+
+    public int[] GetServerBoardNum()
+    {
         return _gameBoard;
+    }
+
+    void SetInputValue(int inputValue)
+    {
+        InputValue = inputValue;
     }
 
     void CalcWinMoneyAndSave()
     {
-        int betMoney = InputValue;
-        WinMoney = GetMultiple() * betMoney - 8 * betMoney;
+        int betAmount = InputValue;
+        WinMoney = GetMultiple() * betAmount - 8 * betAmount;
 
         CalcPlayerMoneyAndSave();
     }
-
 
     int GetMultiple()
     {
@@ -46,11 +53,6 @@ public class SimulationServer
         Debug.Log($"{multiple}");
 
         return multiple;
-    }
-
-    public void GetInputValue(int inputValue)
-    {
-        InputValue = inputValue;
     }
 
     void CalcPlayerMoneyAndSave()
