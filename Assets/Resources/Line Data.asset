@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12847318678fd0f44b8d22e68b8b4a30, type: 3}
-  m_Name: LineRenderer Data
+  m_Script: {fileID: 11500000, guid: 12fc634526056fd46bc798872775073e, type: 3}
+  m_Name: Line Data
   m_EditorClassIdentifier: 
-  LineObjs:
+  Lines:
   - LineRenderer: {fileID: 3145203938385567307, guid: 2b0d86811bdb9314180e4710d924ee7c, type: 3}
     IndexLine: 000000000300000006000000
   - LineRenderer: {fileID: 6146487829060578969, guid: c2663081345baa24bab6cc68abbc815b, type: 3}

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class LineVisual : BaseSpin
 {
-    [SerializeField] LineRendererData _lineRendererData;
-    [SerializeField] LineRenderer[] _lineRender;
+    [SerializeField] LineData _lineData;
+    [SerializeField] LineRenderer[] _line;
     [SerializeField] GameObject _lineObj;
 
     void Start()
@@ -14,10 +14,10 @@ public class LineVisual : BaseSpin
 
     void InstantiateLineObj()
     {
-        _lineRender = new LineRenderer[_lineRendererData.LineObjs.Length];
-        for (int i = 0; i < _lineRendererData.LineObjs.Length; i++)
+        _line = new LineRenderer[_lineData.Lines.Length];
+        for (int i = 0; i < _lineData.Lines.Length; i++)
         {
-            _lineRender[i] = Instantiate(_lineRendererData.LineObjs[i].LineRenderer, _lineObj.transform);
+            _line[i] = Instantiate(_lineData.Lines[i].LineRenderer, _lineObj.transform);
         }
     }
 
@@ -39,24 +39,24 @@ public class LineVisual : BaseSpin
     void LineOn(int[] boardNum)
     {
         Odds[] indexLine;
-        for (int i = 0; i < _lineRender.Length; i++)
+        for (int i = 0; i < _line.Length; i++)
         {
-            indexLine = new Odds[_lineRendererData.LineObjs[i].IndexLine.Length];
+            indexLine = new Odds[_lineData.Lines[i].IndexLine.Length];
 
             for (var j = 0; j < indexLine.Length; j++)
             {
-                indexLine[j] = (Odds)boardNum[_lineRendererData.LineObjs[i].IndexLine[j]];
+                indexLine[j] = (Odds)boardNum[_lineData.Lines[i].IndexLine[j]];
             }
 
-            _lineRender[i].enabled = IsLineOn(indexLine);
+            _line[i].enabled = IsLineOn(indexLine);
         }
     }
 
     void LineOff()
     {
-        for (int i = 0; i < _lineRender.Length; i++)
+        for (int i = 0; i < _line.Length; i++)
         {
-            _lineRender[i].enabled = false;
+            _line[i].enabled = false;
         }
     }
 

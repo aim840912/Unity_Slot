@@ -6,7 +6,6 @@ public class SlotMachine : MonoBehaviour
 {
     bool _isSpin;
     BaseSpin[] _baseSpinArray;
-    int[] boardNum;
 
     private void Start()
     {

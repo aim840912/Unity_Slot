@@ -3,23 +3,18 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] TMP_InputField _inputBet;
-
-    void Reset()
-    {
-        _inputBet = this.GetComponent<TMP_InputField>();
-    }
+    [SerializeField] TMP_InputField _betInput;
 
     void Start()
     {
-        _inputBet.onValueChanged.AddListener(delegate { CheckInputValue(_inputBet); });
+        _betInput.onValueChanged.AddListener(delegate { CheckInputValue(_betInput); });
     }
 
     public int GetInputValue()
     {
-        if (CheckInputValue(_inputBet))
+        if (CheckInputValue(_betInput))
         {
-            return int.Parse(_inputBet.text);
+            return int.Parse(_betInput.text);
         }
         else
         {

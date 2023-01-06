@@ -519,8 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ee0c24ccaf9bd4f9c869049859f770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updateUI: {fileID: 679656732}
   _inputManager: {fileID: 1981267628}
+  _updateUI: {fileID: 679656732}
 --- !u!114 &606385566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,8 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1d14bda01241249ba4ae5472136d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lineRendererData: {fileID: 11400000, guid: 5f5f2db83f9a6e148bc3c510f86b5519, type: 2}
-  _lineRender: []
+  _lineData: {fileID: 11400000, guid: 7e40f9973f49d7f43b5a8bc59154bcca, type: 2}
+  _line: []
   _lineObj: {fileID: 383900229}
 --- !u!1 &666817766
 GameObject:
@@ -3580,7 +3580,7 @@ GameObject:
   - component: {fileID: 1934596512}
   - component: {fileID: 1934596511}
   m_Layer: 5
-  m_Name: Input
+  m_Name: Bet Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3863,7 +3863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9722fc5e8cf35ad4ea5e1c59b7a8abb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputBet: {fileID: 1934596511}
+  _betInput: {fileID: 1934596511}
 --- !u!4 &1981267629
 Transform:
   m_ObjectHideFlags: 0

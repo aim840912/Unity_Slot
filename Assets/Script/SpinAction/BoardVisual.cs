@@ -16,11 +16,11 @@ public class BoardVisual : BaseSpin
 
     void Init()
     {
-        LastGameBoard();
+        LoadGameBoard();
         SetPoint();
     }
 
-    void LastGameBoard() // TODO : 想更好的名稱
+    void LoadGameBoard()
     {
         int[] _boardNum = SaveManager.LoadBoard().boardNum;
 
