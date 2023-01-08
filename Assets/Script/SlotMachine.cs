@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlotMachine : MonoBehaviour
 {
@@ -8,10 +9,13 @@ public class SlotMachine : MonoBehaviour
     void Start()
     {
         _baseSpinArray = GetComponents<BaseSpin>();
+        spinToggle.onValueChanged.AddListener(SpinToggleOnClick);
     }
 
     SimulationServer _server = new SimulationServer();
     [SerializeField] InputManager _inputManager;
+
+    #region 作法1
 
     public void SpinBtnClick()
     {
@@ -36,6 +40,41 @@ public class SlotMachine : MonoBehaviour
             UpdatePlayerInform();
         }
     }
+
+    #endregion
+
+    #region 作法_2
+
+    [SerializeField] BoardVisual boardVisual;
+    [SerializeField] LineVisual lineVisual;
+    [SerializeField] Toggle spinToggle;
+
+    void SpinToggleOnClick(bool isSpin)
+    {
+        if (isSpin)
+        {
+            _server.ServerProcess(_inputManager.GetInputValue());
+            Spin(boardVisual);
+            Spin(lineVisual);
+        }
+        else
+        {
+            Stop(boardVisual);
+            Stop(lineVisual);
+            UpdatePlayerInform();
+        }
+    }
+
+    void Spin(BaseSpin baseSpin)
+    {
+        baseSpin.Spin();
+    }
+    void Stop(BaseSpin baseSpin)
+    {
+        baseSpin.Stop(_server.GetServerBoardNum());
+    }
+
+    #endregion
 
     [SerializeField] UIManager _uiManager;
 
