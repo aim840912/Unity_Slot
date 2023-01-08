@@ -10,10 +10,11 @@ public class SlotMachine : MonoBehaviour
     {
         _baseSpinArray = GetComponents<BaseSpin>();
         spinToggle.onValueChanged.AddListener(SpinToggleOnClick);
+        UpdatePlayerInform();
     }
 
     SimulationServer _server = new SimulationServer();
-    [SerializeField] InputManager _inputManager;
+    [SerializeField] InputUnit _inputUnit;
 
     #region 作法1
 
@@ -23,7 +24,7 @@ public class SlotMachine : MonoBehaviour
 
         if (_isSpin)
         {
-            _server.ServerProcess(_inputManager.GetInputValue());
+            _server.ServerProcess(_inputUnit.GetInputValue());
 
             foreach (BaseSpin baseAction in _baseSpinArray)
             {
@@ -53,7 +54,7 @@ public class SlotMachine : MonoBehaviour
     {
         if (isSpin)
         {
-            _server.ServerProcess(_inputManager.GetInputValue());
+            _server.ServerProcess(_inputUnit.GetInputValue());
             Spin(boardVisual);
             Spin(lineVisual);
         }
@@ -76,10 +77,10 @@ public class SlotMachine : MonoBehaviour
 
     #endregion
 
-    [SerializeField] UIManager _uiManager;
+    [SerializeField] PlayerUI _playerUI;
 
     void UpdatePlayerInform()
     {
-        _uiManager.UpdatedUI(_server);
+        _playerUI.UpdatedUI(_server);
     }
 }

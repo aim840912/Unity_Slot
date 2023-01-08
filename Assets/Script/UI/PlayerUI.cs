@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class PlayerUI : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] TMP_Text _winMoneyText;

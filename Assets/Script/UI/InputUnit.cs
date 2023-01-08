@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputUnit : MonoBehaviour
 {
     [SerializeField] TMP_InputField _betInput;
 
