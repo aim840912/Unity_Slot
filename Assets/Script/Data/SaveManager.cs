@@ -16,6 +16,7 @@ public static class SaveManager
     public static void SavePlayerData()
     {
         var dir = Application.persistentDataPath + SAVE_DIRECTORY;
+
         if (!Directory.Exists(dir))
         {
             Directory.CreateDirectory(dir);
@@ -28,7 +29,6 @@ public static class SaveManager
     {
         string fullPath = Application.persistentDataPath + SAVE_DIRECTORY + FILE_NAME;
 
-
         if (File.Exists(fullPath))
         {
             string json = File.ReadAllText(fullPath);
@@ -38,18 +38,22 @@ public static class SaveManager
         {
             SavePlayerData();
         }
+
         return CurrentSaveData;
     }
+
     #endregion
 
     #region Board
     public static void SaveBoard()
     {
         var dir = Application.persistentDataPath + SLOT_SAVE_DIRECTORY;
+
         if (!Directory.Exists(dir))
         {
             Directory.CreateDirectory(dir);
         }
+
         string json = JsonUtility.ToJson(CurrentBoardSaveData, true);
         File.WriteAllText(dir + SLOT_FILE_NAME, json);
     }
@@ -67,8 +71,10 @@ public static class SaveManager
         {
             SaveBoard();
         }
+
         return CurrentBoardSaveData;
     }
+
     #endregion
 }
 

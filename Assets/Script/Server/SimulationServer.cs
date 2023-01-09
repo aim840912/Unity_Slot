@@ -68,4 +68,9 @@ public class SimulationServer
     {
         return _gameBoard;
     }
+
+    public int[] LoadBoardNum()
+    {
+        return SaveManager.LoadBoard().boardNum;
+    }
 }

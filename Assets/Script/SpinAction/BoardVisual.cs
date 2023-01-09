@@ -8,7 +8,7 @@ public class BoardVisual : BaseSpin
     [SerializeField] Data _imageData;
     float _topPoint;
     float _bottomPoint;
-
+    SimulationServer _server = new SimulationServer();
     void Awake()
     {
         Init();
@@ -22,7 +22,7 @@ public class BoardVisual : BaseSpin
 
     void LoadGameBoard()
     {
-        int[] _boardNum = SaveManager.LoadBoard().boardNum;
+        int[] _boardNum = _server.LoadBoardNum();
 
         for (int i = 0; i < _images.Length; i++)
         {
