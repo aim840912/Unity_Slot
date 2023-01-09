@@ -7,12 +7,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] TMP_Text _winMoneyText;
     [SerializeField] TMP_Text _playerMoneyText;
 
-    void Start()
-    {
-        _playerMoneyText.text = $"{SaveManager.LoadPlayerData().money}";
-    }
-
-    public void UpdatedUI(SimulationServer server)
+    public void UpdatedPlayerUI(SimulationServer server)
     {
         int winMoney = server.WinMoney;
         int playerMoney = server.GetPlayerMoneyFromData();
