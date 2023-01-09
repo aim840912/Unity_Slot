@@ -5,6 +5,15 @@ using UnityEngine;
 public class SimulationServer
 {
     public int WinMoney { get; private set; }
+
+    private int _playerMoney;
+    public int PlayerMoney
+    {
+        get
+        {
+            return SaveManager.LoadPlayerData().money;
+        }
+    }
     int[] _gameBoard = new int[9] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     readonly int _minNumber = 0;
     readonly int _maxNumber = 10;
@@ -12,30 +21,33 @@ public class SimulationServer
 
     public void ServerProcess(int inputValue)
     {
-        GenerateGameBoardAndSave();
-        CalcMoneyAndSave(inputValue);
+        GenerateGameBoard();
+        SaveGameBoard(_gameBoard);
+        CalcMoney(inputValue);
+        SavePlayerMoneyToData(_playerMoney);
     }
 
-    void GenerateGameBoardAndSave()
+    void GenerateGameBoard()
     {
         for (var i = 0; i < _gameBoard.Length; i++)
         {
             _gameBoard[i] = Random.Range(_minNumber, _maxNumber);
         }
-
-        SaveBoardNum(_gameBoard);
     }
 
-    public int[] GetServerBoardNum()
+    void SaveGameBoard(int[] boardNum)
     {
-        return _gameBoard;
+        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
+        SaveManager.SaveBoard();
     }
 
-    void CalcMoneyAndSave(int currentBet)
+    void CalcMoney(int currentBet)
     {
         WinMoney = GetMultiple() * currentBet - 8 * currentBet;
 
-        CalcPlayerMoneyAndSave();
+        _playerMoney = PlayerMoney;
+
+        _playerMoney += WinMoney;
     }
 
     int GetMultiple()
@@ -46,29 +58,14 @@ public class SimulationServer
         return multiple;
     }
 
-    void CalcPlayerMoneyAndSave()
-    {
-        int playerMoney = GetPlayerMoneyFromData();
-
-        playerMoney += WinMoney;
-
-        SavePlayerMoneyToData(playerMoney);
-    }
-
-    public int GetPlayerMoneyFromData()
-    {
-        return SaveManager.CurrentSaveData.money;
-    }
-
     void SavePlayerMoneyToData(int money)
     {
         SaveManager.CurrentSaveData.money = money;
         SaveManager.SavePlayerData();
     }
 
-    void SaveBoardNum(int[] boardNum)
+    public int[] GetServerBoardNum()
     {
-        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
-        SaveManager.SaveBoard();
+        return _gameBoard;
     }
 }

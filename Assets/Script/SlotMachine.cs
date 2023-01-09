@@ -6,13 +6,13 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] PlayerUI _playerUI;
     SimulationServer _server = new SimulationServer();
     [SerializeField] InputUnit _inputUnit;
-    [SerializeField] BoardVisual boardVisual;
-    [SerializeField] LineVisual lineVisual;
-    [SerializeField] Toggle spinToggle;
+    [SerializeField] BoardVisual _boardVisual;
+    [SerializeField] LineVisual _lineVisual;
+    [SerializeField] Toggle _spinToggle;
 
     void Start()
     {
-        spinToggle.onValueChanged.AddListener(SpinToggleOnClick);
+        _spinToggle.onValueChanged.AddListener(SpinToggleOnClick);
         UpdatePlayerInform();
     }
 
@@ -26,13 +26,13 @@ public class SlotMachine : MonoBehaviour
         if (isSpin)
         {
             _server.ServerProcess(_inputUnit.GetInputValue());
-            Spin(boardVisual);
-            Spin(lineVisual);
+            Spin(_boardVisual);
+            Spin(_lineVisual);
         }
         else
         {
-            Stop(boardVisual);
-            Stop(lineVisual);
+            Stop(_boardVisual);
+            Stop(_lineVisual);
             UpdatePlayerInform();
         }
     }

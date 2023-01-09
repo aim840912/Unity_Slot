@@ -521,11 +521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ee0c24ccaf9bd4f9c869049859f770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputUnit: {fileID: 1934596514}
-  boardVisual: {fileID: 606385566}
-  lineVisual: {fileID: 606385567}
-  spinToggle: {fileID: 991203571}
   _playerUI: {fileID: 679656732}
+  _inputUnit: {fileID: 1934596514}
+  _boardVisual: {fileID: 606385566}
+  _lineVisual: {fileID: 606385567}
+  _spinToggle: {fileID: 991203571}
 --- !u!114 &606385566
 MonoBehaviour:
   m_ObjectHideFlags: 0
