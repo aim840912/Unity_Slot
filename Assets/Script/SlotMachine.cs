@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class SlotMachine : MonoBehaviour
 {
     [SerializeField] PlayerUI _playerUI;
-    SimulationServer _server = new SimulationServer();
     [SerializeField] InputUnit _inputUnit;
     [SerializeField] BoardVisual _boardVisual;
     [SerializeField] LineVisual _lineVisual;
@@ -18,14 +17,14 @@ public class SlotMachine : MonoBehaviour
 
     void UpdatePlayerInform()
     {
-        _playerUI.UpdatedPlayerUI(_server);
+        _playerUI.UpdatedPlayerUI(SimulationServer.getInstance());
     }
 
     void SpinToggleOnClick(bool isSpin)
     {
         if (isSpin)
         {
-            _server.ServerProcess(_inputUnit.GetInputValue());
+            SimulationServer.getInstance().ServerProcess(_inputUnit.GetInputValue());
             Spin(_boardVisual);
             Spin(_lineVisual);
         }
@@ -44,6 +43,6 @@ public class SlotMachine : MonoBehaviour
 
     void Stop(BaseSpin baseSpin)
     {
-        baseSpin.Stop(_server.GetServerBoardNum());
+        baseSpin.Stop(SimulationServer.getInstance().GetServerBoardNum());
     }
 }

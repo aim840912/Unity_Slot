@@ -1,10 +1,21 @@
 using UnityEngine;
 using System.IO;
 
-public static class SaveManager
+public class SimulationDataBase
 {
-    public static PlayerData CurrentSaveData = new PlayerData();
-    public static BoardData CurrentBoardSaveData = new BoardData();
+    private SimulationDataBase() { }
+    private static SimulationDataBase _instance = new SimulationDataBase();
+    public static SimulationDataBase getInstance()
+    {
+        if (_instance == null)
+        {
+            _instance = new SimulationDataBase();
+        }
+        return _instance;
+    }
+
+    public PlayerData CurrentSaveData = new PlayerData();
+    public BoardData CurrentBoardSaveData = new BoardData();
 
     public const string SAVE_DIRECTORY = "/DataSaver/";
     public const string FILE_NAME = "DataSaver.sav";
@@ -13,7 +24,7 @@ public static class SaveManager
     public const string SLOT_FILE_NAME = "SlotSaver.sav";
 
     #region Player
-    public static void SavePlayerData()
+    public void SavePlayerData()
     {
         var dir = Application.persistentDataPath + SAVE_DIRECTORY;
 
@@ -25,7 +36,7 @@ public static class SaveManager
         File.WriteAllText(dir + FILE_NAME, json);
     }
 
-    public static PlayerData LoadPlayerData()
+    public PlayerData LoadPlayerData()
     {
         string fullPath = Application.persistentDataPath + SAVE_DIRECTORY + FILE_NAME;
 
@@ -45,7 +56,7 @@ public static class SaveManager
     #endregion
 
     #region Board
-    public static void SaveBoard()
+    public void SaveBoard()
     {
         var dir = Application.persistentDataPath + SLOT_SAVE_DIRECTORY;
 
@@ -58,7 +69,7 @@ public static class SaveManager
         File.WriteAllText(dir + SLOT_FILE_NAME, json);
     }
 
-    public static BoardData LoadBoard()
+    public BoardData LoadBoard()
     {
         string fullPath = Application.persistentDataPath + SLOT_SAVE_DIRECTORY + SLOT_FILE_NAME;
 

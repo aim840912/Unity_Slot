@@ -4,14 +4,24 @@ using UnityEngine;
 */
 public class SimulationServer
 {
-    public int WinMoney { get; private set; }
+    private SimulationServer() { }
+    private static SimulationServer _instance = new SimulationServer();
+    public static SimulationServer getInstance()
+    {
+        if (_instance == null)
+        {
+            _instance = new SimulationServer();
+        }
+        return _instance;
+    }
 
+    public int WinMoney { get; private set; }
     private int _playerMoney;
     public int PlayerMoney
     {
         get
         {
-            return SaveManager.LoadPlayerData().money;
+            return SimulationDataBase.getInstance().LoadPlayerData().money;
         }
     }
     int[] _gameBoard = new int[9] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -37,8 +47,8 @@ public class SimulationServer
 
     void SaveGameBoard(int[] boardNum)
     {
-        SaveManager.CurrentBoardSaveData.boardNum = boardNum;
-        SaveManager.SaveBoard();
+        SimulationDataBase.getInstance().CurrentBoardSaveData.boardNum = boardNum;
+        SimulationDataBase.getInstance().SaveBoard();
     }
 
     void CalcMoney(int currentBet)
@@ -60,8 +70,8 @@ public class SimulationServer
 
     void SavePlayerMoneyToData(int money)
     {
-        SaveManager.CurrentSaveData.money = money;
-        SaveManager.SavePlayerData();
+        SimulationDataBase.getInstance().CurrentSaveData.money = money;
+        SimulationDataBase.getInstance().SavePlayerData();
     }
 
     public int[] GetServerBoardNum()
@@ -71,6 +81,6 @@ public class SimulationServer
 
     public int[] LoadBoardNum()
     {
-        return SaveManager.LoadBoard().boardNum;
+        return SimulationDataBase.getInstance().LoadBoard().boardNum;
     }
 }

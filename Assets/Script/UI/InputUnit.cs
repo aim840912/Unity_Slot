@@ -5,7 +5,6 @@ public class InputUnit : MonoBehaviour
 {
     [SerializeField] TMP_InputField _betInput;
 
-    SimulationServer server = new SimulationServer();
     void Start()
     {
         _betInput.onValueChanged.AddListener(delegate { CheckInputValue(_betInput); });
@@ -33,7 +32,7 @@ public class InputUnit : MonoBehaviour
 
         int inputValue = int.Parse(inputBet.text);
 
-        if (inputValue * 8 > server.PlayerMoney || inputValue < 0)
+        if (inputValue * 8 > SimulationServer.getInstance().PlayerMoney || inputValue < 0)
         {
             inputBet.image.color = Color.red;
             return false;

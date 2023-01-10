@@ -7,7 +7,6 @@ public class SlotMachineTest : MonoBehaviour
     BaseSpin[] _baseSpinArray;
 
     [SerializeField] PlayerUI _playerUI;
-    SimulationServer _server = new SimulationServer();
     [SerializeField] InputUnit _inputUnit;
 
     void Start()
@@ -17,7 +16,7 @@ public class SlotMachineTest : MonoBehaviour
 
     void UpdatePlayerInform()
     {
-        _playerUI.UpdatedPlayerUI(_server);
+        _playerUI.UpdatedPlayerUI(SimulationServer.getInstance());
     }
 
     public void SpinBtnClick()
@@ -26,7 +25,7 @@ public class SlotMachineTest : MonoBehaviour
 
         if (_isSpin)
         {
-            _server.ServerProcess(_inputUnit.GetInputValue());
+            SimulationServer.getInstance().ServerProcess(_inputUnit.GetInputValue());
 
             foreach (BaseSpin baseAction in _baseSpinArray)
             {
@@ -37,7 +36,7 @@ public class SlotMachineTest : MonoBehaviour
         {
             foreach (BaseSpin baseAction in _baseSpinArray)
             {
-                baseAction.Stop(_server.GetServerBoardNum());
+                baseAction.Stop(SimulationServer.getInstance().GetServerBoardNum());
             }
 
             UpdatePlayerInform();
