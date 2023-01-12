@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class BoardVisual : BaseSpin
+public class BoardVisual : MonoBehaviour, BaseSpin
 {
     [SerializeField] Image[] _images;
     [SerializeField] Data _imageData;
@@ -38,7 +38,7 @@ public class BoardVisual : BaseSpin
         _bottomPoint = _imageHeight * -1f;
     }
 
-    public override void Spin()
+    public void Spin()
     {
         DOTween.Clear();
         for (int i = 0; i < _images.Length; i++)
@@ -47,7 +47,7 @@ public class BoardVisual : BaseSpin
         }
     }
 
-    public override void Stop(int[] board)
+    public void Stop(int[] board)
     {
         DOTween.Clear();
         for (int i = 0; i < _images.Length; i++)

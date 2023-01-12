@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-public class LineVisual : BaseSpin
+public class LineVisual : MonoBehaviour, BaseSpin
 {
     [SerializeField] LineData _lineData;
     [SerializeField] LineRenderer[] _line;
@@ -21,11 +20,11 @@ public class LineVisual : BaseSpin
         }
     }
 
-    public override void Spin()
+    public void Spin()
     {
         LineOff();
     }
-    public override void Stop(int[] board)
+    public void Stop(int[] board)
     {
         LineOn(board);
     }
