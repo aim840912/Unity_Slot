@@ -14,9 +14,7 @@ public class SimulationServer
         }
         return _instance;
     }
-
     public int WinMoney { get; private set; }
-    private int _playerMoney;
     public int PlayerMoney
     {
         get
@@ -24,6 +22,7 @@ public class SimulationServer
             return SimulationDataBase.getInstance().LoadPlayerData().money;
         }
     }
+    int _currentMoney;
     int[] _gameBoard = new int[9] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     readonly int _minNumber = 0;
     readonly int _maxNumber = 10;
@@ -34,7 +33,7 @@ public class SimulationServer
         GenerateGameBoard();
         SaveGameBoard(_gameBoard);
         CalcMoney(inputValue);
-        SavePlayerMoneyToData(_playerMoney);
+        SavePlayerMoneyToData(_currentMoney);
     }
 
     void GenerateGameBoard()
@@ -55,9 +54,7 @@ public class SimulationServer
     {
         WinMoney = GetMultiple() * currentBet - 8 * currentBet;
 
-        _playerMoney = PlayerMoney;
-
-        _playerMoney += WinMoney;
+        _currentMoney = PlayerMoney + WinMoney;
     }
 
     int GetMultiple()

@@ -7,6 +7,9 @@ public class SpinToggle : MonoBehaviour
     [SerializeField] Toggle _toggle;
     [SerializeField] Text _toggleText;
 
+    string _startSpin = "Spin";
+    string _stopSpin = "Stop";
+
     void Reset()
     {
         _toggle = this.GetComponent<Toggle>();
@@ -21,11 +24,11 @@ public class SpinToggle : MonoBehaviour
     {
         if (isOn)
         {
-            _toggleText.text = "Stop";
+            _toggleText.text = _stopSpin;
         }
         else
         {
-            _toggleText.text = "Spin";
+            _toggleText.text = _startSpin;
         }
     }
 }

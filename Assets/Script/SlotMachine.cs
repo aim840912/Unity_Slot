@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,16 +25,26 @@ public class SlotMachine : MonoBehaviour
     {
         if (isSpin)
         {
-            SimulationServer.getInstance().ServerProcess(_inputUnit.GetInputValue());
-            Spin(_boardVisual);
-            Spin(_lineVisual);
+            StartSpin();
         }
         else
         {
-            Stop(_boardVisual);
-            Stop(_lineVisual);
-            UpdatePlayerInform();
+            StartCoroutine(Stop());
         }
+    }
+    void StartSpin()
+    {
+        SimulationServer.getInstance().ServerProcess(_inputUnit.GetInputValue());
+        Spin(_boardVisual);
+        Spin(_lineVisual);
+    }
+
+    IEnumerator Stop()
+    {
+        Stop(_boardVisual);
+        yield return new WaitForSeconds(2f);
+        Stop(_lineVisual);
+        UpdatePlayerInform();
     }
 
     void Spin(BaseSpin baseSpin)

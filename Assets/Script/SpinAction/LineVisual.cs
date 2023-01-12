@@ -27,13 +27,7 @@ public class LineVisual : BaseSpin
     }
     public override void Stop(int[] board)
     {
-        StartCoroutine(LineOnCoro(board));
-    }
-
-    IEnumerator LineOnCoro(int[] boardNum)
-    {
-        yield return new WaitForSeconds(2f);
-        LineOn(boardNum);
+        LineOn(board);
     }
 
     void LineOn(int[] boardNum)

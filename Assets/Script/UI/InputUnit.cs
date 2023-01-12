@@ -7,12 +7,12 @@ public class InputUnit : MonoBehaviour
 
     void Start()
     {
-        _betInput.onValueChanged.AddListener(delegate { CheckInputValue(_betInput); });
+        _betInput.onValueChanged.AddListener(delegate { CheckValue(_betInput); });
     }
 
     public int GetInputValue()
     {
-        if (CheckInputValue(_betInput))
+        if (CheckValue(_betInput))
         {
             return int.Parse(_betInput.text);
         }
@@ -22,9 +22,9 @@ public class InputUnit : MonoBehaviour
         }
     }
 
-    bool CheckInputValue(TMP_InputField inputBet)
+    bool CheckValue(TMP_InputField inputBet)
     {
-        if (inputBet.text == "")
+        if (string.IsNullOrWhiteSpace(inputBet.text))
         {
             inputBet.image.color = Color.red;
             return false;
